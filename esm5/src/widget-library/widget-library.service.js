@@ -14,6 +14,7 @@ import { NumberComponent } from './number.component';
 import { RadiosComponent } from './radios.component';
 import { RootComponent } from './root.component';
 import { SectionComponent } from './section.component';
+import { CkeditorComponent } from './ckeditor.component';
 import { SelectComponent } from './select.component';
 import { SelectFrameworkComponent } from './select-framework.component';
 import { SelectWidgetComponent } from './select-widget.component';
@@ -146,6 +147,8 @@ var WidgetLibraryService = /** @class */ (function () {
             // TODO: Sequential panels with "Next" and "Previous" buttons
             // Widgets included for compatibility with other libraries
             'textline': 'text',
+            //CKeditor widget
+            'ckeditor': CkeditorComponent
         };
         this.registeredWidgets = {};
         this.frameworkWidgets = {};

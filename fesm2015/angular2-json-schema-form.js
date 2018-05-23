@@ -7376,6 +7376,82 @@ SectionComponent.propDecorators = {
     "dataIndex": [{ type: Input },],
 };
 
+class CkeditorComponent {
+    constructor(jsf) {
+        this.jsf = jsf;
+        this.controlDisabled = false;
+        this.boundControl = false;
+        this.config = {
+            mathJaxLib: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS_HTML',
+            toolbarGroups: [
+                { name: 'clipboard', groups: ['clipboard', 'undo'] },
+                { name: 'editing', groups: ['find', 'selection', 'spellchecker'] },
+                { name: 'links' },
+                { name: 'insert' },
+                { name: 'forms' },
+                { name: 'tools' },
+                { name: 'document',
+                    groups: ['mode', 'document', 'doctools'] },
+                { name: 'others' },
+                '/',
+                { name: 'basicstyles', groups: ['basicstyles', 'cleanup'] },
+                { name: 'paragraph', groups: ['list', 'indent', 'blocks', 'align', 'bidi'] },
+                { name: 'styles' },
+                { name: 'colors' },
+                { name: 'about' }
+            ],
+            // Remove some buttons provided by the standard plugins, which are
+            // not needed in the Standard(s) toolbar.
+            removeButtons: 'Underline',
+            // Set the most common block elements.
+            format_tags: 'p;h1;h2;h3;pre',
+            // Simplify the dialog windows.
+            removeDialogTabs: 'image:advanced;link:advanced',
+            filebrowserBrowseUrl: '/browser/browse.php',
+            filebrowserUploadUrl: '/uploader/upload.php'
+        };
+    }
+    ngOnInit() {
+        this.options = this.layoutNode.options || {};
+        this.jsf.initializeControl(this);
+        if (!this.options.notitle && !this.options.description && this.options.placeholder) {
+            this.options.description = this.options.placeholder;
+        }
+    }
+    commentsClick() {
+        console.log(this.layoutNode.dataPointer);
+    }
+    updateValue(event) {
+        this.jsf.updateValue(this, event);
+    }
+}
+CkeditorComponent.decorators = [
+    { type: Component, args: [{
+                selector: 'ckeditor-widget',
+                template: `<div
+    [class]="options?.htmlClass || ''">
+      <label *ngIf="options?.title"
+        [attr.for]="'control' + layoutNode?._id"
+        [class]="options?.labelHtmlClass || ''"
+        [style.display]="options?.notitle ? 'none' : ''"
+        [innerHTML]="options?.title"></label>
+      <ck-editor (ngModelChange)="updateValue($event)" [(ngModel)]="controlValue" [name]="controlName" [config]="config">
+      </ck-editor>
+       <button *ngIf="options?.comments" color="primary" (click)="commentsClick()"><mat-icon>comment</mat-icon></button>
+    </div>
+    `
+            },] },
+];
+/** @nocollapse */
+CkeditorComponent.ctorParameters = () => [
+    { type: JsonSchemaFormService, },
+];
+CkeditorComponent.propDecorators = {
+    "layoutNode": [{ type: Input },],
+    "layoutIndex": [{ type: Input },],
+    "dataIndex": [{ type: Input },],
+};
+
 class SelectComponent {
     constructor(jsf) {
         this.jsf = jsf;
@@ -7914,6 +7990,8 @@ class WidgetLibraryService {
             // TODO: Sequential panels with "Next" and "Previous" buttons
             // Widgets included for compatibility with other libraries
             'textline': 'text',
+            //CKeditor widget
+            'ckeditor': CkeditorComponent
         };
         this.registeredWidgets = {};
         this.frameworkWidgets = {};
@@ -8846,7 +8924,7 @@ const BASIC_WIDGETS = [
     AddReferenceComponent, OneOfComponent, ButtonComponent, CheckboxComponent,
     CheckboxesComponent, FileComponent, HiddenComponent, InputComponent,
     MessageComponent, NoneComponent, NumberComponent, RadiosComponent,
-    RootComponent, SectionComponent, SelectComponent, SelectFrameworkComponent,
+    RootComponent, SectionComponent, CkeditorComponent, SelectComponent, SelectFrameworkComponent,
     SelectWidgetComponent, SubmitComponent, TabComponent, TabsComponent,
     TemplateComponent, TextareaComponent
 ];
@@ -11360,5 +11438,5 @@ Bootstrap4FrameworkModule.decorators = [
  * Generated bundle index. Do not edit.
  */
 
-export { MATERIAL_FRAMEWORK_COMPONENTS as ɵd, MaterialCkeditorComponent as ɵe, ANGULAR_MATERIAL_MODULES as ɵb, JSON_SCHEMA_FORM_VALUE_ACCESSOR as ɵa, BASIC_WIDGETS as ɵc, _executeValidators, _executeAsyncValidators, _mergeObjects, _mergeErrors, isDefined, hasValue, isEmpty, isString, isNumber, isInteger, isBoolean, isFunction, isObject, isArray, isDate, isMap, isSet, isPromise, isObservable, getType, isType, isPrimitive, toJavaScriptType, toSchemaType, _toPromise, toObservable, inArray, xor, addClasses, copy, forEach, forEachCopy, hasOwn, mergeFilteredObject, uniqueItems, commonItems, fixTitle, toTitleCase, JsonPointer, JsonValidators, buildSchemaFromLayout, buildSchemaFromData, getFromSchema, removeRecursiveReferences, getInputType, checkInlineType, isInputRequired, updateInputOptions, getTitleMapFromOneOf, getControlValidators, resolveSchemaReferences, getSubSchema, combineAllOf, fixRequiredArrayProperties, convertSchemaToDraft6, mergeSchemas, buildFormGroupTemplate, buildFormGroup, formatFormData, getControl, setRequiredFields, buildLayout, buildLayoutFromSchema, mapLayout, getLayoutNode, buildTitleMap, dateToString, stringToDate, findDate, OrderableDirective, JsonSchemaFormComponent, JsonSchemaFormService, JsonSchemaFormModule, WidgetLibraryService, WidgetLibraryModule, AddReferenceComponent, OneOfComponent, ButtonComponent, CheckboxComponent, CheckboxesComponent, FileComponent, HiddenComponent, InputComponent, MessageComponent, NoneComponent, NumberComponent, RadiosComponent, RootComponent, SectionComponent, SelectComponent, SelectFrameworkComponent, SelectWidgetComponent, SubmitComponent, TabComponent, TabsComponent, TemplateComponent, TextareaComponent, FrameworkLibraryService, Framework, NoFramework, NoFrameworkComponent, NoFrameworkModule, MaterialDesignFramework, FlexLayoutRootComponent, FlexLayoutSectionComponent, MaterialAddReferenceComponent, MaterialOneOfComponent, MaterialButtonComponent, MaterialButtonGroupComponent, MaterialCheckboxComponent, MaterialCheckboxesComponent, MaterialChipListComponent, MaterialDatepickerComponent, MaterialFileComponent, MaterialInputComponent, MaterialNumberComponent, MaterialRadiosComponent, MaterialSelectComponent, MaterialSliderComponent, MaterialStepperComponent, MaterialTabsComponent, MaterialTextareaComponent, MaterialDesignFrameworkComponent, MaterialDesignFrameworkModule, Bootstrap3Framework, Bootstrap3FrameworkComponent, Bootstrap3FrameworkModule, Bootstrap4Framework, Bootstrap4FrameworkComponent, Bootstrap4FrameworkModule };
+export { MATERIAL_FRAMEWORK_COMPONENTS as ɵe, MaterialCkeditorComponent as ɵf, ANGULAR_MATERIAL_MODULES as ɵb, JSON_SCHEMA_FORM_VALUE_ACCESSOR as ɵa, CkeditorComponent as ɵd, BASIC_WIDGETS as ɵc, _executeValidators, _executeAsyncValidators, _mergeObjects, _mergeErrors, isDefined, hasValue, isEmpty, isString, isNumber, isInteger, isBoolean, isFunction, isObject, isArray, isDate, isMap, isSet, isPromise, isObservable, getType, isType, isPrimitive, toJavaScriptType, toSchemaType, _toPromise, toObservable, inArray, xor, addClasses, copy, forEach, forEachCopy, hasOwn, mergeFilteredObject, uniqueItems, commonItems, fixTitle, toTitleCase, JsonPointer, JsonValidators, buildSchemaFromLayout, buildSchemaFromData, getFromSchema, removeRecursiveReferences, getInputType, checkInlineType, isInputRequired, updateInputOptions, getTitleMapFromOneOf, getControlValidators, resolveSchemaReferences, getSubSchema, combineAllOf, fixRequiredArrayProperties, convertSchemaToDraft6, mergeSchemas, buildFormGroupTemplate, buildFormGroup, formatFormData, getControl, setRequiredFields, buildLayout, buildLayoutFromSchema, mapLayout, getLayoutNode, buildTitleMap, dateToString, stringToDate, findDate, OrderableDirective, JsonSchemaFormComponent, JsonSchemaFormService, JsonSchemaFormModule, WidgetLibraryService, WidgetLibraryModule, AddReferenceComponent, OneOfComponent, ButtonComponent, CheckboxComponent, CheckboxesComponent, FileComponent, HiddenComponent, InputComponent, MessageComponent, NoneComponent, NumberComponent, RadiosComponent, RootComponent, SectionComponent, SelectComponent, SelectFrameworkComponent, SelectWidgetComponent, SubmitComponent, TabComponent, TabsComponent, TemplateComponent, TextareaComponent, FrameworkLibraryService, Framework, NoFramework, NoFrameworkComponent, NoFrameworkModule, MaterialDesignFramework, FlexLayoutRootComponent, FlexLayoutSectionComponent, MaterialAddReferenceComponent, MaterialOneOfComponent, MaterialButtonComponent, MaterialButtonGroupComponent, MaterialCheckboxComponent, MaterialCheckboxesComponent, MaterialChipListComponent, MaterialDatepickerComponent, MaterialFileComponent, MaterialInputComponent, MaterialNumberComponent, MaterialRadiosComponent, MaterialSelectComponent, MaterialSliderComponent, MaterialStepperComponent, MaterialTabsComponent, MaterialTextareaComponent, MaterialDesignFrameworkComponent, MaterialDesignFrameworkModule, Bootstrap3Framework, Bootstrap3FrameworkComponent, Bootstrap3FrameworkModule, Bootstrap4Framework, Bootstrap4FrameworkComponent, Bootstrap4FrameworkModule };
 //# sourceMappingURL=angular2-json-schema-form.js.map
