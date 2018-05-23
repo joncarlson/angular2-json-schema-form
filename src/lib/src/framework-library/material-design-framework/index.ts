@@ -42,7 +42,7 @@ export { MaterialButtonGroupComponent } from './material-button-group.component'
 export { MaterialCheckboxComponent } from './material-checkbox.component';
 export { MaterialCheckboxesComponent } from './material-checkboxes.component';
 export { MaterialChipListComponent } from './material-chip-list.component';
-import { MaterialCkeditorComponent } from './material-ckeditor.component';
+export { MaterialCkeditorComponent } from './material-ckeditor.component';
 export { MaterialDatepickerComponent } from './material-datepicker.component';
 export { MaterialFileComponent } from './material-file.component';
 export { MaterialInputComponent } from './material-input.component';
