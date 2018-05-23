@@ -16,6 +16,7 @@ import { NumberComponent } from './number.component';
 import { RadiosComponent } from './radios.component';
 import { RootComponent } from './root.component';
 import { SectionComponent } from './section.component';
+import { CkeditorComponent } from './ckeditor.component';
 import { SelectComponent } from './select.component';
 import { SelectFrameworkComponent } from './select-framework.component';
 import { SelectWidgetComponent } from './select-widget.component';
@@ -125,6 +126,9 @@ export class WidgetLibraryService {
 
   // Widgets included for compatibility with other libraries
     'textline': 'text',
+
+    //CKeditor widget
+    'ckeditor': CkeditorComponent
 
   // Recommended 3rd-party add-on widgets (TODO: create wrappers for these...)
     // 'ng2-select': Select control replacement - http://valor-software.com/ng2-select/

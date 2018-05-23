@@ -16,6 +16,7 @@ import { SelectComponent } from './select.component';
 import { SelectFrameworkComponent } from './select-framework.component';
 import { SelectWidgetComponent } from './select-widget.component';
 import { SubmitComponent } from './submit.component';
+import { CkeditorComponent } from './ckeditor.component';
 import { TabComponent } from './tab.component';
 import { TabsComponent } from './tabs.component';
 import { TemplateComponent } from './template.component';
@@ -25,7 +26,7 @@ export const BASIC_WIDGETS = [
   AddReferenceComponent, OneOfComponent, ButtonComponent, CheckboxComponent,
   CheckboxesComponent, FileComponent, HiddenComponent, InputComponent,
   MessageComponent, NoneComponent, NumberComponent, RadiosComponent,
-  RootComponent, SectionComponent, SelectComponent, SelectFrameworkComponent,
+  RootComponent, SectionComponent, CkeditorComponent, SelectComponent, SelectFrameworkComponent,
   SelectWidgetComponent, SubmitComponent, TabComponent, TabsComponent,
   TemplateComponent, TextareaComponent
 ];
@@ -44,6 +45,7 @@ export { NumberComponent } from './number.component';
 export { RadiosComponent } from './radios.component';
 export { RootComponent } from './root.component';
 export { SectionComponent } from './section.component';
+export { CkeditorComponent } from './ckeditor.component';
 export { SelectComponent } from './select.component';
 export { SelectFrameworkComponent } from './select-framework.component';
 export { SelectWidgetComponent } from './select-widget.component';
