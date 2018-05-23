@@ -52,7 +52,8 @@
   },
   "dependencies": {
     "ajv": "^6.4.0",
-    "lodash": "4.x"
+    "lodash": "4.x",
+    "ngx-ckeditor": "^0.3.1"
   },
   "peerDependencies": {
     "@angular/cdk": "^6.0.0-rc.12",

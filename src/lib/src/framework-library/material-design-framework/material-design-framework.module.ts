@@ -29,11 +29,13 @@ import { WidgetLibraryModule } from '../../widget-library/widget-library.module'
 import { Framework } from '../framework';
 import { MATERIAL_FRAMEWORK_COMPONENTS } from './index';
 import { MaterialDesignFramework } from './material-design.framework';
+import { CKEditorModule } from 'ngx-ckeditor';
+
 
 @NgModule({
   imports: [
     CommonModule, FormsModule, ReactiveFormsModule, FlexLayoutModule,
-    ...ANGULAR_MATERIAL_MODULES, WidgetLibraryModule
+    ...ANGULAR_MATERIAL_MODULES, WidgetLibraryModule, CKEditorModule
   ],
   declarations:    [ ...MATERIAL_FRAMEWORK_COMPONENTS ],
   exports:         [ ...MATERIAL_FRAMEWORK_COMPONENTS ],
