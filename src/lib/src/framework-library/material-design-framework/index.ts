@@ -7,6 +7,7 @@ import { MaterialButtonGroupComponent } from './material-button-group.component'
 import { MaterialCheckboxComponent } from './material-checkbox.component';
 import { MaterialCheckboxesComponent } from './material-checkboxes.component';
 import { MaterialChipListComponent } from './material-chip-list.component';
+import { MaterialCkeditorComponent } from './material-ckeditor.component';
 import { MaterialDatepickerComponent } from './material-datepicker.component';
 import { MaterialFileComponent } from './material-file.component';
 import { MaterialInputComponent } from './material-input.component';
@@ -25,11 +26,11 @@ export const MATERIAL_FRAMEWORK_COMPONENTS = [
   MaterialAddReferenceComponent, MaterialOneOfComponent,
   MaterialButtonComponent, MaterialButtonGroupComponent,
   MaterialCheckboxComponent, MaterialCheckboxesComponent,
-  MaterialChipListComponent, MaterialDatepickerComponent,
+  MaterialChipListComponent, MaterialCkeditorComponent, MaterialDatepickerComponent,
   MaterialFileComponent, MaterialInputComponent, MaterialNumberComponent,
-  MaterialRadiosComponent, MaterialSelectComponent, MaterialSliderComponent,
-  MaterialStepperComponent, MaterialTabsComponent, MaterialTextareaComponent,
-  MaterialDesignFrameworkComponent
+  MaterialRadiosComponent, MaterialSelectComponent,
+  MaterialSliderComponent, MaterialStepperComponent, MaterialTabsComponent,
+  MaterialTextareaComponent, MaterialDesignFrameworkComponent
 ];
 
 export { FlexLayoutRootComponent } from './flex-layout-root.component';
@@ -41,6 +42,7 @@ export { MaterialButtonGroupComponent } from './material-button-group.component'
 export { MaterialCheckboxComponent } from './material-checkbox.component';
 export { MaterialCheckboxesComponent } from './material-checkboxes.component';
 export { MaterialChipListComponent } from './material-chip-list.component';
+export { MaterialCkeditorComponent } from './material-ckeditor.component';
 export { MaterialDatepickerComponent } from './material-datepicker.component';
 export { MaterialFileComponent } from './material-file.component';
 export { MaterialInputComponent } from './material-input.component';
