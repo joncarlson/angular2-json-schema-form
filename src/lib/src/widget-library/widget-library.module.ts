@@ -8,8 +8,11 @@ import { JsonSchemaFormService } from '../json-schema-form.service';
 
 import { BASIC_WIDGETS } from './index';
 
+
+import { CKEditorModule } from 'ngx-ckeditor';
+
 @NgModule({
-  imports:         [ CommonModule, FormsModule, ReactiveFormsModule ],
+  imports:         [ CommonModule, FormsModule, ReactiveFormsModule, CKEditorModule ],
   declarations:    [ ...BASIC_WIDGETS, OrderableDirective ],
   exports:         [ ...BASIC_WIDGETS, OrderableDirective ],
   entryComponents: [ ...BASIC_WIDGETS ],
