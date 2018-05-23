@@ -7,6 +7,7 @@ import { MaterialButtonGroupComponent } from './material-button-group.component'
 import { MaterialCheckboxComponent } from './material-checkbox.component';
 import { MaterialCheckboxesComponent } from './material-checkboxes.component';
 import { MaterialChipListComponent } from './material-chip-list.component';
+import { MaterialCkeditorComponent } from './material-ckeditor.component';
 import { MaterialDatepickerComponent } from './material-datepicker.component';
 import { MaterialFileComponent } from './material-file.component';
 import { MaterialInputComponent } from './material-input.component';
@@ -18,7 +19,7 @@ import { MaterialStepperComponent } from './material-stepper.component';
 import { MaterialTabsComponent } from './material-tabs.component';
 import { MaterialTextareaComponent } from './material-textarea.component';
 import { MaterialDesignFrameworkComponent } from './material-design-framework.component';
-export declare const MATERIAL_FRAMEWORK_COMPONENTS: (typeof FlexLayoutRootComponent | typeof FlexLayoutSectionComponent | typeof MaterialAddReferenceComponent | typeof MaterialOneOfComponent | typeof MaterialButtonComponent | typeof MaterialButtonGroupComponent | typeof MaterialCheckboxComponent | typeof MaterialCheckboxesComponent | typeof MaterialChipListComponent | typeof MaterialDatepickerComponent | typeof MaterialFileComponent | typeof MaterialInputComponent | typeof MaterialNumberComponent | typeof MaterialRadiosComponent | typeof MaterialSelectComponent | typeof MaterialSliderComponent | typeof MaterialStepperComponent | typeof MaterialTabsComponent | typeof MaterialTextareaComponent | typeof MaterialDesignFrameworkComponent)[];
+export declare const MATERIAL_FRAMEWORK_COMPONENTS: (typeof FlexLayoutRootComponent | typeof FlexLayoutSectionComponent | typeof MaterialAddReferenceComponent | typeof MaterialOneOfComponent | typeof MaterialButtonComponent | typeof MaterialButtonGroupComponent | typeof MaterialCheckboxComponent | typeof MaterialCheckboxesComponent | typeof MaterialChipListComponent | typeof MaterialCkeditorComponent | typeof MaterialDatepickerComponent | typeof MaterialFileComponent | typeof MaterialInputComponent | typeof MaterialNumberComponent | typeof MaterialRadiosComponent | typeof MaterialSelectComponent | typeof MaterialSliderComponent | typeof MaterialStepperComponent | typeof MaterialTabsComponent | typeof MaterialTextareaComponent | typeof MaterialDesignFrameworkComponent)[];
 export { FlexLayoutRootComponent } from './flex-layout-root.component';
 export { FlexLayoutSectionComponent } from './flex-layout-section.component';
 export { MaterialAddReferenceComponent } from './material-add-reference.component';
@@ -28,6 +29,7 @@ export { MaterialButtonGroupComponent } from './material-button-group.component'
 export { MaterialCheckboxComponent } from './material-checkbox.component';
 export { MaterialCheckboxesComponent } from './material-checkboxes.component';
 export { MaterialChipListComponent } from './material-chip-list.component';
+export { MaterialCkeditorComponent } from './material-ckeditor.component';
 export { MaterialDatepickerComponent } from './material-datepicker.component';
 export { MaterialFileComponent } from './material-file.component';
 export { MaterialInputComponent } from './material-input.component';

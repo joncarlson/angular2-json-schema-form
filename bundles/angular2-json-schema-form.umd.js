@@ -1,8 +1,8 @@
 (function (global, factory) {
-    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('tslib'), require('rxjs-compat/Observable'), require('rxjs-compat/observable/fromPromise'), require('rxjs-compat/operator/toPromise'), require('@angular/core'), require('rxjs-compat/observable/forkJoin'), require('rxjs-compat/operator/map'), require('lodash'), require('@angular/forms'), require('rxjs-compat/Subject'), require('ajv'), require('@angular/platform-browser'), require('@angular/common'), require('@angular/flex-layout'), require('@angular/material')) :
-    typeof define === 'function' && define.amd ? define('angular2-json-schema-form', ['exports', 'tslib', 'rxjs-compat/Observable', 'rxjs-compat/observable/fromPromise', 'rxjs-compat/operator/toPromise', '@angular/core', 'rxjs-compat/observable/forkJoin', 'rxjs-compat/operator/map', 'lodash', '@angular/forms', 'rxjs-compat/Subject', 'ajv', '@angular/platform-browser', '@angular/common', '@angular/flex-layout', '@angular/material'], factory) :
-    (factory((global.angular2JsonSchemaForm = {}),global.tslib,global.rxjs.Observable,global.rxjs.observable.fromPromise,global.rxjs.operator.toPromise,global.ng.core,global.rxjs.observable.forkJoin,global.rxjs.operator.map,global._,global.ng.forms,global.rxjs.Subject,global.Ajv,global.ng.platformBrowser,global.ng.common,global.ng['flex-layout'],global.ng.material));
-}(this, (function (exports,tslib,Observable,fromPromise,toPromise,core,forkJoin,map,lodash,forms,Subject,Ajv,platformBrowser,common,flexLayout,material) { 'use strict';
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('tslib'), require('rxjs-compat/Observable'), require('rxjs-compat/observable/fromPromise'), require('rxjs-compat/operator/toPromise'), require('@angular/core'), require('rxjs-compat/observable/forkJoin'), require('rxjs-compat/operator/map'), require('lodash'), require('@angular/forms'), require('rxjs-compat/Subject'), require('ajv'), require('@angular/platform-browser'), require('@angular/common'), require('@angular/flex-layout'), require('@angular/material'), require('ngx-ckeditor')) :
+    typeof define === 'function' && define.amd ? define('angular2-json-schema-form', ['exports', 'tslib', 'rxjs-compat/Observable', 'rxjs-compat/observable/fromPromise', 'rxjs-compat/operator/toPromise', '@angular/core', 'rxjs-compat/observable/forkJoin', 'rxjs-compat/operator/map', 'lodash', '@angular/forms', 'rxjs-compat/Subject', 'ajv', '@angular/platform-browser', '@angular/common', '@angular/flex-layout', '@angular/material', 'ngx-ckeditor'], factory) :
+    (factory((global.angular2JsonSchemaForm = {}),global.tslib,global.rxjs.Observable,global.rxjs.observable.fromPromise,global.rxjs.operator.toPromise,global.ng.core,global.rxjs.observable.forkJoin,global.rxjs.operator.map,global._,global.ng.forms,global.rxjs.Subject,global.Ajv,global.ng.platformBrowser,global.ng.common,global.ng['flex-layout'],global.ng.material,global.ngxCkeditor));
+}(this, (function (exports,tslib,Observable,fromPromise,toPromise,core,forkJoin,map,lodash,forms,Subject,Ajv,platformBrowser,common,flexLayout,material,ngxCkeditor) { 'use strict';
 
     /**
      * '_executeValidators' utility function
@@ -10137,6 +10137,73 @@
         "layoutIndex": [{ type: core.Input },],
         "dataIndex": [{ type: core.Input },],
     };
+    var MaterialCkeditorComponent = (function () {
+        function MaterialCkeditorComponent(jsf) {
+            this.jsf = jsf;
+            this.controlDisabled = false;
+            this.boundControl = false;
+            this.config = {
+                mathJaxLib: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS_HTML',
+                toolbarGroups: [
+                    { name: 'clipboard', groups: ['clipboard', 'undo'] },
+                    { name: 'editing', groups: ['find', 'selection', 'spellchecker'] },
+                    { name: 'links' },
+                    { name: 'insert' },
+                    { name: 'forms' },
+                    { name: 'tools' },
+                    { name: 'document',
+                        groups: ['mode', 'document', 'doctools'] },
+                    { name: 'others' },
+                    '/',
+                    { name: 'basicstyles', groups: ['basicstyles', 'cleanup'] },
+                    { name: 'paragraph', groups: ['list', 'indent', 'blocks', 'align', 'bidi'] },
+                    { name: 'styles' },
+                    { name: 'colors' },
+                    { name: 'about' }
+                ],
+                // Remove some buttons provided by the standard plugins, which are
+                // not needed in the Standard(s) toolbar.
+                removeButtons: 'Underline',
+                // Set the most common block elements.
+                format_tags: 'p;h1;h2;h3;pre',
+                // Simplify the dialog windows.
+                removeDialogTabs: 'image:advanced;link:advanced',
+                filebrowserBrowseUrl: '/browser/browse.php',
+                filebrowserUploadUrl: '/uploader/upload.php'
+            };
+        }
+        MaterialCkeditorComponent.prototype.ngOnInit = function () {
+            this.options = this.layoutNode.options || {};
+            this.jsf.initializeControl(this);
+            if (!this.options.notitle && !this.options.description && this.options.placeholder) {
+                this.options.description = this.options.placeholder;
+            }
+        };
+        MaterialCkeditorComponent.prototype.commentsClick = function () {
+            console.log(this.layoutNode.dataPointer);
+        };
+        MaterialCkeditorComponent.prototype.updateValue = function (event) {
+            this.jsf.updateValue(this, event);
+        };
+        return MaterialCkeditorComponent;
+    }());
+    MaterialCkeditorComponent.decorators = [
+        { type: core.Component, args: [{
+                    selector: 'material-ckeditor-widget',
+                    template: "<div\n    [class]=\"options?.htmlClass || ''\">\n      <label *ngIf=\"options?.title\"\n        [attr.for]=\"'control' + layoutNode?._id\"\n        [class]=\"options?.labelHtmlClass || ''\"\n        [style.display]=\"options?.notitle ? 'none' : ''\"\n        [innerHTML]=\"options?.title\"></label>\n      <ck-editor (ngModelChange)=\"updateValue($event)\" [(ngModel)]=\"controlValue\" [name]=\"controlName\" [config]=\"config\">\n      </ck-editor>\n       <button mat-mini-fab *ngIf=\"options?.comments\" color=\"primary\" (click)=\"commentsClick()\"><mat-icon>comment</mat-icon></button>\n    </div>\n    "
+                },] },
+    ];
+    /** @nocollapse */
+    MaterialCkeditorComponent.ctorParameters = function () {
+        return [
+            { type: JsonSchemaFormService, },
+        ];
+    };
+    MaterialCkeditorComponent.propDecorators = {
+        "layoutNode": [{ type: core.Input },],
+        "layoutIndex": [{ type: core.Input },],
+        "dataIndex": [{ type: core.Input },],
+    };
     var MaterialDatepickerComponent = (function () {
         function MaterialDatepickerComponent(jsf) {
             this.jsf = jsf;
@@ -10667,6 +10734,7 @@
                 'tabs': MaterialTabsComponent,
                 'text': MaterialInputComponent,
                 'textarea': MaterialTextareaComponent,
+                'ckeditor': MaterialCkeditorComponent,
                 'alt-date': 'date',
                 'any-of': 'one-of',
                 'card': 'section',
@@ -10693,7 +10761,7 @@
         MaterialAddReferenceComponent, MaterialOneOfComponent,
         MaterialButtonComponent, MaterialButtonGroupComponent,
         MaterialCheckboxComponent, MaterialCheckboxesComponent,
-        MaterialChipListComponent, MaterialDatepickerComponent,
+        MaterialChipListComponent, MaterialCkeditorComponent, MaterialDatepickerComponent,
         MaterialFileComponent, MaterialInputComponent, MaterialNumberComponent,
         MaterialRadiosComponent, MaterialSelectComponent, MaterialSliderComponent,
         MaterialStepperComponent, MaterialTabsComponent, MaterialTextareaComponent,
@@ -10724,7 +10792,7 @@
                     imports: tslib.__spread([
                         common.CommonModule, forms.FormsModule, forms.ReactiveFormsModule, flexLayout.FlexLayoutModule
                     ], ANGULAR_MATERIAL_MODULES, [
-                        WidgetLibraryModule
+                        WidgetLibraryModule, ngxCkeditor.CKEditorModule
                     ]),
                     declarations: tslib.__spread(MATERIAL_FRAMEWORK_COMPONENTS),
                     exports: tslib.__spread(MATERIAL_FRAMEWORK_COMPONENTS),
@@ -11264,6 +11332,7 @@
     ];
 
     exports.ɵd = MATERIAL_FRAMEWORK_COMPONENTS;
+    exports.ɵe = MaterialCkeditorComponent;
     exports.ɵb = ANGULAR_MATERIAL_MODULES;
     exports.ɵa = JSON_SCHEMA_FORM_VALUE_ACCESSOR;
     exports.ɵc = BASIC_WIDGETS;

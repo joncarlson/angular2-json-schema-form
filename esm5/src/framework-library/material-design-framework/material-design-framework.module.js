@@ -15,6 +15,7 @@ import { WidgetLibraryModule } from '../../widget-library/widget-library.module'
 import { Framework } from '../framework';
 import { MATERIAL_FRAMEWORK_COMPONENTS } from './index';
 import { MaterialDesignFramework } from './material-design.framework';
+import { CKEditorModule } from 'ngx-ckeditor';
 var MaterialDesignFrameworkModule = /** @class */ (function () {
     function MaterialDesignFrameworkModule() {
     }
@@ -34,7 +35,7 @@ MaterialDesignFrameworkModule.decorators = [
                 imports: tslib_1.__spread([
                     CommonModule, FormsModule, ReactiveFormsModule, FlexLayoutModule
                 ], ANGULAR_MATERIAL_MODULES, [
-                    WidgetLibraryModule
+                    WidgetLibraryModule, CKEditorModule
                 ]),
                 declarations: tslib_1.__spread(MATERIAL_FRAMEWORK_COMPONENTS),
                 exports: tslib_1.__spread(MATERIAL_FRAMEWORK_COMPONENTS),

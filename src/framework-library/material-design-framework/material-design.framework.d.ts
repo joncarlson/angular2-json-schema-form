@@ -8,6 +8,7 @@ import { MaterialButtonGroupComponent } from './material-button-group.component'
 import { MaterialCheckboxComponent } from './material-checkbox.component';
 import { MaterialCheckboxesComponent } from './material-checkboxes.component';
 import { MaterialChipListComponent } from './material-chip-list.component';
+import { MaterialCkeditorComponent } from './material-ckeditor.component';
 import { MaterialDatepickerComponent } from './material-datepicker.component';
 import { MaterialFileComponent } from './material-file.component';
 import { MaterialInputComponent } from './material-input.component';
@@ -43,6 +44,7 @@ export declare class MaterialDesignFramework extends Framework {
         'tabs': typeof MaterialTabsComponent;
         'text': typeof MaterialInputComponent;
         'textarea': typeof MaterialTextareaComponent;
+        'ckeditor': typeof MaterialCkeditorComponent;
         'alt-date': string;
         'any-of': string;
         'card': string;
