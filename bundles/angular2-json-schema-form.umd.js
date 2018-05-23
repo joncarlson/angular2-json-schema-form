@@ -1,8 +1,8 @@
 (function (global, factory) {
-    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('tslib'), require('rxjs-compat/Observable'), require('rxjs-compat/observable/fromPromise'), require('rxjs-compat/operator/toPromise'), require('@angular/core'), require('rxjs-compat/observable/forkJoin'), require('rxjs-compat/operator/map'), require('lodash'), require('@angular/forms'), require('rxjs-compat/Subject'), require('ajv'), require('@angular/platform-browser'), require('@angular/common'), require('@angular/flex-layout'), require('@angular/material'), require('ngx-ckeditor')) :
-    typeof define === 'function' && define.amd ? define('angular2-json-schema-form', ['exports', 'tslib', 'rxjs-compat/Observable', 'rxjs-compat/observable/fromPromise', 'rxjs-compat/operator/toPromise', '@angular/core', 'rxjs-compat/observable/forkJoin', 'rxjs-compat/operator/map', 'lodash', '@angular/forms', 'rxjs-compat/Subject', 'ajv', '@angular/platform-browser', '@angular/common', '@angular/flex-layout', '@angular/material', 'ngx-ckeditor'], factory) :
-    (factory((global.angular2JsonSchemaForm = {}),global.tslib,global.rxjs.Observable,global.rxjs.observable.fromPromise,global.rxjs.operator.toPromise,global.ng.core,global.rxjs.observable.forkJoin,global.rxjs.operator.map,global._,global.ng.forms,global.rxjs.Subject,global.Ajv,global.ng.platformBrowser,global.ng.common,global.ng['flex-layout'],global.ng.material,global.ngxCkeditor));
-}(this, (function (exports,tslib,Observable,fromPromise,toPromise,core,forkJoin,map,lodash,forms,Subject,Ajv,platformBrowser,common,flexLayout,material,ngxCkeditor) { 'use strict';
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('tslib'), require('rxjs-compat/Observable'), require('rxjs-compat/observable/fromPromise'), require('rxjs-compat/operator/toPromise'), require('@angular/core'), require('rxjs-compat/observable/forkJoin'), require('rxjs-compat/operator/map'), require('lodash'), require('@angular/forms'), require('rxjs-compat/Subject'), require('ajv'), require('@angular/platform-browser'), require('@angular/common'), require('ngx-ckeditor'), require('@angular/flex-layout'), require('@angular/material')) :
+    typeof define === 'function' && define.amd ? define('angular2-json-schema-form', ['exports', 'tslib', 'rxjs-compat/Observable', 'rxjs-compat/observable/fromPromise', 'rxjs-compat/operator/toPromise', '@angular/core', 'rxjs-compat/observable/forkJoin', 'rxjs-compat/operator/map', 'lodash', '@angular/forms', 'rxjs-compat/Subject', 'ajv', '@angular/platform-browser', '@angular/common', 'ngx-ckeditor', '@angular/flex-layout', '@angular/material'], factory) :
+    (factory((global.angular2JsonSchemaForm = {}),global.tslib,global.rxjs.Observable,global.rxjs.observable.fromPromise,global.rxjs.operator.toPromise,global.ng.core,global.rxjs.observable.forkJoin,global.rxjs.operator.map,global._,global.ng.forms,global.rxjs.Subject,global.Ajv,global.ng.platformBrowser,global.ng.common,global.ngxCkeditor,global.ng['flex-layout'],global.ng.material));
+}(this, (function (exports,tslib,Observable,fromPromise,toPromise,core,forkJoin,map,lodash,forms,Subject,Ajv,platformBrowser,common,ngxCkeditor,flexLayout,material) { 'use strict';
 
     /**
      * '_executeValidators' utility function
@@ -8154,7 +8154,7 @@
     CkeditorComponent.decorators = [
         { type: core.Component, args: [{
                     selector: 'ckeditor-widget',
-                    template: "<div\n    [class]=\"options?.htmlClass || ''\">\n      <label *ngIf=\"options?.title\"\n        [attr.for]=\"'control' + layoutNode?._id\"\n        [class]=\"options?.labelHtmlClass || ''\"\n        [style.display]=\"options?.notitle ? 'none' : ''\"\n        [innerHTML]=\"options?.title\"></label>\n      <ck-editor (ngModelChange)=\"updateValue($event)\" [(ngModel)]=\"controlValue\" [name]=\"controlName\" [config]=\"config\">\n      </ck-editor>\n       <button *ngIf=\"options?.comments\" color=\"primary\" (click)=\"commentsClick()\"><mat-icon>comment</mat-icon></button>\n    </div>\n    "
+                    template: "<div\n    [class]=\"options?.htmlClass || ''\">\n      <label *ngIf=\"options?.title\"\n        [attr.for]=\"'control' + layoutNode?._id\"\n        [class]=\"options?.labelHtmlClass || ''\"\n        [style.display]=\"options?.notitle ? 'none' : ''\"\n        [innerHTML]=\"options?.title\"></label>\n      <ck-editor (ngModelChange)=\"updateValue($event)\" [(ngModel)]=\"controlValue\" [name]=\"controlName\" [config]=\"config\">\n      </ck-editor>\n       <button *ngIf=\"options?.comments\" color=\"primary\" (click)=\"commentsClick()\"></button>\n    </div>\n    "
                 },] },
     ];
     /** @nocollapse */
@@ -9648,7 +9648,7 @@
     }());
     WidgetLibraryModule.decorators = [
         { type: core.NgModule, args: [{
-                    imports: [common.CommonModule, forms.FormsModule, forms.ReactiveFormsModule],
+                    imports: [common.CommonModule, forms.FormsModule, forms.ReactiveFormsModule, ngxCkeditor.CKEditorModule],
                     declarations: tslib.__spread(BASIC_WIDGETS, [OrderableDirective]),
                     exports: tslib.__spread(BASIC_WIDGETS, [OrderableDirective]),
                     entryComponents: tslib.__spread(BASIC_WIDGETS),

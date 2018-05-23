@@ -61,7 +61,7 @@ CkeditorComponent.decorators = [
         [innerHTML]="options?.title"></label>
       <ck-editor (ngModelChange)="updateValue($event)" [(ngModel)]="controlValue" [name]="controlName" [config]="config">
       </ck-editor>
-       <button *ngIf="options?.comments" color="primary" (click)="commentsClick()"><mat-icon>comment</mat-icon></button>
+       <button *ngIf="options?.comments" color="primary" (click)="commentsClick()"></button>
     </div>
     `
             },] },

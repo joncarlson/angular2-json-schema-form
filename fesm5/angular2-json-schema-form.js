@@ -11,9 +11,9 @@ import { Subject } from 'rxjs-compat/Subject';
 import * as Ajv from 'ajv';
 import { DomSanitizer } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
+import { CKEditorModule } from 'ngx-ckeditor';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatAutocompleteModule, MatButtonModule, MatButtonToggleModule, MatCardModule, MatCheckboxModule, MatChipsModule, MatDatepickerModule, MatExpansionModule, MatFormFieldModule, MatIconModule, MatInputModule, MatNativeDateModule, MatRadioModule, MatSelectModule, MatSliderModule, MatSlideToggleModule, MatStepperModule, MatTabsModule, MatTooltipModule } from '@angular/material';
-import { CKEditorModule } from 'ngx-ckeditor';
 
 /**
  * '_executeValidators' utility function
@@ -7676,7 +7676,7 @@ var CkeditorComponent = /** @class */ (function () {
 CkeditorComponent.decorators = [
     { type: Component, args: [{
                 selector: 'ckeditor-widget',
-                template: "<div\n    [class]=\"options?.htmlClass || ''\">\n      <label *ngIf=\"options?.title\"\n        [attr.for]=\"'control' + layoutNode?._id\"\n        [class]=\"options?.labelHtmlClass || ''\"\n        [style.display]=\"options?.notitle ? 'none' : ''\"\n        [innerHTML]=\"options?.title\"></label>\n      <ck-editor (ngModelChange)=\"updateValue($event)\" [(ngModel)]=\"controlValue\" [name]=\"controlName\" [config]=\"config\">\n      </ck-editor>\n       <button *ngIf=\"options?.comments\" color=\"primary\" (click)=\"commentsClick()\"><mat-icon>comment</mat-icon></button>\n    </div>\n    "
+                template: "<div\n    [class]=\"options?.htmlClass || ''\">\n      <label *ngIf=\"options?.title\"\n        [attr.for]=\"'control' + layoutNode?._id\"\n        [class]=\"options?.labelHtmlClass || ''\"\n        [style.display]=\"options?.notitle ? 'none' : ''\"\n        [innerHTML]=\"options?.title\"></label>\n      <ck-editor (ngModelChange)=\"updateValue($event)\" [(ngModel)]=\"controlValue\" [name]=\"controlName\" [config]=\"config\">\n      </ck-editor>\n       <button *ngIf=\"options?.comments\" color=\"primary\" (click)=\"commentsClick()\"></button>\n    </div>\n    "
             },] },
 ];
 /** @nocollapse */
@@ -9113,7 +9113,7 @@ var WidgetLibraryModule = /** @class */ (function () {
 }());
 WidgetLibraryModule.decorators = [
     { type: NgModule, args: [{
-                imports: [CommonModule, FormsModule, ReactiveFormsModule],
+                imports: [CommonModule, FormsModule, ReactiveFormsModule, CKEditorModule],
                 declarations: __spread(BASIC_WIDGETS, [OrderableDirective]),
                 exports: __spread(BASIC_WIDGETS, [OrderableDirective]),
                 entryComponents: __spread(BASIC_WIDGETS),

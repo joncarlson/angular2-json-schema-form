@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OrderableDirective } from '../shared/orderable.directive';
 import { JsonSchemaFormService } from '../json-schema-form.service';
 import { BASIC_WIDGETS } from './index';
+import { CKEditorModule } from 'ngx-ckeditor';
 export class WidgetLibraryModule {
     static forRoot() {
         return {
@@ -14,7 +15,7 @@ export class WidgetLibraryModule {
 }
 WidgetLibraryModule.decorators = [
     { type: NgModule, args: [{
-                imports: [CommonModule, FormsModule, ReactiveFormsModule],
+                imports: [CommonModule, FormsModule, ReactiveFormsModule, CKEditorModule],
                 declarations: [...BASIC_WIDGETS, OrderableDirective],
                 exports: [...BASIC_WIDGETS, OrderableDirective],
                 entryComponents: [...BASIC_WIDGETS],

@@ -10,9 +10,9 @@ import { Subject } from 'rxjs-compat/Subject';
 import * as Ajv from 'ajv';
 import { DomSanitizer } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
+import { CKEditorModule } from 'ngx-ckeditor';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatAutocompleteModule, MatButtonModule, MatButtonToggleModule, MatCardModule, MatCheckboxModule, MatChipsModule, MatDatepickerModule, MatExpansionModule, MatFormFieldModule, MatIconModule, MatInputModule, MatNativeDateModule, MatRadioModule, MatSelectModule, MatSliderModule, MatSlideToggleModule, MatStepperModule, MatTabsModule, MatTooltipModule } from '@angular/material';
-import { CKEditorModule } from 'ngx-ckeditor';
 
 /**
  * '_executeValidators' utility function
@@ -7437,7 +7437,7 @@ CkeditorComponent.decorators = [
         [innerHTML]="options?.title"></label>
       <ck-editor (ngModelChange)="updateValue($event)" [(ngModel)]="controlValue" [name]="controlName" [config]="config">
       </ck-editor>
-       <button *ngIf="options?.comments" color="primary" (click)="commentsClick()"><mat-icon>comment</mat-icon></button>
+       <button *ngIf="options?.comments" color="primary" (click)="commentsClick()"></button>
     </div>
     `
             },] },
@@ -8939,7 +8939,7 @@ class WidgetLibraryModule {
 }
 WidgetLibraryModule.decorators = [
     { type: NgModule, args: [{
-                imports: [CommonModule, FormsModule, ReactiveFormsModule],
+                imports: [CommonModule, FormsModule, ReactiveFormsModule, CKEditorModule],
                 declarations: [...BASIC_WIDGETS, OrderableDirective],
                 exports: [...BASIC_WIDGETS, OrderableDirective],
                 entryComponents: [...BASIC_WIDGETS],
