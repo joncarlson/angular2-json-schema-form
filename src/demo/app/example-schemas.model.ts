@@ -27,6 +27,7 @@ export const Examples: any = {
       { name: 'Select Control Lists',            file: 'ng-jsf-select-list-examples', },
       // { name: 'Select Control Widgets',          file: 'ng-jsf-select-widget-examples', },
       { name: 'Data Only (no Schema or Layout)', file: 'ng-jsf-data-only', },
+      { name: 'test', file: 'umm-var-json-schema', },
       // { name: 'Layout Only (no Schema or Data)', file: 'ng-jsf-layout-only', },
       // { name: 'JSON Meta-Schema - Draft 6',    file: 'json-schema-draft06', },
       // { name: 'JSON Meta-Schema - Draft 4',    file: 'json-schema-draft04', },
