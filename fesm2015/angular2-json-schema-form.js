@@ -7180,7 +7180,7 @@ RootComponent.decorators = [
     { type: Component, args: [{
                 selector: 'root-widget',
                 template: `
-    <div *ngFor="let layoutItem of layout; let i = index"
+    <div *ngFor="let layoutItem of layout; let i = index" class="layout-root-widget"
       [class.form-flex-item]="isFlexItem"
       [style.align-self]="(layoutItem.options || {})['align-self']"
       [style.flex-basis]="getFlexAttribute(layoutItem, 'flex-basis')"
@@ -9044,7 +9044,7 @@ FlexLayoutRootComponent.decorators = [
     { type: Component, args: [{
                 selector: 'flex-layout-root-widget',
                 template: `
-    <div *ngFor="let layoutNode of layout; let i = index" class="layout-root-widget"
+    <div *ngFor="let layoutNode of layout; let i = index"
       [class.form-flex-item]="isFlexItem"
       [style.flex-grow]="getFlexAttribute(layoutNode, 'flex-grow')"
       [style.flex-shrink]="getFlexAttribute(layoutNode, 'flex-shrink')"

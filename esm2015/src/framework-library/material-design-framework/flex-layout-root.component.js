@@ -23,7 +23,7 @@ FlexLayoutRootComponent.decorators = [
     { type: Component, args: [{
                 selector: 'flex-layout-root-widget',
                 template: `
-    <div *ngFor="let layoutNode of layout; let i = index" class="layout-root-widget"
+    <div *ngFor="let layoutNode of layout; let i = index"
       [class.form-flex-item]="isFlexItem"
       [style.flex-grow]="getFlexAttribute(layoutNode, 'flex-grow')"
       [style.flex-shrink]="getFlexAttribute(layoutNode, 'flex-shrink')"
