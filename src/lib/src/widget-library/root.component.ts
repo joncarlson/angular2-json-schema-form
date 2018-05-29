@@ -6,7 +6,7 @@ import { hasValue, JsonPointer } from '../shared';
 @Component({
   selector: 'root-widget',
   template: `
-    <div *ngFor="let layoutItem of layout; let i = index"
+    <div *ngFor="let layoutItem of layout; let i = index" class="layout-root-widget"
       [class.form-flex-item]="isFlexItem"
       [style.align-self]="(layoutItem.options || {})['align-self']"
       [style.flex-basis]="getFlexAttribute(layoutItem, 'flex-basis')"
