@@ -1,7 +1,7 @@
 import { Component, Input, ViewChild } from '@angular/core';
 import { JsonSchemaFormService } from '../../json-schema-form.service';
 import { DatePickerComponent } from 'ng2-date-picker';
-import moment from 'moment-with-locales-es6';
+import moment from 'moment';
 export class MaterialDatetimepickerComponent {
     constructor(jsf) {
         this.jsf = jsf;

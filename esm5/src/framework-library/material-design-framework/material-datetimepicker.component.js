@@ -1,6 +1,6 @@
 import { Component, Input, ViewChild } from '@angular/core';
 import { JsonSchemaFormService } from '../../json-schema-form.service';
-import moment from 'moment-with-locales-es6';
+import moment from 'moment';
 var MaterialDatetimepickerComponent = /** @class */ (function () {
     function MaterialDatetimepickerComponent(jsf) {
         this.jsf = jsf;

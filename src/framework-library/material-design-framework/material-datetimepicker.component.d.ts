@@ -50,7 +50,7 @@ export declare class MaterialDatetimepickerComponent implements OnInit, OnChange
         timeSeparator: string;
         multipleYearsNavigateBy: number;
         showMultipleYearsNavigation: boolean;
-        locale: any;
+        locale: string;
         hideInputContainer: boolean;
         returnedValueType: StringConstructor;
         unSelectOnClick: boolean;
