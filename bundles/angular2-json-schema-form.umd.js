@@ -1,8 +1,10 @@
 (function (global, factory) {
-    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('tslib'), require('rxjs-compat/Observable'), require('rxjs-compat/observable/fromPromise'), require('rxjs-compat/operator/toPromise'), require('@angular/core'), require('rxjs-compat/observable/forkJoin'), require('rxjs-compat/operator/map'), require('lodash'), require('@angular/forms'), require('rxjs-compat/Subject'), require('ajv'), require('@angular/platform-browser'), require('@angular/common'), require('ngx-ckeditor'), require('@angular/flex-layout'), require('@angular/material')) :
-    typeof define === 'function' && define.amd ? define('angular2-json-schema-form', ['exports', 'tslib', 'rxjs-compat/Observable', 'rxjs-compat/observable/fromPromise', 'rxjs-compat/operator/toPromise', '@angular/core', 'rxjs-compat/observable/forkJoin', 'rxjs-compat/operator/map', 'lodash', '@angular/forms', 'rxjs-compat/Subject', 'ajv', '@angular/platform-browser', '@angular/common', 'ngx-ckeditor', '@angular/flex-layout', '@angular/material'], factory) :
-    (factory((global.angular2JsonSchemaForm = {}),global.tslib,global.rxjs.Observable,global.rxjs.observable.fromPromise,global.rxjs.operator.toPromise,global.ng.core,global.rxjs.observable.forkJoin,global.rxjs.operator.map,global._,global.ng.forms,global.rxjs.Subject,global.Ajv,global.ng.platformBrowser,global.ng.common,global.ngxCkeditor,global.ng['flex-layout'],global.ng.material));
-}(this, (function (exports,tslib,Observable,fromPromise,toPromise,core,forkJoin,map,lodash,forms,Subject,Ajv,platformBrowser,common,ngxCkeditor,flexLayout,material) { 'use strict';
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('tslib'), require('rxjs-compat/Observable'), require('rxjs-compat/observable/fromPromise'), require('rxjs-compat/operator/toPromise'), require('@angular/core'), require('rxjs-compat/observable/forkJoin'), require('rxjs-compat/operator/map'), require('lodash'), require('@angular/forms'), require('rxjs-compat/Subject'), require('ajv'), require('@angular/platform-browser'), require('@angular/common'), require('ngx-ckeditor'), require('ng2-date-picker'), require('moment-with-locales-es6'), require('@angular/flex-layout'), require('@angular/material')) :
+    typeof define === 'function' && define.amd ? define('angular2-json-schema-form', ['exports', 'tslib', 'rxjs-compat/Observable', 'rxjs-compat/observable/fromPromise', 'rxjs-compat/operator/toPromise', '@angular/core', 'rxjs-compat/observable/forkJoin', 'rxjs-compat/operator/map', 'lodash', '@angular/forms', 'rxjs-compat/Subject', 'ajv', '@angular/platform-browser', '@angular/common', 'ngx-ckeditor', 'ng2-date-picker', 'moment-with-locales-es6', '@angular/flex-layout', '@angular/material'], factory) :
+    (factory((global.angular2JsonSchemaForm = {}),global.tslib,global.rxjs.Observable,global.rxjs.observable.fromPromise,global.rxjs.operator.toPromise,global.ng.core,global.rxjs.observable.forkJoin,global.rxjs.operator.map,global._,global.ng.forms,global.rxjs.Subject,global.Ajv,global.ng.platformBrowser,global.ng.common,global.ngxCkeditor,global.ng2DatePicker,global.moment,global.ng['flex-layout'],global.ng.material));
+}(this, (function (exports,tslib,Observable,fromPromise,toPromise,core,forkJoin,map,lodash,forms,Subject,Ajv,platformBrowser,common,ngxCkeditor,ng2DatePicker,moment,flexLayout,material) { 'use strict';
+
+    moment = moment && moment.hasOwnProperty('default') ? moment['default'] : moment;
 
     /**
      * '_executeValidators' utility function
@@ -8516,6 +8518,95 @@
         "layoutIndex": [{ type: core.Input },],
         "dataIndex": [{ type: core.Input },],
     };
+    var DatetimepickerComponent = (function () {
+        function DatetimepickerComponent(jsf) {
+            this.jsf = jsf;
+            this.controlDisabled = false;
+            this.boundControl = false;
+            this.autoCompleteList = [];
+        }
+        DatetimepickerComponent.prototype.ngOnInit = function () {
+            this.options = this.layoutNode.options || {};
+            this.jsf.initializeControl(this, !this.options.readonly);
+            this.setControlDate(this.controlValue);
+            if (!this.options.notitle && !this.options.description && this.options.placeholder) {
+                this.options.description = this.options.placeholder;
+            }
+        };
+        DatetimepickerComponent.prototype.ngOnChanges = function () {
+            this.setControlDate(this.controlValue);
+        };
+        DatetimepickerComponent.prototype.setControlDate = function (dateString) {
+            this.dateValue = stringToDate(dateString);
+        };
+        DatetimepickerComponent.prototype.updateValue = function (event) {
+            this.options.showErrors = true;
+            this.jsf.updateValue(this, dateToString(event, this.options));
+        };
+        return DatetimepickerComponent;
+    }());
+    DatetimepickerComponent.decorators = [
+        { type: core.Component, args: [{
+                    selector: 'datetimepicker-widget',
+                    // template: `
+                    //   <mat-form-field [style.width]="'100%'">
+                    //     <span matPrefix *ngIf="options?.prefix || options?.fieldAddonLeft"
+                    //       [innerHTML]="options?.prefix || options?.fieldAddonLeft"></span>
+                    //     <input matInput *ngIf="boundControl"
+                    //       [formControl]="formControl"
+                    //       [attr.aria-describedby]="'control' + layoutNode?._id + 'Status'"
+                    //       [attr.list]="'control' + layoutNode?._id + 'Autocomplete'"
+                    //       [attr.readonly]="options?.readonly ? 'readonly' : null"
+                    //       [id]="'control' + layoutNode?._id"
+                    //       [max]="options?.maximum"
+                    //       [matDatepicker]="picker"
+                    //       [min]="options?.minimum"
+                    //       [name]="controlName"
+                    //       [placeholder]="options?.title"
+                    //       [required]="options?.required"
+                    //       [style.width]="'100%'"
+                    //       (blur)="options.showErrors = true">
+                    //     <input matInput *ngIf="!boundControl"
+                    //       [attr.aria-describedby]="'control' + layoutNode?._id + 'Status'"
+                    //       [attr.list]="'control' + layoutNode?._id + 'Autocomplete'"
+                    //       [attr.readonly]="options?.readonly ? 'readonly' : null"
+                    //       [disabled]="controlDisabled || options?.readonly"
+                    //       [id]="'control' + layoutNode?._id"
+                    //       [max]="options?.maximum"
+                    //       [matDatepicker]="picker"
+                    //       [min]="options?.minimum"
+                    //       [name]="controlName"
+                    //       [placeholder]="options?.title"
+                    //       [required]="options?.required"
+                    //       [style.width]="'100%'"
+                    //       [value]="dateValue"
+                    //       (blur)="options.showErrors = true"
+                    //       (change)="updateValue($event)"
+                    //       (input)="updateValue($event)">
+                    //     <span matSuffix *ngIf="options?.suffix || options?.fieldAddonRight"
+                    //       [innerHTML]="options?.suffix || options?.fieldAddonRight"></span>
+                    //     <mat-hint *ngIf="options?.description && (!options?.showErrors || !options?.errorMessage)"
+                    //       align="end" [innerHTML]="options?.description"></mat-hint>
+                    //     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    //   </mat-form-field>
+                    //   <mat-datepicker #picker></mat-datepicker>
+                    //   <mat-error *ngIf="options?.showErrors && options?.errorMessage"
+                    //     [innerHTML]="options?.errorMessage"></mat-error>`,
+                    template: "<dp-date-picker [(ngModel)]=\"selectedDate\" [config]=\"datePickerConfig\"></dp-date-picker>",
+                    styles: ["\n    mat-error { font-size: 75%; margin-top: -1rem; margin-bottom: 0.5rem; }\n    ::ng-deep mat-form-field .mat-form-field-wrapper .mat-form-field-flex\n      .mat-form-field-infix { width: initial; }\n  "],
+                },] },
+    ];
+    /** @nocollapse */
+    DatetimepickerComponent.ctorParameters = function () {
+        return [
+            { type: JsonSchemaFormService, },
+        ];
+    };
+    DatetimepickerComponent.propDecorators = {
+        "layoutNode": [{ type: core.Input },],
+        "layoutIndex": [{ type: core.Input },],
+        "dataIndex": [{ type: core.Input },],
+    };
     var WidgetLibraryService = (function () {
         function WidgetLibraryService() {
             this.defaultWidget = 'text';
@@ -8544,7 +8635,7 @@
                 // Controlled text HTML 'input' form control widgets <input type="...">
                 'color': 'text',
                 'date': 'text',
-                'datetime': 'text',
+                'datetime': DatetimepickerComponent,
                 'datetime-local': 'text',
                 'month': 'text',
                 'range': 'number',
@@ -9633,7 +9724,7 @@
         MessageComponent, NoneComponent, NumberComponent, RadiosComponent,
         RootComponent, SectionComponent, CkeditorComponent, SelectComponent, SelectFrameworkComponent,
         SelectWidgetComponent, SubmitComponent, TabComponent, TabsComponent,
-        TemplateComponent, TextareaComponent
+        TemplateComponent, TextareaComponent, DatetimepickerComponent
     ];
     var WidgetLibraryModule = (function () {
         function WidgetLibraryModule() {
@@ -9648,7 +9739,7 @@
     }());
     WidgetLibraryModule.decorators = [
         { type: core.NgModule, args: [{
-                    imports: [common.CommonModule, forms.FormsModule, forms.ReactiveFormsModule, ngxCkeditor.CKEditorModule],
+                    imports: [common.CommonModule, forms.FormsModule, forms.ReactiveFormsModule, ngxCkeditor.CKEditorModule, ng2DatePicker.DpDatePickerModule],
                     declarations: tslib.__spread(BASIC_WIDGETS, [OrderableDirective]),
                     exports: tslib.__spread(BASIC_WIDGETS, [OrderableDirective]),
                     entryComponents: tslib.__spread(BASIC_WIDGETS),
@@ -10318,6 +10409,100 @@
         "layoutIndex": [{ type: core.Input },],
         "dataIndex": [{ type: core.Input },],
     };
+    var MaterialDatetimepickerComponent = (function () {
+        function MaterialDatetimepickerComponent(jsf) {
+            this.jsf = jsf;
+            this.controlDisabled = false;
+            this.boundControl = false;
+            this.autoCompleteList = [];
+            this.theme = 'dp-material dp-main';
+            this.datePickerConfig = {
+                firstDayOfWeek: 'su',
+                format: 'YYYY-MM-DD HH:mm:ss',
+                monthFormat: 'MMM YYYY',
+                disableKeypress: false,
+                allowMultiSelect: false,
+                closeOnSelect: true,
+                closeOnSelectDelay: 100,
+                openOnFocus: true,
+                openOnClick: true,
+                onOpenDelay: 0,
+                weekDayFormat: 'ddd',
+                appendTo: document.body,
+                showNearMonthDays: true,
+                showWeekNumbers: false,
+                enableMonthSelector: true,
+                yearFormat: 'YYYY',
+                showGoToCurrent: true,
+                dayBtnFormat: 'DD',
+                monthBtnFormat: 'MMM',
+                hours12Format: 'hh',
+                hours24Format: 'HH',
+                meridiemFormat: 'A',
+                minutesFormat: 'mm',
+                minutesInterval: 1,
+                secondsFormat: 'ss',
+                secondsInterval: 1,
+                showSeconds: true,
+                showTwentyFourHours: true,
+                timeSeparator: ':',
+                multipleYearsNavigateBy: 10,
+                showMultipleYearsNavigation: false,
+                locale: moment.locale(),
+                hideInputContainer: false,
+                returnedValueType: String,
+                unSelectOnClick: true,
+                hideOnOutsideClick: true
+            };
+        }
+        MaterialDatetimepickerComponent.prototype.ngOnInit = function () {
+            this.options = this.layoutNode.options || {};
+            this.jsf.initializeControl(this, !this.options.readonly);
+            this.options.format ? this.datePickerConfig.format = this.options.format : this.datePickerConfig.format = 'YYYY-MM-DD HH:mm:ss';
+            this.options.mode ? this.mode = this.options.mode : this.mode = 'daytime';
+            this.setControlDate(this.controlValue);
+            if (!this.options.notitle && !this.options.description && this.options.placeholder) {
+                this.options.description = this.options.placeholder;
+            }
+        };
+        MaterialDatetimepickerComponent.prototype.ngOnChanges = function () {
+            this.setControlDate(this.controlValue);
+        };
+        MaterialDatetimepickerComponent.prototype.setControlDate = function (dateString) {
+            this.dateValue = moment(dateString, this.datePickerConfig.format);
+        };
+        MaterialDatetimepickerComponent.prototype.updateValue = function (event) {
+            this.options.showErrors = true;
+            this.dateValue = moment(event[0]).format(this.datePickerConfig.format);
+            this.jsf.updateValue(this, this.dateValue);
+        };
+        MaterialDatetimepickerComponent.prototype.open = function () {
+            this.datePicker.api.open();
+        };
+        MaterialDatetimepickerComponent.prototype.close = function () {
+            this.datePicker.api.close();
+        };
+        return MaterialDatetimepickerComponent;
+    }());
+    MaterialDatetimepickerComponent.decorators = [
+        { type: core.Component, args: [{
+                    selector: 'material-datetimepicker-widget',
+                    template: "\n  <div class=\"datepicker-wrapper\">\n    <div class=\"datepicker-title\">\n      {{ options?.title }}\n    </div>\n    <dp-date-picker #myDatePicker\n      [(ngModel)]=\"dateValue\"\n      [mode]=\"mode\"\n      [config]=\"datePickerConfig\"\n      [theme]=\"theme\"\n      [placeholder]=\"options?.title\"\n      (onChange)=\"updateValue($event)\">\n    </dp-date-picker>\n    <mat-icon (click)=\"open()\">calendar_today</mat-icon>\n  </div>\n  ",
+                    styles: ["\n    mat-error { font-size: 75%; margin-top: -1rem; margin-bottom: 0.5rem; }\n    ::ng-deep mat-form-field .mat-form-field-wrapper .mat-form-field-flex\n      .mat-form-field-infix { width: initial; }\n\n    dp-date-picker {\n      float: left;\n    }\n\n    mat-icon {\n      padding-top: 2px;\n      cursor: pointer;\n    }\n\n    .datepicker-title {\n      font-size: 12px;\n      color: rgba(0, 0, 0, 0.54);\n      padding: 2px 0;\n    }\n\n    .datepicker-wrapper {\n      margin-bottom: 10px;\n    }\n\n  "],
+                },] },
+    ];
+    /** @nocollapse */
+    MaterialDatetimepickerComponent.ctorParameters = function () {
+        return [
+            { type: JsonSchemaFormService, },
+        ];
+    };
+    MaterialDatetimepickerComponent.propDecorators = {
+        "layoutNode": [{ type: core.Input },],
+        "layoutIndex": [{ type: core.Input },],
+        "dataIndex": [{ type: core.Input },],
+        "datePicker": [{ type: core.ViewChild, args: ['myDatePicker',] },],
+    };
     // TODO: Add this control
     var MaterialFileComponent = (function () {
         function MaterialFileComponent(jsf) {
@@ -10793,6 +10978,7 @@
                 'checkboxes': MaterialCheckboxesComponent,
                 'chip-list': MaterialChipListComponent,
                 'date': MaterialDatepickerComponent,
+                'datetime': MaterialDatetimepickerComponent,
                 'file': MaterialFileComponent,
                 'number': MaterialNumberComponent,
                 'one-of': MaterialOneOfComponent,
@@ -10831,6 +11017,7 @@
         MaterialButtonComponent, MaterialButtonGroupComponent,
         MaterialCheckboxComponent, MaterialCheckboxesComponent,
         MaterialChipListComponent, MaterialCkeditorComponent, MaterialDatepickerComponent,
+        MaterialDatetimepickerComponent,
         MaterialFileComponent, MaterialInputComponent, MaterialNumberComponent,
         MaterialRadiosComponent, MaterialSelectComponent, MaterialSliderComponent,
         MaterialStepperComponent, MaterialTabsComponent, MaterialTextareaComponent,
@@ -10861,7 +11048,7 @@
                     imports: tslib.__spread([
                         common.CommonModule, forms.FormsModule, forms.ReactiveFormsModule, flexLayout.FlexLayoutModule
                     ], ANGULAR_MATERIAL_MODULES, [
-                        WidgetLibraryModule, ngxCkeditor.CKEditorModule
+                        WidgetLibraryModule, ngxCkeditor.CKEditorModule, ng2DatePicker.DpDatePickerModule
                     ]),
                     declarations: tslib.__spread(MATERIAL_FRAMEWORK_COMPONENTS),
                     exports: tslib.__spread(MATERIAL_FRAMEWORK_COMPONENTS),
@@ -11400,11 +11587,13 @@
                 },] },
     ];
 
-    exports.ɵe = MATERIAL_FRAMEWORK_COMPONENTS;
-    exports.ɵf = MaterialCkeditorComponent;
+    exports.ɵf = MATERIAL_FRAMEWORK_COMPONENTS;
+    exports.ɵg = MaterialCkeditorComponent;
+    exports.ɵh = MaterialDatetimepickerComponent;
     exports.ɵb = ANGULAR_MATERIAL_MODULES;
     exports.ɵa = JSON_SCHEMA_FORM_VALUE_ACCESSOR;
     exports.ɵd = CkeditorComponent;
+    exports.ɵe = DatetimepickerComponent;
     exports.ɵc = BASIC_WIDGETS;
     exports._executeValidators = _executeValidators;
     exports._executeAsyncValidators = _executeAsyncValidators;

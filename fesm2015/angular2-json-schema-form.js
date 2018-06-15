@@ -11,6 +11,8 @@ import * as Ajv from 'ajv';
 import { DomSanitizer } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { CKEditorModule } from 'ngx-ckeditor';
+import { DpDatePickerModule } from 'ng2-date-picker';
+import moment from 'moment-with-locales-es6';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatAutocompleteModule, MatButtonModule, MatButtonToggleModule, MatCardModule, MatCheckboxModule, MatChipsModule, MatDatepickerModule, MatExpansionModule, MatFormFieldModule, MatIconModule, MatInputModule, MatNativeDateModule, MatRadioModule, MatSelectModule, MatSliderModule, MatSlideToggleModule, MatStepperModule, MatTabsModule, MatTooltipModule } from '@angular/material';
 
@@ -7865,6 +7867,97 @@ TextareaComponent.propDecorators = {
     "dataIndex": [{ type: Input },],
 };
 
+class DatetimepickerComponent {
+    constructor(jsf) {
+        this.jsf = jsf;
+        this.controlDisabled = false;
+        this.boundControl = false;
+        this.autoCompleteList = [];
+    }
+    ngOnInit() {
+        this.options = this.layoutNode.options || {};
+        this.jsf.initializeControl(this, !this.options.readonly);
+        this.setControlDate(this.controlValue);
+        if (!this.options.notitle && !this.options.description && this.options.placeholder) {
+            this.options.description = this.options.placeholder;
+        }
+    }
+    ngOnChanges() {
+        this.setControlDate(this.controlValue);
+    }
+    setControlDate(dateString) {
+        this.dateValue = stringToDate(dateString);
+    }
+    updateValue(event) {
+        this.options.showErrors = true;
+        this.jsf.updateValue(this, dateToString(event, this.options));
+    }
+}
+DatetimepickerComponent.decorators = [
+    { type: Component, args: [{
+                selector: 'datetimepicker-widget',
+                // template: `
+                //   <mat-form-field [style.width]="'100%'">
+                //     <span matPrefix *ngIf="options?.prefix || options?.fieldAddonLeft"
+                //       [innerHTML]="options?.prefix || options?.fieldAddonLeft"></span>
+                //     <input matInput *ngIf="boundControl"
+                //       [formControl]="formControl"
+                //       [attr.aria-describedby]="'control' + layoutNode?._id + 'Status'"
+                //       [attr.list]="'control' + layoutNode?._id + 'Autocomplete'"
+                //       [attr.readonly]="options?.readonly ? 'readonly' : null"
+                //       [id]="'control' + layoutNode?._id"
+                //       [max]="options?.maximum"
+                //       [matDatepicker]="picker"
+                //       [min]="options?.minimum"
+                //       [name]="controlName"
+                //       [placeholder]="options?.title"
+                //       [required]="options?.required"
+                //       [style.width]="'100%'"
+                //       (blur)="options.showErrors = true">
+                //     <input matInput *ngIf="!boundControl"
+                //       [attr.aria-describedby]="'control' + layoutNode?._id + 'Status'"
+                //       [attr.list]="'control' + layoutNode?._id + 'Autocomplete'"
+                //       [attr.readonly]="options?.readonly ? 'readonly' : null"
+                //       [disabled]="controlDisabled || options?.readonly"
+                //       [id]="'control' + layoutNode?._id"
+                //       [max]="options?.maximum"
+                //       [matDatepicker]="picker"
+                //       [min]="options?.minimum"
+                //       [name]="controlName"
+                //       [placeholder]="options?.title"
+                //       [required]="options?.required"
+                //       [style.width]="'100%'"
+                //       [value]="dateValue"
+                //       (blur)="options.showErrors = true"
+                //       (change)="updateValue($event)"
+                //       (input)="updateValue($event)">
+                //     <span matSuffix *ngIf="options?.suffix || options?.fieldAddonRight"
+                //       [innerHTML]="options?.suffix || options?.fieldAddonRight"></span>
+                //     <mat-hint *ngIf="options?.description && (!options?.showErrors || !options?.errorMessage)"
+                //       align="end" [innerHTML]="options?.description"></mat-hint>
+                //     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                //   </mat-form-field>
+                //   <mat-datepicker #picker></mat-datepicker>
+                //   <mat-error *ngIf="options?.showErrors && options?.errorMessage"
+                //     [innerHTML]="options?.errorMessage"></mat-error>`,
+                template: `<dp-date-picker [(ngModel)]="selectedDate" [config]="datePickerConfig"></dp-date-picker>`,
+                styles: [`
+    mat-error { font-size: 75%; margin-top: -1rem; margin-bottom: 0.5rem; }
+    ::ng-deep mat-form-field .mat-form-field-wrapper .mat-form-field-flex
+      .mat-form-field-infix { width: initial; }
+  `],
+            },] },
+];
+/** @nocollapse */
+DatetimepickerComponent.ctorParameters = () => [
+    { type: JsonSchemaFormService, },
+];
+DatetimepickerComponent.propDecorators = {
+    "layoutNode": [{ type: Input },],
+    "layoutIndex": [{ type: Input },],
+    "dataIndex": [{ type: Input },],
+};
+
 class WidgetLibraryService {
     constructor() {
         this.defaultWidget = 'text';
@@ -7893,7 +7986,7 @@ class WidgetLibraryService {
             // Controlled text HTML 'input' form control widgets <input type="...">
             'color': 'text',
             'date': 'text',
-            'datetime': 'text',
+            'datetime': DatetimepickerComponent,
             'datetime-local': 'text',
             'month': 'text',
             'range': 'number',
@@ -8926,7 +9019,7 @@ const BASIC_WIDGETS = [
     MessageComponent, NoneComponent, NumberComponent, RadiosComponent,
     RootComponent, SectionComponent, CkeditorComponent, SelectComponent, SelectFrameworkComponent,
     SelectWidgetComponent, SubmitComponent, TabComponent, TabsComponent,
-    TemplateComponent, TextareaComponent
+    TemplateComponent, TextareaComponent, DatetimepickerComponent
 ];
 
 class WidgetLibraryModule {
@@ -8939,7 +9032,7 @@ class WidgetLibraryModule {
 }
 WidgetLibraryModule.decorators = [
     { type: NgModule, args: [{
-                imports: [CommonModule, FormsModule, ReactiveFormsModule, CKEditorModule],
+                imports: [CommonModule, FormsModule, ReactiveFormsModule, CKEditorModule, DpDatePickerModule],
                 declarations: [...BASIC_WIDGETS, OrderableDirective],
                 exports: [...BASIC_WIDGETS, OrderableDirective],
                 entryComponents: [...BASIC_WIDGETS],
@@ -9897,6 +9990,137 @@ MaterialDatepickerComponent.propDecorators = {
     "dataIndex": [{ type: Input },],
 };
 
+class MaterialDatetimepickerComponent {
+    constructor(jsf) {
+        this.jsf = jsf;
+        this.controlDisabled = false;
+        this.boundControl = false;
+        this.autoCompleteList = [];
+        this.theme = 'dp-material dp-main';
+        this.datePickerConfig = {
+            firstDayOfWeek: 'su',
+            format: 'YYYY-MM-DD HH:mm:ss',
+            monthFormat: 'MMM YYYY',
+            disableKeypress: false,
+            allowMultiSelect: false,
+            closeOnSelect: true,
+            closeOnSelectDelay: 100,
+            openOnFocus: true,
+            openOnClick: true,
+            onOpenDelay: 0,
+            weekDayFormat: 'ddd',
+            appendTo: document.body,
+            showNearMonthDays: true,
+            showWeekNumbers: false,
+            enableMonthSelector: true,
+            yearFormat: 'YYYY',
+            showGoToCurrent: true,
+            dayBtnFormat: 'DD',
+            monthBtnFormat: 'MMM',
+            hours12Format: 'hh',
+            hours24Format: 'HH',
+            meridiemFormat: 'A',
+            minutesFormat: 'mm',
+            minutesInterval: 1,
+            secondsFormat: 'ss',
+            secondsInterval: 1,
+            showSeconds: true,
+            showTwentyFourHours: true,
+            timeSeparator: ':',
+            multipleYearsNavigateBy: 10,
+            showMultipleYearsNavigation: false,
+            locale: moment.locale(),
+            hideInputContainer: false,
+            returnedValueType: String,
+            unSelectOnClick: true,
+            hideOnOutsideClick: true
+        };
+    }
+    ngOnInit() {
+        this.options = this.layoutNode.options || {};
+        this.jsf.initializeControl(this, !this.options.readonly);
+        this.options.format ? this.datePickerConfig.format = this.options.format : this.datePickerConfig.format = 'YYYY-MM-DD HH:mm:ss';
+        this.options.mode ? this.mode = this.options.mode : this.mode = 'daytime';
+        this.setControlDate(this.controlValue);
+        if (!this.options.notitle && !this.options.description && this.options.placeholder) {
+            this.options.description = this.options.placeholder;
+        }
+    }
+    ngOnChanges() {
+        this.setControlDate(this.controlValue);
+    }
+    setControlDate(dateString) {
+        this.dateValue = moment(dateString, this.datePickerConfig.format);
+    }
+    updateValue(event) {
+        this.options.showErrors = true;
+        this.dateValue = moment(event[0]).format(this.datePickerConfig.format);
+        this.jsf.updateValue(this, this.dateValue);
+    }
+    open() {
+        this.datePicker.api.open();
+    }
+    close() {
+        this.datePicker.api.close();
+    }
+}
+MaterialDatetimepickerComponent.decorators = [
+    { type: Component, args: [{
+                selector: 'material-datetimepicker-widget',
+                template: `
+  <div class="datepicker-wrapper">
+    <div class="datepicker-title">
+      {{ options?.title }}
+    </div>
+    <dp-date-picker #myDatePicker
+      [(ngModel)]="dateValue"
+      [mode]="mode"
+      [config]="datePickerConfig"
+      [theme]="theme"
+      [placeholder]="options?.title"
+      (onChange)="updateValue($event)">
+    </dp-date-picker>
+    <mat-icon (click)="open()">calendar_today</mat-icon>
+  </div>
+  `,
+                styles: [`
+    mat-error { font-size: 75%; margin-top: -1rem; margin-bottom: 0.5rem; }
+    ::ng-deep mat-form-field .mat-form-field-wrapper .mat-form-field-flex
+      .mat-form-field-infix { width: initial; }
+
+    dp-date-picker {
+      float: left;
+    }
+
+    mat-icon {
+      padding-top: 2px;
+      cursor: pointer;
+    }
+
+    .datepicker-title {
+      font-size: 12px;
+      color: rgba(0, 0, 0, 0.54);
+      padding: 2px 0;
+    }
+
+    .datepicker-wrapper {
+      margin-bottom: 10px;
+    }
+
+  `],
+            },] },
+];
+/** @nocollapse */
+MaterialDatetimepickerComponent.ctorParameters = () => [
+    { type: JsonSchemaFormService, },
+];
+MaterialDatetimepickerComponent.propDecorators = {
+    "layoutNode": [{ type: Input },],
+    "layoutIndex": [{ type: Input },],
+    "dataIndex": [{ type: Input },],
+    "datePicker": [{ type: ViewChild, args: ['myDatePicker',] },],
+};
+
 // TODO: Add this control
 class MaterialFileComponent {
     constructor(jsf) {
@@ -10705,6 +10929,7 @@ class MaterialDesignFramework extends Framework {
             'checkboxes': MaterialCheckboxesComponent,
             'chip-list': MaterialChipListComponent,
             'date': MaterialDatepickerComponent,
+            'datetime': MaterialDatetimepickerComponent,
             'file': MaterialFileComponent,
             'number': MaterialNumberComponent,
             'one-of': MaterialOneOfComponent,
@@ -10742,6 +10967,7 @@ const MATERIAL_FRAMEWORK_COMPONENTS = [
     MaterialButtonComponent, MaterialButtonGroupComponent,
     MaterialCheckboxComponent, MaterialCheckboxesComponent,
     MaterialChipListComponent, MaterialCkeditorComponent, MaterialDatepickerComponent,
+    MaterialDatetimepickerComponent,
     MaterialFileComponent, MaterialInputComponent, MaterialNumberComponent,
     MaterialRadiosComponent, MaterialSelectComponent, MaterialSliderComponent,
     MaterialStepperComponent, MaterialTabsComponent, MaterialTextareaComponent,
@@ -10769,7 +10995,7 @@ MaterialDesignFrameworkModule.decorators = [
     { type: NgModule, args: [{
                 imports: [
                     CommonModule, FormsModule, ReactiveFormsModule, FlexLayoutModule,
-                    ...ANGULAR_MATERIAL_MODULES, WidgetLibraryModule, CKEditorModule
+                    ...ANGULAR_MATERIAL_MODULES, WidgetLibraryModule, CKEditorModule, DpDatePickerModule
                 ],
                 declarations: [...MATERIAL_FRAMEWORK_COMPONENTS],
                 exports: [...MATERIAL_FRAMEWORK_COMPONENTS],
@@ -11438,5 +11664,5 @@ Bootstrap4FrameworkModule.decorators = [
  * Generated bundle index. Do not edit.
  */
 
-export { MATERIAL_FRAMEWORK_COMPONENTS as ɵe, MaterialCkeditorComponent as ɵf, ANGULAR_MATERIAL_MODULES as ɵb, JSON_SCHEMA_FORM_VALUE_ACCESSOR as ɵa, CkeditorComponent as ɵd, BASIC_WIDGETS as ɵc, _executeValidators, _executeAsyncValidators, _mergeObjects, _mergeErrors, isDefined, hasValue, isEmpty, isString, isNumber, isInteger, isBoolean, isFunction, isObject, isArray, isDate, isMap, isSet, isPromise, isObservable, getType, isType, isPrimitive, toJavaScriptType, toSchemaType, _toPromise, toObservable, inArray, xor, addClasses, copy, forEach, forEachCopy, hasOwn, mergeFilteredObject, uniqueItems, commonItems, fixTitle, toTitleCase, JsonPointer, JsonValidators, buildSchemaFromLayout, buildSchemaFromData, getFromSchema, removeRecursiveReferences, getInputType, checkInlineType, isInputRequired, updateInputOptions, getTitleMapFromOneOf, getControlValidators, resolveSchemaReferences, getSubSchema, combineAllOf, fixRequiredArrayProperties, convertSchemaToDraft6, mergeSchemas, buildFormGroupTemplate, buildFormGroup, formatFormData, getControl, setRequiredFields, buildLayout, buildLayoutFromSchema, mapLayout, getLayoutNode, buildTitleMap, dateToString, stringToDate, findDate, OrderableDirective, JsonSchemaFormComponent, JsonSchemaFormService, JsonSchemaFormModule, WidgetLibraryService, WidgetLibraryModule, AddReferenceComponent, OneOfComponent, ButtonComponent, CheckboxComponent, CheckboxesComponent, FileComponent, HiddenComponent, InputComponent, MessageComponent, NoneComponent, NumberComponent, RadiosComponent, RootComponent, SectionComponent, SelectComponent, SelectFrameworkComponent, SelectWidgetComponent, SubmitComponent, TabComponent, TabsComponent, TemplateComponent, TextareaComponent, FrameworkLibraryService, Framework, NoFramework, NoFrameworkComponent, NoFrameworkModule, MaterialDesignFramework, FlexLayoutRootComponent, FlexLayoutSectionComponent, MaterialAddReferenceComponent, MaterialOneOfComponent, MaterialButtonComponent, MaterialButtonGroupComponent, MaterialCheckboxComponent, MaterialCheckboxesComponent, MaterialChipListComponent, MaterialDatepickerComponent, MaterialFileComponent, MaterialInputComponent, MaterialNumberComponent, MaterialRadiosComponent, MaterialSelectComponent, MaterialSliderComponent, MaterialStepperComponent, MaterialTabsComponent, MaterialTextareaComponent, MaterialDesignFrameworkComponent, MaterialDesignFrameworkModule, Bootstrap3Framework, Bootstrap3FrameworkComponent, Bootstrap3FrameworkModule, Bootstrap4Framework, Bootstrap4FrameworkComponent, Bootstrap4FrameworkModule };
+export { MATERIAL_FRAMEWORK_COMPONENTS as ɵf, MaterialCkeditorComponent as ɵg, MaterialDatetimepickerComponent as ɵh, ANGULAR_MATERIAL_MODULES as ɵb, JSON_SCHEMA_FORM_VALUE_ACCESSOR as ɵa, CkeditorComponent as ɵd, DatetimepickerComponent as ɵe, BASIC_WIDGETS as ɵc, _executeValidators, _executeAsyncValidators, _mergeObjects, _mergeErrors, isDefined, hasValue, isEmpty, isString, isNumber, isInteger, isBoolean, isFunction, isObject, isArray, isDate, isMap, isSet, isPromise, isObservable, getType, isType, isPrimitive, toJavaScriptType, toSchemaType, _toPromise, toObservable, inArray, xor, addClasses, copy, forEach, forEachCopy, hasOwn, mergeFilteredObject, uniqueItems, commonItems, fixTitle, toTitleCase, JsonPointer, JsonValidators, buildSchemaFromLayout, buildSchemaFromData, getFromSchema, removeRecursiveReferences, getInputType, checkInlineType, isInputRequired, updateInputOptions, getTitleMapFromOneOf, getControlValidators, resolveSchemaReferences, getSubSchema, combineAllOf, fixRequiredArrayProperties, convertSchemaToDraft6, mergeSchemas, buildFormGroupTemplate, buildFormGroup, formatFormData, getControl, setRequiredFields, buildLayout, buildLayoutFromSchema, mapLayout, getLayoutNode, buildTitleMap, dateToString, stringToDate, findDate, OrderableDirective, JsonSchemaFormComponent, JsonSchemaFormService, JsonSchemaFormModule, WidgetLibraryService, WidgetLibraryModule, AddReferenceComponent, OneOfComponent, ButtonComponent, CheckboxComponent, CheckboxesComponent, FileComponent, HiddenComponent, InputComponent, MessageComponent, NoneComponent, NumberComponent, RadiosComponent, RootComponent, SectionComponent, SelectComponent, SelectFrameworkComponent, SelectWidgetComponent, SubmitComponent, TabComponent, TabsComponent, TemplateComponent, TextareaComponent, FrameworkLibraryService, Framework, NoFramework, NoFrameworkComponent, NoFrameworkModule, MaterialDesignFramework, FlexLayoutRootComponent, FlexLayoutSectionComponent, MaterialAddReferenceComponent, MaterialOneOfComponent, MaterialButtonComponent, MaterialButtonGroupComponent, MaterialCheckboxComponent, MaterialCheckboxesComponent, MaterialChipListComponent, MaterialDatepickerComponent, MaterialFileComponent, MaterialInputComponent, MaterialNumberComponent, MaterialRadiosComponent, MaterialSelectComponent, MaterialSliderComponent, MaterialStepperComponent, MaterialTabsComponent, MaterialTextareaComponent, MaterialDesignFrameworkComponent, MaterialDesignFrameworkModule, Bootstrap3Framework, Bootstrap3FrameworkComponent, Bootstrap3FrameworkModule, Bootstrap4Framework, Bootstrap4FrameworkComponent, Bootstrap4FrameworkModule };
 //# sourceMappingURL=angular2-json-schema-form.js.map

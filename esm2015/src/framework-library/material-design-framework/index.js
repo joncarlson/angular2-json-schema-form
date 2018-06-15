@@ -9,6 +9,7 @@ import { MaterialCheckboxesComponent } from './material-checkboxes.component';
 import { MaterialChipListComponent } from './material-chip-list.component';
 import { MaterialCkeditorComponent } from './material-ckeditor.component';
 import { MaterialDatepickerComponent } from './material-datepicker.component';
+import { MaterialDatetimepickerComponent } from './material-datetimepicker.component';
 import { MaterialFileComponent } from './material-file.component';
 import { MaterialInputComponent } from './material-input.component';
 import { MaterialNumberComponent } from './material-number.component';
@@ -25,6 +26,7 @@ export const MATERIAL_FRAMEWORK_COMPONENTS = [
     MaterialButtonComponent, MaterialButtonGroupComponent,
     MaterialCheckboxComponent, MaterialCheckboxesComponent,
     MaterialChipListComponent, MaterialCkeditorComponent, MaterialDatepickerComponent,
+    MaterialDatetimepickerComponent,
     MaterialFileComponent, MaterialInputComponent, MaterialNumberComponent,
     MaterialRadiosComponent, MaterialSelectComponent, MaterialSliderComponent,
     MaterialStepperComponent, MaterialTabsComponent, MaterialTextareaComponent,
@@ -41,6 +43,7 @@ export { MaterialCheckboxesComponent } from './material-checkboxes.component';
 export { MaterialChipListComponent } from './material-chip-list.component';
 export { MaterialCkeditorComponent } from './material-ckeditor.component';
 export { MaterialDatepickerComponent } from './material-datepicker.component';
+export { MaterialDatetimepickerComponent } from './material-datetimepicker.component';
 export { MaterialFileComponent } from './material-file.component';
 export { MaterialInputComponent } from './material-input.component';
 export { MaterialNumberComponent } from './material-number.component';

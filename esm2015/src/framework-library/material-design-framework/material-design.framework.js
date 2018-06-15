@@ -11,6 +11,7 @@ import { MaterialCheckboxesComponent } from './material-checkboxes.component';
 import { MaterialChipListComponent } from './material-chip-list.component';
 import { MaterialCkeditorComponent } from './material-ckeditor.component';
 import { MaterialDatepickerComponent } from './material-datepicker.component';
+import { MaterialDatetimepickerComponent } from './material-datetimepicker.component';
 import { MaterialFileComponent } from './material-file.component';
 import { MaterialInputComponent } from './material-input.component';
 import { MaterialNumberComponent } from './material-number.component';
@@ -40,6 +41,7 @@ export class MaterialDesignFramework extends Framework {
             'checkboxes': MaterialCheckboxesComponent,
             'chip-list': MaterialChipListComponent,
             'date': MaterialDatepickerComponent,
+            'datetime': MaterialDatetimepickerComponent,
             'file': MaterialFileComponent,
             'number': MaterialNumberComponent,
             'one-of': MaterialOneOfComponent,

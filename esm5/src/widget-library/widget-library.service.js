@@ -22,6 +22,7 @@ import { SubmitComponent } from './submit.component';
 import { TabsComponent } from './tabs.component';
 import { TemplateComponent } from './template.component';
 import { TextareaComponent } from './textarea.component';
+import { DatetimepickerComponent } from './datetimepicker.component';
 var WidgetLibraryService = /** @class */ (function () {
     function WidgetLibraryService() {
         this.defaultWidget = 'text';
@@ -50,7 +51,7 @@ var WidgetLibraryService = /** @class */ (function () {
             // Controlled text HTML 'input' form control widgets <input type="...">
             'color': 'text',
             'date': 'text',
-            'datetime': 'text',
+            'datetime': DatetimepickerComponent,
             'datetime-local': 'text',
             'month': 'text',
             'range': 'number',

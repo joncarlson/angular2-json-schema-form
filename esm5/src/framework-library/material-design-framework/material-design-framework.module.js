@@ -16,6 +16,7 @@ import { Framework } from '../framework';
 import { MATERIAL_FRAMEWORK_COMPONENTS } from './index';
 import { MaterialDesignFramework } from './material-design.framework';
 import { CKEditorModule } from 'ngx-ckeditor';
+import { DpDatePickerModule } from 'ng2-date-picker';
 var MaterialDesignFrameworkModule = /** @class */ (function () {
     function MaterialDesignFrameworkModule() {
     }
@@ -35,7 +36,7 @@ MaterialDesignFrameworkModule.decorators = [
                 imports: tslib_1.__spread([
                     CommonModule, FormsModule, ReactiveFormsModule, FlexLayoutModule
                 ], ANGULAR_MATERIAL_MODULES, [
-                    WidgetLibraryModule, CKEditorModule
+                    WidgetLibraryModule, CKEditorModule, DpDatePickerModule
                 ]),
                 declarations: tslib_1.__spread(MATERIAL_FRAMEWORK_COMPONENTS),
                 exports: tslib_1.__spread(MATERIAL_FRAMEWORK_COMPONENTS),
