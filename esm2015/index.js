@@ -69,6 +69,4 @@ export { Bootstrap3FrameworkModule } from './src/framework-library/bootstrap-3-f
 export { Bootstrap4Framework } from './src/framework-library/bootstrap-4-framework/bootstrap-4.framework';
 export { Bootstrap4FrameworkComponent } from './src/framework-library/bootstrap-4-framework/bootstrap-4-framework.component';
 export { Bootstrap4FrameworkModule } from './src/framework-library/bootstrap-4-framework/bootstrap-4-framework.module';
-export { CKEditorModule } from 'ngx-ckeditor';
-export { DpDatePickerModule } from 'ng2-date-picker';
 //# sourceMappingURL=index.js.map

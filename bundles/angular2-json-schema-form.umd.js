@@ -11587,8 +11587,6 @@
                 },] },
     ];
 
-    exports.CKEditorModule = ngxCkeditor.CKEditorModule;
-    exports.DpDatePickerModule = ng2DatePicker.DpDatePickerModule;
     exports.ɵf = MATERIAL_FRAMEWORK_COMPONENTS;
     exports.ɵg = MaterialCkeditorComponent;
     exports.ɵh = MaterialDatetimepickerComponent;
