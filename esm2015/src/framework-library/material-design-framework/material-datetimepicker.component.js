@@ -63,7 +63,6 @@ export class MaterialDatetimepickerComponent {
     }
     setControlDate(dateString) {
         dateString ? dateString : dateString = moment(new Date().getTime()).format(this.datePickerConfig.format);
-        console.log(dateString);
         this.dateValue = moment(dateString, this.datePickerConfig.format);
     }
     updateValue(event) {
