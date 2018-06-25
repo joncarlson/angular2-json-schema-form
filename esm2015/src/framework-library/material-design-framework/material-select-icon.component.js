@@ -30,17 +30,16 @@ export class MaterialSelectIconComponent {
             "fa-fax",
             "fa-flag",
             "fa-print",
-            "fa-power-off"
+            "fa-power-off",
+            "fa-bell"
         ];
-        this.selected = '';
     }
     ngOnInit() {
         this.options = this.layoutNode.options || {};
-        this.selectList = this.options.enum || this.defaultIcons;
-        // this.selectList = buildTitleMap(
-        //   this.options.titleMap || this.options.enumNames,
-        //   this.options.enum, !!this.options.required, !!this.options.flatList
-        // );
+        this.options.enum ? this.selectList = this.defaultIcons.concat(this.options.enum) : this.selectList = this.defaultIcons;
+        if (this.controlValue && this.selectList.indexOf(this.controlValue) === -1) {
+            this.selectList.push(this.controlValue);
+        }
         this.jsf.initializeControl(this, !this.options.readonly);
         if (!this.options.notitle && !this.options.description && this.options.placeholder) {
             this.options.description = this.options.placeholder;
@@ -73,10 +72,10 @@ MaterialSelectIconComponent.decorators = [
         [value]="controlValue"
         (blur)="options.showErrors = true"
         (selectionChange)="updateValue($event)"
-        [(ngModel)]="selected">
-        <mat-select-trigger *ngIf="selected">
-          <i class="fa align-middle" [ngClass]="selected"></i>
-          <span class="icon-name">{{ selected }}</span>
+        [(ngModel)]="controlValue">
+        <mat-select-trigger *ngIf="controlValue">
+          <i class="fa align-middle" [ngClass]="controlValue"></i>
+          <span class="icon-name">{{ controlValue }}</span>
         </mat-select-trigger>
         <ng-template ngFor let-selectItem [ngForOf]="selectList">
           <mat-option

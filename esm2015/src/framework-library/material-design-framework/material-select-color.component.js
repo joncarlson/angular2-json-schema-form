@@ -32,11 +32,13 @@ export class MaterialSelectColorComponent {
             "#FFFFFF",
             "#000000"
         ];
-        this.selected = '';
     }
     ngOnInit() {
         this.options = this.layoutNode.options || {};
-        this.selectList = this.options.enum || this.defaultColors;
+        this.options.enum ? this.selectList = this.defaultColors.concat(this.options.enum) : this.selectList = this.defaultColors;
+        if (this.controlValue && this.selectList.indexOf(this.controlValue) === -1) {
+            this.selectList.push(this.controlValue);
+        }
         this.jsf.initializeControl(this, !this.options.readonly);
         if (!this.options.notitle && !this.options.description && this.options.placeholder) {
             this.options.description = this.options.placeholder;
@@ -69,10 +71,10 @@ MaterialSelectColorComponent.decorators = [
         [value]="controlValue"
         (blur)="options.showErrors = true"
         (selectionChange)="updateValue($event)"
-        [(ngModel)]="selected">
-        <mat-select-trigger *ngIf="selected">
-          <span class="color-box" [style.background-color]="selected"></span>
-          <span>{{ selected}}</span>
+        [(ngModel)]="controlValue">
+        <mat-select-trigger *ngIf="controlValue">
+          <span class="color-box" [style.background-color]="controlValue"></span>
+          <span>{{ controlValue }}</span>
         </mat-select-trigger>
         <ng-template ngFor let-selectItem [ngForOf]="selectList">
           <mat-option

@@ -16,7 +16,6 @@ export declare class MaterialSelectIconComponent implements OnInit {
     layoutIndex: number[];
     dataIndex: number[];
     defaultIcons: string[];
-    selected: string;
     constructor(jsf: JsonSchemaFormService);
     ngOnInit(): void;
     updateValue(event: any): void;
