@@ -32,6 +32,7 @@ var MaterialSelectColorComponent = /** @class */ (function () {
             "#FFFFFF",
             "#000000"
         ];
+        this.selected = '';
     }
     MaterialSelectColorComponent.prototype.ngOnInit = function () {
         this.options = this.layoutNode.options || {};

@@ -50,6 +50,7 @@ var WidgetLibraryService = /** @class */ (function () {
             'url': 'text',
             // Controlled text HTML 'input' form control widgets <input type="...">
             'color': 'text',
+            'icon': 'text',
             'date': 'text',
             'datetime': DatetimepickerComponent,
             'datetime-local': 'text',

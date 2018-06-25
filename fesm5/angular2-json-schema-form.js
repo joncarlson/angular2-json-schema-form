@@ -8130,6 +8130,7 @@ var WidgetLibraryService = /** @class */ (function () {
             'url': 'text',
             // Controlled text HTML 'input' form control widgets <input type="...">
             'color': 'text',
+            'icon': 'text',
             'date': 'text',
             'datetime': DatetimepickerComponent,
             'datetime-local': 'text',
@@ -10175,6 +10176,7 @@ var MaterialSelectColorComponent = /** @class */ (function () {
             "#FFFFFF",
             "#000000"
         ];
+        this.selected = '';
     }
     MaterialSelectColorComponent.prototype.ngOnInit = function () {
         this.options = this.layoutNode.options || {};
@@ -10239,6 +10241,7 @@ var MaterialSelectIconComponent = /** @class */ (function () {
             "fa-print",
             "fa-power-off"
         ];
+        this.selected = '';
     }
     MaterialSelectIconComponent.prototype.ngOnInit = function () {
         this.options = this.layoutNode.options || {};

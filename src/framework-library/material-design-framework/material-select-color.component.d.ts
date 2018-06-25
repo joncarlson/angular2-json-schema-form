@@ -16,6 +16,7 @@ export declare class MaterialSelectColorComponent implements OnInit {
     layoutIndex: number[];
     dataIndex: number[];
     defaultColors: string[];
+    selected: string;
     constructor(jsf: JsonSchemaFormService);
     ngOnInit(): void;
     updateValue(event: any): void;

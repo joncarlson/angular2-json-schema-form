@@ -32,6 +32,7 @@ var MaterialSelectIconComponent = /** @class */ (function () {
             "fa-print",
             "fa-power-off"
         ];
+        this.selected = '';
     }
     MaterialSelectIconComponent.prototype.ngOnInit = function () {
         this.options = this.layoutNode.options || {};

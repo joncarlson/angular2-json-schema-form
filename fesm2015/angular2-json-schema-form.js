@@ -7995,6 +7995,7 @@ class WidgetLibraryService {
             'url': 'text',
             // Controlled text HTML 'input' form control widgets <input type="...">
             'color': 'text',
+            'icon': 'text',
             'date': 'text',
             'datetime': DatetimepickerComponent,
             'datetime-local': 'text',
@@ -10561,6 +10562,7 @@ class MaterialSelectColorComponent {
             "#FFFFFF",
             "#000000"
         ];
+        this.selected = '';
     }
     ngOnInit() {
         this.options = this.layoutNode.options || {};
@@ -10673,6 +10675,7 @@ class MaterialSelectIconComponent {
             "fa-print",
             "fa-power-off"
         ];
+        this.selected = '';
     }
     ngOnInit() {
         this.options = this.layoutNode.options || {};

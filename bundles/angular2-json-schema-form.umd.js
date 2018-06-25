@@ -8634,6 +8634,7 @@
                 'url': 'text',
                 // Controlled text HTML 'input' form control widgets <input type="...">
                 'color': 'text',
+                'icon': 'text',
                 'date': 'text',
                 'datetime': DatetimepickerComponent,
                 'datetime-local': 'text',
@@ -10728,6 +10729,7 @@
                 "#FFFFFF",
                 "#000000"
             ];
+            this.selected = '';
         }
         MaterialSelectColorComponent.prototype.ngOnInit = function () {
             this.options = this.layoutNode.options || {};
@@ -10793,6 +10795,7 @@
                 "fa-print",
                 "fa-power-off"
             ];
+            this.selected = '';
         }
         MaterialSelectIconComponent.prototype.ngOnInit = function () {
             this.options = this.layoutNode.options || {};

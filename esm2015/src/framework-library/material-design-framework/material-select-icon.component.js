@@ -32,6 +32,7 @@ export class MaterialSelectIconComponent {
             "fa-print",
             "fa-power-off"
         ];
+        this.selected = '';
     }
     ngOnInit() {
         this.options = this.layoutNode.options || {};

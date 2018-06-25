@@ -32,6 +32,7 @@ export class MaterialSelectColorComponent {
             "#FFFFFF",
             "#000000"
         ];
+        this.selected = '';
     }
     ngOnInit() {
         this.options = this.layoutNode.options || {};
