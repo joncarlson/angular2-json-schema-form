@@ -6,7 +6,6 @@ import { JsonSchemaFormService } from '../json-schema-form.service';
 import { BASIC_WIDGETS } from './index';
 import { CKEditorModule } from 'ngx-ckeditor';
 import { DpDatePickerModule } from 'ng2-date-picker';
-import { MaterialSelectIconComponent } from '../framework-library/material-design-framework/material-select-icon.component';
 export class WidgetLibraryModule {
     static forRoot() {
         return {
@@ -20,7 +19,7 @@ WidgetLibraryModule.decorators = [
                 imports: [CommonModule, FormsModule, ReactiveFormsModule, CKEditorModule, DpDatePickerModule],
                 declarations: [...BASIC_WIDGETS, OrderableDirective],
                 exports: [...BASIC_WIDGETS, OrderableDirective],
-                entryComponents: [...BASIC_WIDGETS, MaterialSelectIconComponent],
+                entryComponents: [...BASIC_WIDGETS],
                 providers: [JsonSchemaFormService]
             },] },
 ];

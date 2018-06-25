@@ -22,13 +22,15 @@ import { TabsComponent } from './tabs.component';
 import { TemplateComponent } from './template.component';
 import { TextareaComponent } from './textarea.component';
 import { DatetimepickerComponent } from './datetimepicker.component';
+import { MaterialSelectIconComponent } from '../framework-library/material-design-framework/material-select-icon.component';
+import { MaterialSelectColorComponent } from '../framework-library/material-design-framework/material-select-color.component';
 export var BASIC_WIDGETS = [
     AddReferenceComponent, OneOfComponent, ButtonComponent, CheckboxComponent,
     CheckboxesComponent, FileComponent, HiddenComponent, InputComponent,
     MessageComponent, NoneComponent, NumberComponent, RadiosComponent,
     RootComponent, SectionComponent, CkeditorComponent, SelectComponent, SelectFrameworkComponent,
     SelectWidgetComponent, SubmitComponent, TabComponent, TabsComponent,
-    TemplateComponent, TextareaComponent, DatetimepickerComponent
+    TemplateComponent, TextareaComponent, DatetimepickerComponent, MaterialSelectIconComponent, MaterialSelectColorComponent
 ];
 export { AddReferenceComponent } from './add-reference.component';
 export { OneOfComponent } from './one-of.component';
@@ -54,4 +56,6 @@ export { TabsComponent } from './tabs.component';
 export { TemplateComponent } from './template.component';
 export { TextareaComponent } from './textarea.component';
 export { DatetimepickerComponent } from './datetimepicker.component';
+export { MaterialSelectIconComponent } from '../framework-library/material-design-framework/material-select-icon.component';
+export { MaterialSelectColorComponent } from '../framework-library/material-design-framework/material-select-color.component';
 //# sourceMappingURL=index.js.map
