@@ -62,7 +62,6 @@ var MaterialDesignFramework = /** @class */ (function (_super) {
             'alt-date': 'date',
             'any-of': 'one-of',
             'card': 'section',
-            // 'color':           'text',
             'expansion-panel': 'section',
             'hidden': 'none',
             'image': 'none',

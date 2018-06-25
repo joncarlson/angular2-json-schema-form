@@ -23,8 +23,6 @@ import { TabsComponent } from './tabs.component';
 import { TemplateComponent } from './template.component';
 import { TextareaComponent } from './textarea.component';
 import { DatetimepickerComponent } from './datetimepicker.component';
-import { MaterialSelectColorComponent } from '../framework-library/material-design-framework/material-select-color.component';
-import { MaterialSelectIconComponent } from '../framework-library/material-design-framework/material-select-icon.component';
 var WidgetLibraryService = /** @class */ (function () {
     function WidgetLibraryService() {
         this.defaultWidget = 'text';
@@ -51,8 +49,7 @@ var WidgetLibraryService = /** @class */ (function () {
             'text': InputComponent,
             'url': 'text',
             // Controlled text HTML 'input' form control widgets <input type="...">
-            'color': MaterialSelectColorComponent,
-            'icon': MaterialSelectIconComponent,
+            'color': 'text',
             'date': 'text',
             'datetime': DatetimepickerComponent,
             'datetime-local': 'text',
