@@ -17,6 +17,8 @@ import { MaterialInputComponent } from './material-input.component';
 import { MaterialNumberComponent } from './material-number.component';
 import { MaterialRadiosComponent } from './material-radios.component';
 import { MaterialSelectComponent } from './material-select.component';
+import { MaterialSelectColorComponent } from './material-select-color.component';
+import { MaterialSelectIconComponent } from './material-select-icon.component';
 import { MaterialSliderComponent } from './material-slider.component';
 import { MaterialStepperComponent } from './material-stepper.component';
 import { MaterialTabsComponent } from './material-tabs.component';
@@ -29,7 +31,7 @@ export class MaterialDesignFramework extends Framework {
         this.framework = MaterialDesignFrameworkComponent;
         this.stylesheets = [
             '//fonts.googleapis.com/icon?family=Material+Icons',
-            '//fonts.googleapis.com/css?family=Roboto:300,400,500,700',
+            '//fonts.googleapis.com/css?family=Roboto:300,500,700',
         ];
         this.widgets = {
             'root': FlexLayoutRootComponent,
@@ -47,16 +49,18 @@ export class MaterialDesignFramework extends Framework {
             'one-of': MaterialOneOfComponent,
             'radios': MaterialRadiosComponent,
             'select': MaterialSelectComponent,
+            'color': MaterialSelectColorComponent,
             'slider': MaterialSliderComponent,
             'stepper': MaterialStepperComponent,
             'tabs': MaterialTabsComponent,
             'text': MaterialInputComponent,
             'textarea': MaterialTextareaComponent,
             'ckeditor': MaterialCkeditorComponent,
+            'icon': MaterialSelectIconComponent,
             'alt-date': 'date',
             'any-of': 'one-of',
             'card': 'section',
-            'color': 'text',
+            // 'color':           'text',
             'expansion-panel': 'section',
             'hidden': 'none',
             'image': 'none',

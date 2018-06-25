@@ -14,6 +14,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { CKEditorModule } from 'ngx-ckeditor';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { MatAutocompleteModule, MatButtonModule, MatButtonToggleModule, MatCardModule, MatCheckboxModule, MatChipsModule, MatDatepickerModule, MatExpansionModule, MatFormFieldModule, MatIconModule, MatInputModule, MatNativeDateModule, MatRadioModule, MatSelectModule, MatSliderModule, MatSlideToggleModule, MatStepperModule, MatTabsModule, MatTooltipModule } from '@angular/material';
 
 /**
@@ -10529,6 +10530,230 @@ MaterialSelectComponent.propDecorators = {
     "dataIndex": [{ type: Input },],
 };
 
+class MaterialSelectColorComponent {
+    constructor(jsf) {
+        this.jsf = jsf;
+        this.controlDisabled = false;
+        this.boundControl = false;
+        this.selectList = [];
+        this.isArray = isArray;
+        this.defaultColors = [
+            "#e6194b",
+            "#3cb44b",
+            "#ffe119",
+            "#0082c8",
+            "#f58231",
+            "#911eb4",
+            "#46f0f0",
+            "#f032e6",
+            "#d2f53c",
+            "#fabebe",
+            "#008080",
+            "#e6beff",
+            "#aa6e28",
+            "#fffac8",
+            "#800000",
+            "#aaffc3",
+            "#808000",
+            "#ffd8b1",
+            "#000080",
+            "#808080",
+            "#FFFFFF",
+            "#000000"
+        ];
+    }
+    ngOnInit() {
+        this.options = this.layoutNode.options || {};
+        this.selectList = this.options.enum || this.defaultColors;
+        this.jsf.initializeControl(this, !this.options.readonly);
+        if (!this.options.notitle && !this.options.description && this.options.placeholder) {
+            this.options.description = this.options.placeholder;
+        }
+    }
+    updateValue(event) {
+        this.options.showErrors = true;
+        this.jsf.updateValue(this, event.value);
+    }
+}
+MaterialSelectColorComponent.decorators = [
+    { type: Component, args: [{
+                selector: 'material-select-color-widget',
+                template: `
+    <mat-form-field
+      [class]="options?.htmlClass || ''"
+      [floatLabel]="options?.floatPlaceholder || (options?.notitle ? 'never' : 'auto')"
+      [style.width]="'100%'">
+      <span matPrefix *ngIf="options?.prefix || options?.fieldAddonLeft"
+        [innerHTML]="options?.prefix || options?.fieldAddonLeft"></span>
+      <mat-select
+        [attr.aria-describedby]="'control' + layoutNode?._id + 'Status'"
+        [attr.name]="controlName"
+        [disabled]="controlDisabled || options?.readonly"
+        [id]="'control' + layoutNode?._id"
+        [multiple]="options?.multiple"
+        [placeholder]="options?.notitle ? options?.placeholder : options?.title"
+        [required]="options?.required"
+        [style.width]="'100%'"
+        [value]="controlValue"
+        (blur)="options.showErrors = true"
+        (selectionChange)="updateValue($event)"
+        [(ngModel)]="selected">
+        <mat-select-trigger *ngIf="selected">
+          <span class="color-box" [style.background-color]="selected"></span>
+          <span>{{ selected}}</span>
+        </mat-select-trigger>
+        <ng-template ngFor let-selectItem [ngForOf]="selectList">
+          <mat-option
+            [value]="selectItem">
+            <span class="color-box" [style.background-color]="selectItem"></span>
+            <span>{{ selectItem }}</span>
+          </mat-option>
+        </ng-template>
+      </mat-select>
+      <span matSuffix *ngIf="options?.suffix || options?.fieldAddonRight"
+        [innerHTML]="options?.suffix || options?.fieldAddonRight"></span>
+      <mat-hint *ngIf="options?.description && (!options?.showErrors || !options?.errorMessage)"
+        align="end" [innerHTML]="options?.description"></mat-hint>
+    </mat-form-field>
+    <mat-error *ngIf="options?.showErrors && options?.errorMessage"
+      [innerHTML]="options?.errorMessage"></mat-error>`,
+                styles: [`
+    mat-error { font-size: 75%; margin-top: -1rem; margin-bottom: 0.5rem; }
+    ::ng-deep mat-form-field .mat-form-field-wrapper .mat-form-field-flex
+      .mat-form-field-infix { width: initial; }
+
+    .color-box {
+      display:inline-block;
+      height:14px;
+      width:14px;
+      margin-right:4px;
+      border:1px solid #000;
+    }`
+                ],
+            },] },
+];
+/** @nocollapse */
+MaterialSelectColorComponent.ctorParameters = () => [
+    { type: JsonSchemaFormService, },
+];
+MaterialSelectColorComponent.propDecorators = {
+    "layoutNode": [{ type: Input },],
+    "layoutIndex": [{ type: Input },],
+    "dataIndex": [{ type: Input },],
+};
+
+class MaterialSelectIconComponent {
+    constructor(jsf) {
+        this.jsf = jsf;
+        this.controlDisabled = false;
+        this.boundControl = false;
+        this.selectList = [];
+        this.isArray = isArray;
+        this.defaultIcons = [
+            "fa-address-book",
+            "fa-archive",
+            "fa-car",
+            "fa-camera-retro",
+            "fa-cloud",
+            "fa-bathtub",
+            "fa-bullhorn",
+            "fa-comments",
+            "fa-clone",
+            "fa-columns",
+            "fa-code",
+            "fa-eraser",
+            "fa-eject",
+            "fa-desktop",
+            "fa-fire",
+            "fa-cube",
+            "fa-list-alt",
+            "fa-microchip",
+            "fa-fax",
+            "fa-flag",
+            "fa-print",
+            "fa-power-off"
+        ];
+    }
+    ngOnInit() {
+        this.options = this.layoutNode.options || {};
+        this.selectList = this.options.enum || this.defaultIcons;
+        // this.selectList = buildTitleMap(
+        //   this.options.titleMap || this.options.enumNames,
+        //   this.options.enum, !!this.options.required, !!this.options.flatList
+        // );
+        this.jsf.initializeControl(this, !this.options.readonly);
+        if (!this.options.notitle && !this.options.description && this.options.placeholder) {
+            this.options.description = this.options.placeholder;
+        }
+    }
+    updateValue(event) {
+        this.options.showErrors = true;
+        this.jsf.updateValue(this, event.value);
+    }
+}
+MaterialSelectIconComponent.decorators = [
+    { type: Component, args: [{
+                selector: 'material-select-icon-widget',
+                template: `
+    <mat-form-field
+      [class]="options?.htmlClass || ''"
+      [floatLabel]="options?.floatPlaceholder || (options?.notitle ? 'never' : 'auto')"
+      [style.width]="'100%'">
+      <span matPrefix *ngIf="options?.prefix || options?.fieldAddonLeft"
+        [innerHTML]="options?.prefix || options?.fieldAddonLeft"></span>
+      <mat-select
+        [attr.aria-describedby]="'control' + layoutNode?._id + 'Status'"
+        [attr.name]="controlName"
+        [disabled]="controlDisabled || options?.readonly"
+        [id]="'control' + layoutNode?._id"
+        [multiple]="options?.multiple"
+        [placeholder]="options?.notitle ? options?.placeholder : options?.title"
+        [required]="options?.required"
+        [style.width]="'100%'"
+        [value]="controlValue"
+        (blur)="options.showErrors = true"
+        (selectionChange)="updateValue($event)"
+        [(ngModel)]="selected">
+        <mat-select-trigger *ngIf="selected">
+          <i class="fa align-middle" [ngClass]="selected"></i>
+          <span class="icon-name">{{ selected }}</span>
+        </mat-select-trigger>
+        <ng-template ngFor let-selectItem [ngForOf]="selectList">
+          <mat-option
+            [value]="selectItem">
+            <i class="fa align-middle" [ngClass]="selectItem"></i>
+            <span class="icon-name">{{ selectItem }}</span>
+          </mat-option>
+        </ng-template>
+      </mat-select>
+      <span matSuffix *ngIf="options?.suffix || options?.fieldAddonRight"
+        [innerHTML]="options?.suffix || options?.fieldAddonRight"></span>
+      <mat-hint *ngIf="options?.description && (!options?.showErrors || !options?.errorMessage)"
+        align="end" [innerHTML]="options?.description"></mat-hint>
+    </mat-form-field>
+    <mat-error *ngIf="options?.showErrors && options?.errorMessage"
+      [innerHTML]="options?.errorMessage"></mat-error>`,
+                styles: [`
+    mat-error { font-size: 75%; margin-top: -1rem; margin-bottom: 0.5rem; }
+    ::ng-deep mat-form-field .mat-form-field-wrapper .mat-form-field-flex
+      .mat-form-field-infix { width: initial; }
+
+    .icon-name {
+      margin-left:5px;
+    }`
+                ],
+            },] },
+];
+/** @nocollapse */
+MaterialSelectIconComponent.ctorParameters = () => [
+    { type: JsonSchemaFormService, },
+];
+MaterialSelectIconComponent.propDecorators = {
+    "layoutNode": [{ type: Input },],
+    "layoutIndex": [{ type: Input },],
+    "dataIndex": [{ type: Input },],
+};
+
 class MaterialSliderComponent {
     constructor(jsf) {
         this.jsf = jsf;
@@ -10927,7 +11152,7 @@ class MaterialDesignFramework extends Framework {
         this.framework = MaterialDesignFrameworkComponent;
         this.stylesheets = [
             '//fonts.googleapis.com/icon?family=Material+Icons',
-            '//fonts.googleapis.com/css?family=Roboto:300,400,500,700',
+            '//fonts.googleapis.com/css?family=Roboto:300,500,700',
         ];
         this.widgets = {
             'root': FlexLayoutRootComponent,
@@ -10945,16 +11170,18 @@ class MaterialDesignFramework extends Framework {
             'one-of': MaterialOneOfComponent,
             'radios': MaterialRadiosComponent,
             'select': MaterialSelectComponent,
+            'color': MaterialSelectColorComponent,
             'slider': MaterialSliderComponent,
             'stepper': MaterialStepperComponent,
             'tabs': MaterialTabsComponent,
             'text': MaterialInputComponent,
             'textarea': MaterialTextareaComponent,
             'ckeditor': MaterialCkeditorComponent,
+            'icon': MaterialSelectIconComponent,
             'alt-date': 'date',
             'any-of': 'one-of',
             'card': 'section',
-            'color': 'text',
+            // 'color':           'text',
             'expansion-panel': 'section',
             'hidden': 'none',
             'image': 'none',
@@ -10977,10 +11204,9 @@ const MATERIAL_FRAMEWORK_COMPONENTS = [
     MaterialButtonComponent, MaterialButtonGroupComponent,
     MaterialCheckboxComponent, MaterialCheckboxesComponent,
     MaterialChipListComponent, MaterialCkeditorComponent, MaterialDatepickerComponent,
-    MaterialDatetimepickerComponent,
-    MaterialFileComponent, MaterialInputComponent, MaterialNumberComponent,
-    MaterialRadiosComponent, MaterialSelectComponent, MaterialSliderComponent,
-    MaterialStepperComponent, MaterialTabsComponent, MaterialTextareaComponent,
+    MaterialDatetimepickerComponent, MaterialFileComponent, MaterialInputComponent, MaterialNumberComponent,
+    MaterialRadiosComponent, MaterialSelectComponent, MaterialSelectColorComponent, MaterialSelectIconComponent,
+    MaterialSliderComponent, MaterialStepperComponent, MaterialTabsComponent, MaterialTextareaComponent,
     MaterialDesignFrameworkComponent
 ];
 
@@ -11004,7 +11230,7 @@ class MaterialDesignFrameworkModule {
 MaterialDesignFrameworkModule.decorators = [
     { type: NgModule, args: [{
                 imports: [
-                    CommonModule, FormsModule, ReactiveFormsModule, FlexLayoutModule,
+                    CommonModule, FormsModule, ReactiveFormsModule, FlexLayoutModule, AngularFontAwesomeModule,
                     ...ANGULAR_MATERIAL_MODULES, WidgetLibraryModule, CKEditorModule, DpDatePickerModule
                 ],
                 declarations: [...MATERIAL_FRAMEWORK_COMPONENTS],
@@ -11674,5 +11900,5 @@ Bootstrap4FrameworkModule.decorators = [
  * Generated bundle index. Do not edit.
  */
 
-export { MATERIAL_FRAMEWORK_COMPONENTS as ɵf, MaterialCkeditorComponent as ɵg, MaterialDatetimepickerComponent as ɵh, ANGULAR_MATERIAL_MODULES as ɵb, JSON_SCHEMA_FORM_VALUE_ACCESSOR as ɵa, CkeditorComponent as ɵd, DatetimepickerComponent as ɵe, BASIC_WIDGETS as ɵc, _executeValidators, _executeAsyncValidators, _mergeObjects, _mergeErrors, isDefined, hasValue, isEmpty, isString, isNumber, isInteger, isBoolean, isFunction, isObject, isArray, isDate, isMap, isSet, isPromise, isObservable, getType, isType, isPrimitive, toJavaScriptType, toSchemaType, _toPromise, toObservable, inArray, xor, addClasses, copy, forEach, forEachCopy, hasOwn, mergeFilteredObject, uniqueItems, commonItems, fixTitle, toTitleCase, JsonPointer, JsonValidators, buildSchemaFromLayout, buildSchemaFromData, getFromSchema, removeRecursiveReferences, getInputType, checkInlineType, isInputRequired, updateInputOptions, getTitleMapFromOneOf, getControlValidators, resolveSchemaReferences, getSubSchema, combineAllOf, fixRequiredArrayProperties, convertSchemaToDraft6, mergeSchemas, buildFormGroupTemplate, buildFormGroup, formatFormData, getControl, setRequiredFields, buildLayout, buildLayoutFromSchema, mapLayout, getLayoutNode, buildTitleMap, dateToString, stringToDate, findDate, OrderableDirective, JsonSchemaFormComponent, JsonSchemaFormService, JsonSchemaFormModule, WidgetLibraryService, WidgetLibraryModule, AddReferenceComponent, OneOfComponent, ButtonComponent, CheckboxComponent, CheckboxesComponent, FileComponent, HiddenComponent, InputComponent, MessageComponent, NoneComponent, NumberComponent, RadiosComponent, RootComponent, SectionComponent, SelectComponent, SelectFrameworkComponent, SelectWidgetComponent, SubmitComponent, TabComponent, TabsComponent, TemplateComponent, TextareaComponent, FrameworkLibraryService, Framework, NoFramework, NoFrameworkComponent, NoFrameworkModule, MaterialDesignFramework, FlexLayoutRootComponent, FlexLayoutSectionComponent, MaterialAddReferenceComponent, MaterialOneOfComponent, MaterialButtonComponent, MaterialButtonGroupComponent, MaterialCheckboxComponent, MaterialCheckboxesComponent, MaterialChipListComponent, MaterialDatepickerComponent, MaterialFileComponent, MaterialInputComponent, MaterialNumberComponent, MaterialRadiosComponent, MaterialSelectComponent, MaterialSliderComponent, MaterialStepperComponent, MaterialTabsComponent, MaterialTextareaComponent, MaterialDesignFrameworkComponent, MaterialDesignFrameworkModule, Bootstrap3Framework, Bootstrap3FrameworkComponent, Bootstrap3FrameworkModule, Bootstrap4Framework, Bootstrap4FrameworkComponent, Bootstrap4FrameworkModule };
+export { MATERIAL_FRAMEWORK_COMPONENTS as ɵf, MaterialCkeditorComponent as ɵg, MaterialDatetimepickerComponent as ɵh, ANGULAR_MATERIAL_MODULES as ɵb, MaterialSelectColorComponent as ɵi, MaterialSelectIconComponent as ɵj, JSON_SCHEMA_FORM_VALUE_ACCESSOR as ɵa, CkeditorComponent as ɵd, DatetimepickerComponent as ɵe, BASIC_WIDGETS as ɵc, _executeValidators, _executeAsyncValidators, _mergeObjects, _mergeErrors, isDefined, hasValue, isEmpty, isString, isNumber, isInteger, isBoolean, isFunction, isObject, isArray, isDate, isMap, isSet, isPromise, isObservable, getType, isType, isPrimitive, toJavaScriptType, toSchemaType, _toPromise, toObservable, inArray, xor, addClasses, copy, forEach, forEachCopy, hasOwn, mergeFilteredObject, uniqueItems, commonItems, fixTitle, toTitleCase, JsonPointer, JsonValidators, buildSchemaFromLayout, buildSchemaFromData, getFromSchema, removeRecursiveReferences, getInputType, checkInlineType, isInputRequired, updateInputOptions, getTitleMapFromOneOf, getControlValidators, resolveSchemaReferences, getSubSchema, combineAllOf, fixRequiredArrayProperties, convertSchemaToDraft6, mergeSchemas, buildFormGroupTemplate, buildFormGroup, formatFormData, getControl, setRequiredFields, buildLayout, buildLayoutFromSchema, mapLayout, getLayoutNode, buildTitleMap, dateToString, stringToDate, findDate, OrderableDirective, JsonSchemaFormComponent, JsonSchemaFormService, JsonSchemaFormModule, WidgetLibraryService, WidgetLibraryModule, AddReferenceComponent, OneOfComponent, ButtonComponent, CheckboxComponent, CheckboxesComponent, FileComponent, HiddenComponent, InputComponent, MessageComponent, NoneComponent, NumberComponent, RadiosComponent, RootComponent, SectionComponent, SelectComponent, SelectFrameworkComponent, SelectWidgetComponent, SubmitComponent, TabComponent, TabsComponent, TemplateComponent, TextareaComponent, FrameworkLibraryService, Framework, NoFramework, NoFrameworkComponent, NoFrameworkModule, MaterialDesignFramework, FlexLayoutRootComponent, FlexLayoutSectionComponent, MaterialAddReferenceComponent, MaterialOneOfComponent, MaterialButtonComponent, MaterialButtonGroupComponent, MaterialCheckboxComponent, MaterialCheckboxesComponent, MaterialChipListComponent, MaterialDatepickerComponent, MaterialFileComponent, MaterialInputComponent, MaterialNumberComponent, MaterialRadiosComponent, MaterialSelectComponent, MaterialSliderComponent, MaterialStepperComponent, MaterialTabsComponent, MaterialTextareaComponent, MaterialDesignFrameworkComponent, MaterialDesignFrameworkModule, Bootstrap3Framework, Bootstrap3FrameworkComponent, Bootstrap3FrameworkModule, Bootstrap4Framework, Bootstrap4FrameworkComponent, Bootstrap4FrameworkModule };
 //# sourceMappingURL=angular2-json-schema-form.js.map
