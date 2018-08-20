@@ -67,8 +67,7 @@ import { buildTitleMap, isArray } from '../../shared';
       </mat-select>
       <span matSuffix *ngIf="options?.suffix || options?.fieldAddonRight"
         [innerHTML]="options?.suffix || options?.fieldAddonRight"></span>
-      <mat-hint *ngIf="options?.description && (!options?.showErrors || !options?.errorMessage)"
-        align="end" [innerHTML]="options?.description"></mat-hint>
+      
     </mat-form-field>
     <mat-error *ngIf="options?.showErrors && options?.errorMessage"
       [innerHTML]="options?.errorMessage"></mat-error>`,
@@ -78,6 +77,10 @@ import { buildTitleMap, isArray } from '../../shared';
       .mat-form-field-infix { width: initial; }
   `],
 })
+
+// removed from before mat-autocomplete
+// <mat-hint *ngIf="options?.description && (!options?.showErrors || !options?.errorMessage)"
+//         align="end" [innerHTML]="options?.description"></mat-hint>
 export class MaterialSelectComponent implements OnInit {
   formControl: AbstractControl;
   controlName: string;
