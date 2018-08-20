@@ -25,6 +25,7 @@ import { TabComponent } from './tab.component';
 import { TabsComponent } from './tabs.component';
 import { TemplateComponent } from './template.component';
 import { TextareaComponent } from './textarea.component';
+import { DatetimepickerComponent } from './datetimepicker.component';
 
 @Injectable()
 export class WidgetLibraryService {
@@ -51,8 +52,9 @@ export class WidgetLibraryService {
 
   // Controlled text HTML 'input' form control widgets <input type="...">
     'color': 'text',
+    'icon': 'text',
     'date': 'text',
-    'datetime': 'text',
+    'datetime': DatetimepickerComponent,
     'datetime-local': 'text',
     'month': 'text',
     'range': 'number',

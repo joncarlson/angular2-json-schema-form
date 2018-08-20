@@ -35,7 +35,7 @@
   "scripts": {
     "ng": "ng",
     "serve": "ng serve",
-    "start": "ng serve",
+    "start": "ng serve --port=4300",
     "test": "ng test",
     "lint": "ng lint",
     "docs": "typedoc src/lib/src/",
@@ -52,7 +52,11 @@
   },
   "dependencies": {
     "ajv": "^6.4.0",
+    "angular-font-awesome": "^3.1.2",
+    "font-awesome": "^4.7.0",
     "lodash": "4.x",
+    "moment": "^2.22.2",
+    "ng2-date-picker": "^2.9.0",
     "ngx-ckeditor": "^0.3.1"
   },
   "peerDependencies": {

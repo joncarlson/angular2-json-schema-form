@@ -15,6 +15,9 @@
     "rxjs-compat": "^6.0.0-uncanny-rc.7",
     "zone.js": "^0.8.26"
   },
-  "devDependencies": {
+  "devDependencies": {},
+  "dependencies": {
+    "ng2-date-picker": "^2.9.0",
+    "ngx-ckeditor": "^0.3.2"
   }
 }

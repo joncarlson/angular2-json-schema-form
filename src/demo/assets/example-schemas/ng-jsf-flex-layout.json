@@ -23,6 +23,14 @@
         }
       },
       "birthday": { "type": "string" },
+      "birthday1": { "type": "string" },
+      "birthday2": { "type": "string" },
+      "iconcolor": {
+        "type": "string"
+      },
+      "icon": {
+        "type": "string"
+      },
       "notes": { "type": "string" },
       "phone_numbers": {
         "type": "array",
@@ -57,7 +65,11 @@
         }
       ]
     },
-    { "key": "birthday", "type": "date" },
+    { "key": "birthday", "type": "datetime", "format": "YYYY-MM-DD HH:mm:ss", "mode": "day" },
+    { "key": "birthday1", "type": "datetime", "format": "MMM YYYY", "mode": "month"},
+    { "key": "birthday2", "type": "datetime", "format": "HH:mm:ss", "mode": "time"},
+    { "key": "iconcolor", "type": "color", "enum" : ["#080808", "#808080"] },
+    { "key": "icon", "type": "icon", "enum": ["fa-copyright", "fa-download"] },
     { "key": "phone_numbers",
       "type": "array",
       "listItems": 3,
@@ -91,7 +103,10 @@
       "state": "NV",
       "zip_code": "89123"
     },
-    "birthday": "1999-09-09",
+    "birthday1": "Dec 2012",
+    "birthday2": "14:48:00",
+    "iconcolor": "#FFFFFF",
+    "icon": "fa-bell",
     "phone_numbers": [
       { "type": "cell", "number": "702-123-4567" },
       { "type": "work", "number": "702-987-6543" }

@@ -1,6 +1,7 @@
 {
   "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
   "dest": "../../dist/angular2-json-schema-form",
+  "whitelistedNonPeerDependencies": ["."],
   "lib": {
     "entryFile": "index.ts",
     "languageLevel": ["dom", "es2017"],
@@ -15,8 +16,15 @@
       "rxjs-compat/operators/filter": "rxjs.operators.filter",
       "rxjs-compat/Observable": "rxjs.Observable",
       "rxjs-compat/Subject": "rxjs.Subject",
+      "ngx-ckeditor": "ngx-ckeditor",
+      "ng2-date-picker": "ng2-date-picker",
       "hammerjs": "hammerjs",
-      "ajv": "Ajv"
+      "ajv": "Ajv",
+      "moment": "moment"
+    },
+    "externals": {
+      "ngx-ckeditor": "ngx-ckeditor",
+      "ng2-date-picker": "ng2-date-picker"
     }
   }
 }

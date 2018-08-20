@@ -10,9 +10,10 @@ import { BASIC_WIDGETS } from './index';
 
 
 import { CKEditorModule } from 'ngx-ckeditor';
+import { DpDatePickerModule } from 'ng2-date-picker';
 
 @NgModule({
-  imports:         [ CommonModule, FormsModule, ReactiveFormsModule, CKEditorModule ],
+  imports:         [ CommonModule, FormsModule, ReactiveFormsModule, CKEditorModule, DpDatePickerModule ],
   declarations:    [ ...BASIC_WIDGETS, OrderableDirective ],
   exports:         [ ...BASIC_WIDGETS, OrderableDirective ],
   entryComponents: [ ...BASIC_WIDGETS ],

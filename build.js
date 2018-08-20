@@ -59,10 +59,13 @@ return Promise.resolve()
         '@angular/forms',
         '@angular/material',
         '@angular/platform-browser',
+        'ngx-ckeditor',
+        'ng2-date-picker',
         'ajv',
         'hammerjs',
         'lodash',
-        'rxjs'
+        'rxjs',
+        'moment'
       ],
       plugins: [
         sourcemaps(),
@@ -93,10 +96,13 @@ return Promise.resolve()
           '@angular/forms': 'ng.forms',
           '@angular/material': 'ng.material',
           '@angular/platform-browser': 'ng.platformBrowser',
+          'ngx-ckeditor': 'ng.ngxCkeditor',
+          'ng2-date-picker': 'ng.ng2DatePicker',
           'ajv': 'Ajv',
           'hammerjs': 'hammerjs',
           'lodash': '_',
-          'rxjs': 'rxjs'
+          'rxjs': 'rxjs',
+          'moment': 'moment'
         }
       }
     };

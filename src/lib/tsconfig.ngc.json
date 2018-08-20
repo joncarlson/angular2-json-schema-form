@@ -3,5 +3,8 @@
   "angularCompilerOptions": {
     "annotateForClosureCompiler": false,
     "skipTemplateCodegen": true
+  },
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true
   }
 }

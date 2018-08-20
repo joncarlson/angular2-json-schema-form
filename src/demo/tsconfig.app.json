@@ -16,5 +16,9 @@
     "test.ts",
     "**/*.spec.ts"
   ],
+  "include": [
+    "./**/*.ts",
+    "../lib/src/*.ts"
+  ],
   "atom": { "rewriteTsconfig": false }
 }

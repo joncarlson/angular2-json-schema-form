@@ -2,6 +2,7 @@ import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import {
   MatAutocompleteModule, MatButtonModule, MatButtonToggleModule, MatCardModule,
   MatCheckboxModule, MatChipsModule, MatDatepickerModule, MatExpansionModule,
@@ -30,12 +31,13 @@ import { Framework } from '../framework';
 import { MATERIAL_FRAMEWORK_COMPONENTS } from './index';
 import { MaterialDesignFramework } from './material-design.framework';
 import { CKEditorModule } from 'ngx-ckeditor';
+import { DpDatePickerModule } from 'ng2-date-picker';
 
 
 @NgModule({
   imports: [
-    CommonModule, FormsModule, ReactiveFormsModule, FlexLayoutModule,
-    ...ANGULAR_MATERIAL_MODULES, WidgetLibraryModule, CKEditorModule
+    CommonModule, FormsModule, ReactiveFormsModule, FlexLayoutModule, AngularFontAwesomeModule,
+    ...ANGULAR_MATERIAL_MODULES, WidgetLibraryModule, CKEditorModule, DpDatePickerModule
   ],
   declarations:    [ ...MATERIAL_FRAMEWORK_COMPONENTS ],
   exports:         [ ...MATERIAL_FRAMEWORK_COMPONENTS ],
