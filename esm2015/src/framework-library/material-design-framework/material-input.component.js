@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { JsonSchemaFormService } from '../../json-schema-form.service';
-//removed from before mat-autocomplete
+// removed from before mat-autocomplete
 // <mat-hint *ngIf="options?.description && (!options?.showErrors || !options?.errorMessage)"
 //         align="end" [innerHTML]="options?.description"></mat-hint>
 export class MaterialInputComponent {
