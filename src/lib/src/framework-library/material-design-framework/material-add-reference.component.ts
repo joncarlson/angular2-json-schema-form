@@ -6,13 +6,14 @@ import { JsonSchemaFormService } from '../../json-schema-form.service';
 @Component({
   selector: 'material-add-reference-widget',
   template: `
-    <section [class]="options?.htmlClass || ''" align="end">
-      <button mat-raised-button *ngIf="showAddButton"
+    <section [class]="options?.htmlClass || ''" align="start">
+      <button mat-mini-fab *ngIf="showAddButton" 
+        style="margin-bottom: 10px;"
         [color]="options?.color || 'accent'"
         [disabled]="options?.readonly"
-        (click)="addItem($event)">
-        <span *ngIf="options?.icon" [class]="options?.icon"></span>
-        <span *ngIf="options?.title" [innerHTML]="buttonText"></span>
+        (click)="addItem($event)"
+        matTooltip="{{options?.title}}">
+        <mat-icon>add</mat-icon>
       </button>
     </section>`,
   changeDetection: ChangeDetectionStrategy.Default,

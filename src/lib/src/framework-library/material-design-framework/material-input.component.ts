@@ -22,7 +22,7 @@ import { JsonSchemaFormService } from '../../json-schema-form.service';
         [readonly]="options?.readonly ? 'readonly' : null"
         [id]="'control' + layoutNode?._id"
         [name]="controlName"
-        [placeholder]="options?.notitle ? options?.placeholder : options?.title"
+        [placeholder]="options?.notitle ? options?.description : options?.title"
         [required]="options?.required"
         [style.width]="'100%'"
         [type]="layoutNode?.type"
@@ -36,7 +36,7 @@ import { JsonSchemaFormService } from '../../json-schema-form.service';
         [disabled]="controlDisabled"
         [id]="'control' + layoutNode?._id"
         [name]="controlName"
-        [placeholder]="options?.notitle ? options?.placeholder : options?.title"
+        [placeholder]="options?.notitle ? options?.description : options?.title"
         [readonly]="options?.readonly ? 'readonly' : null"
         [required]="options?.required"
         [style.width]="'100%'"
@@ -46,8 +46,7 @@ import { JsonSchemaFormService } from '../../json-schema-form.service';
         (blur)="options.showErrors = true">
       <span matSuffix *ngIf="options?.suffix || options?.fieldAddonRight"
         [innerHTML]="options?.suffix || options?.fieldAddonRight"></span>
-      <mat-hint *ngIf="options?.description && (!options?.showErrors || !options?.errorMessage)"
-        align="end" [innerHTML]="options?.description"></mat-hint>
+      
       <mat-autocomplete *ngIf="options?.typeahead?.source">
         <mat-option *ngFor="let word of options?.typeahead?.source"
           [value]="word">{{word}}</mat-option>
@@ -61,6 +60,10 @@ import { JsonSchemaFormService } from '../../json-schema-form.service';
       .mat-form-field-infix { width: initial; }
   `],
 })
+
+//removed from before mat-autocomplete
+// <mat-hint *ngIf="options?.description && (!options?.showErrors || !options?.errorMessage)"
+//         align="end" [innerHTML]="options?.description"></mat-hint>
 export class MaterialInputComponent implements OnInit {
   formControl: AbstractControl;
   controlName: string;
