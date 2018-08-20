@@ -5686,7 +5686,7 @@
                     if (newNode.options.addable !== false &&
                         newNode.options.minItems < newNode.options.maxItems &&
                         (newNode.items[newNode.items.length - 1] || {}).type !== '$ref') {
-                        var buttonText = 'Add';
+                        var buttonText = 'Add another to ';
                         if (newNode.options.title) {
                             if (/^add\b/i.test(newNode.options.title)) {
                                 buttonText = newNode.options.title;
@@ -6026,7 +6026,7 @@
                     newNode.options.minItems < newNode.options.maxItems &&
                     (newNode.items[newNode.items.length - 1] || {}).type !== '$ref') {
                     var buttonText = ((jsf.layoutRefLibrary[itemRefPointer] || {}).options || {}).title;
-                    var prefix = buttonText ? 'Add ' : 'Add to ';
+                    var prefix = buttonText ? 'Add another to' : 'Add to ';
                     if (!buttonText) {
                         buttonText = schema.title || fixTitle(JsonPointer.toKey(dataPointer));
                     }
@@ -6201,7 +6201,7 @@
             });
             Object.assign(newLayoutNode.options, {
                 removable: false,
-                title: 'Add ' + newLayoutNode.$ref,
+                title: 'Add another to ' + newLayoutNode.$ref,
             });
             return newLayoutNode;
             // Otherwise, return referenced layout
@@ -6772,7 +6772,7 @@
                     // Number of list items to initially add to arrays with no default value
                     addable: true,
                     // Allow adding items to an array or $ref point?
-                    orderable: true,
+                    orderable: false,
                     // Allow reordering items within an array?
                     removable: true,
                     // Allow removing items from an array or $ref point?
@@ -7366,6 +7366,16 @@
             // Add the new form control to the parent formArray or formGroup
             if (ctx.layoutNode.arrayItem) {
                 // Add new array item to formArray
+                // const formArray = <FormArray>this.getFormControlGroup(ctx);
+                // formArray.insert(0, newFormGroup);
+                // formArray.updateValueAndValidity();
+                // (<FormArray>this.getFormControlGroup(ctx)).controls[name].unshift(newFormGroup);
+                // console.log(this.getFormControlGroup(ctx));
+                // const formArray = <FormArray>this.getFormControlGroup(ctx);
+                // formArray.insert(0, newFormGroup); 
+                // formArray.updateValueAndValidity();      
+                // (<FormArray>this.getFormControlGroup(ctx)).controls[name].unshift(newFormGroup);
+                // console.log(this.getFormControlGroup(ctx));
                 this.getFormControlGroup(ctx).push(newFormGroup);
             }
             else {

@@ -90,7 +90,7 @@ var JsonSchemaFormService = /** @class */ (function () {
                 // Number of list items to initially add to arrays with no default value
                 addable: true,
                 // Allow adding items to an array or $ref point?
-                orderable: true,
+                orderable: false,
                 // Allow reordering items within an array?
                 removable: true,
                 // Allow removing items from an array or $ref point?
@@ -619,6 +619,16 @@ var JsonSchemaFormService = /** @class */ (function () {
         // Add the new form control to the parent formArray or formGroup
         if (ctx.layoutNode.arrayItem) {
             // Add new array item to formArray
+            // const formArray = <FormArray>this.getFormControlGroup(ctx);
+            // formArray.insert(0, newFormGroup);
+            // formArray.updateValueAndValidity();
+            // (<FormArray>this.getFormControlGroup(ctx)).controls[name].unshift(newFormGroup);
+            // console.log(this.getFormControlGroup(ctx));
+            // const formArray = <FormArray>this.getFormControlGroup(ctx);
+            // formArray.insert(0, newFormGroup); 
+            // formArray.updateValueAndValidity();      
+            // (<FormArray>this.getFormControlGroup(ctx)).controls[name].unshift(newFormGroup);
+            // console.log(this.getFormControlGroup(ctx));
             this.getFormControlGroup(ctx).push(newFormGroup);
         }
         else {
