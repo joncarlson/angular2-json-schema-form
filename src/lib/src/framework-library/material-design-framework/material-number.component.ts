@@ -46,8 +46,7 @@ import { JsonSchemaFormService } from '../../json-schema-form.service';
         [innerHTML]="options?.suffix || options?.fieldAddonRight"></span>
       <mat-hint *ngIf="layoutNode?.type === 'range'" align="start"
         [innerHTML]="controlValue"></mat-hint>
-      <mat-hint *ngIf="options?.description && (!options?.showErrors || !options?.errorMessage)"
-        align="end" [innerHTML]="options?.description"></mat-hint>
+      
     </mat-form-field>
     <mat-error *ngIf="options?.showErrors && options?.errorMessage"
       [innerHTML]="options?.errorMessage"></mat-error>`,
@@ -57,6 +56,10 @@ import { JsonSchemaFormService } from '../../json-schema-form.service';
       .mat-form-field-infix { width: initial; }
   `],
 })
+
+// removed from before mat-autocomplete
+// <mat-hint *ngIf="options?.description && (!options?.showErrors || !options?.errorMessage)"
+//         align="end" [innerHTML]="options?.description"></mat-hint>
 export class MaterialNumberComponent implements OnInit {
   formControl: AbstractControl;
   controlName: string;
