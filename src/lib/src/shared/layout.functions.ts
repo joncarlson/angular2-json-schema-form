@@ -378,7 +378,7 @@ export function buildLayout(jsf, widgetLibrary) {
           newNode.options.minItems < newNode.options.maxItems &&
           (newNode.items[newNode.items.length - 1] || {}).type !== '$ref'
         ) {
-          let buttonText = 'Add';
+          let buttonText = 'Add another to ';
           if (newNode.options.title) {
             if (/^add\b/i.test(newNode.options.title)) {
               buttonText = newNode.options.title;
@@ -726,7 +726,7 @@ export function buildLayoutFromSchema(
       ) {
         let buttonText =
           ((jsf.layoutRefLibrary[itemRefPointer] || {}).options || {}).title;
-        const prefix = buttonText ? 'Add ' : 'Add to ';
+        const prefix = buttonText ? 'Add another to' : 'Add to ';
         if (!buttonText) {
           buttonText = schema.title || fixTitle(JsonPointer.toKey(dataPointer));
         }
@@ -889,7 +889,7 @@ export function getLayoutNode(
     });
     Object.assign(newLayoutNode.options, {
       removable: false,
-      title: 'Add ' + newLayoutNode.$ref,
+      title: 'Add another to ' + newLayoutNode.$ref,
     });
     return newLayoutNode;
 

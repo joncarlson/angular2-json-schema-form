@@ -103,7 +103,7 @@ export class JsonSchemaFormService {
     defautWidgetOptions: { // Default options for form control widgets
       listItems: 1, // Number of list items to initially add to arrays with no default value
       addable: true, // Allow adding items to an array or $ref point?
-      orderable: true, // Allow reordering items within an array?
+      orderable: false, // Allow reordering items within an array?
       removable: true, // Allow removing items from an array or $ref point?
       enableErrorState: true, // Apply 'has-error' class when field fails validation?
       // disableErrorState: false, // Don't apply 'has-error' class when field fails validation?
@@ -601,12 +601,17 @@ export class JsonSchemaFormService {
       !ctx.layoutNode || !isDefined(ctx.layoutNode.$ref) ||
       !hasValue(ctx.dataIndex) || !hasValue(ctx.layoutIndex)
     ) { return false; }
-
+    
     // Create a new Angular form control from a template in templateRefLibrary
     const newFormGroup = buildFormGroup(this.templateRefLibrary[ctx.layoutNode.$ref]);
 
     // Add the new form control to the parent formArray or formGroup
-    if (ctx.layoutNode.arrayItem) { // Add new array item to formArray
+    if (ctx.layoutNode.arrayItem) { // Add new array item to formArray    
+      // const formArray = <FormArray>this.getFormControlGroup(ctx);
+      // formArray.insert(0, newFormGroup); 
+      // formArray.updateValueAndValidity();      
+      // (<FormArray>this.getFormControlGroup(ctx)).controls[name].unshift(newFormGroup);
+      // console.log(this.getFormControlGroup(ctx));
       (<FormArray>this.getFormControlGroup(ctx)).push(newFormGroup);
     } else { // Add new $ref item to formGroup
       (<FormGroup>this.getFormControlGroup(ctx))
