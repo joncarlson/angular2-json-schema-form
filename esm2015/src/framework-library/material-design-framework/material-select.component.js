@@ -1,6 +1,9 @@
 import { Component, Input } from '@angular/core';
 import { JsonSchemaFormService } from '../../json-schema-form.service';
 import { buildTitleMap, isArray } from '../../shared';
+// removed from before mat-autocomplete
+// <mat-hint *ngIf="options?.description && (!options?.showErrors || !options?.errorMessage)"
+//         align="end" [innerHTML]="options?.description"></mat-hint>
 export class MaterialSelectComponent {
     constructor(jsf) {
         this.jsf = jsf;
@@ -86,8 +89,7 @@ MaterialSelectComponent.decorators = [
       </mat-select>
       <span matSuffix *ngIf="options?.suffix || options?.fieldAddonRight"
         [innerHTML]="options?.suffix || options?.fieldAddonRight"></span>
-      <mat-hint *ngIf="options?.description && (!options?.showErrors || !options?.errorMessage)"
-        align="end" [innerHTML]="options?.description"></mat-hint>
+      
     </mat-form-field>
     <mat-error *ngIf="options?.showErrors && options?.errorMessage"
       [innerHTML]="options?.errorMessage"></mat-error>`,
