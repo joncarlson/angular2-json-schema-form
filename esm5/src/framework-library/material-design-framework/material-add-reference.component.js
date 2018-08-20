@@ -38,7 +38,7 @@ export { MaterialAddReferenceComponent };
 MaterialAddReferenceComponent.decorators = [
     { type: Component, args: [{
                 selector: 'material-add-reference-widget',
-                template: "\n    <section [class]=\"options?.htmlClass || ''\" align=\"end\">\n      <button mat-raised-button *ngIf=\"showAddButton\"\n        [color]=\"options?.color || 'accent'\"\n        [disabled]=\"options?.readonly\"\n        (click)=\"addItem($event)\">\n        <span *ngIf=\"options?.icon\" [class]=\"options?.icon\"></span>\n        <span *ngIf=\"options?.title\" [innerHTML]=\"buttonText\"></span>\n      </button>\n    </section>",
+                template: "\n    <section [class]=\"options?.htmlClass || ''\" align=\"start\">\n      <button mat-mini-fab *ngIf=\"showAddButton\" \n        style=\"margin-bottom: 10px;\"\n        [color]=\"options?.color || 'accent'\"\n        [disabled]=\"options?.readonly\"\n        (click)=\"addItem($event)\"\n        matTooltip=\"{{options?.title}}\">\n        <mat-icon>add</mat-icon>\n      </button>\n    </section>",
                 changeDetection: ChangeDetectionStrategy.Default,
             },] },
 ];

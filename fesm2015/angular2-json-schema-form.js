@@ -9427,13 +9427,14 @@ MaterialAddReferenceComponent.decorators = [
     { type: Component, args: [{
                 selector: 'material-add-reference-widget',
                 template: `
-    <section [class]="options?.htmlClass || ''" align="end">
-      <button mat-raised-button *ngIf="showAddButton"
+    <section [class]="options?.htmlClass || ''" align="start">
+      <button mat-mini-fab *ngIf="showAddButton" 
+        style="margin-bottom: 10px;"
         [color]="options?.color || 'accent'"
         [disabled]="options?.readonly"
-        (click)="addItem($event)">
-        <span *ngIf="options?.icon" [class]="options?.icon"></span>
-        <span *ngIf="options?.title" [innerHTML]="buttonText"></span>
+        (click)="addItem($event)"
+        matTooltip="{{options?.title}}">
+        <mat-icon>add</mat-icon>
       </button>
     </section>`,
                 changeDetection: ChangeDetectionStrategy.Default,
@@ -10164,6 +10165,9 @@ MaterialFileComponent.propDecorators = {
     "dataIndex": [{ type: Input },],
 };
 
+//removed from before mat-autocomplete
+// <mat-hint *ngIf="options?.description && (!options?.showErrors || !options?.errorMessage)"
+//         align="end" [innerHTML]="options?.description"></mat-hint>
 class MaterialInputComponent {
     constructor(jsf) {
         this.jsf = jsf;
@@ -10202,7 +10206,7 @@ MaterialInputComponent.decorators = [
         [readonly]="options?.readonly ? 'readonly' : null"
         [id]="'control' + layoutNode?._id"
         [name]="controlName"
-        [placeholder]="options?.notitle ? options?.placeholder : options?.title"
+        [placeholder]="options?.notitle ? options?.description : options?.title"
         [required]="options?.required"
         [style.width]="'100%'"
         [type]="layoutNode?.type"
@@ -10216,7 +10220,7 @@ MaterialInputComponent.decorators = [
         [disabled]="controlDisabled"
         [id]="'control' + layoutNode?._id"
         [name]="controlName"
-        [placeholder]="options?.notitle ? options?.placeholder : options?.title"
+        [placeholder]="options?.notitle ? options?.description : options?.title"
         [readonly]="options?.readonly ? 'readonly' : null"
         [required]="options?.required"
         [style.width]="'100%'"
@@ -10226,8 +10230,7 @@ MaterialInputComponent.decorators = [
         (blur)="options.showErrors = true">
       <span matSuffix *ngIf="options?.suffix || options?.fieldAddonRight"
         [innerHTML]="options?.suffix || options?.fieldAddonRight"></span>
-      <mat-hint *ngIf="options?.description && (!options?.showErrors || !options?.errorMessage)"
-        align="end" [innerHTML]="options?.description"></mat-hint>
+      
       <mat-autocomplete *ngIf="options?.typeahead?.source">
         <mat-option *ngFor="let word of options?.typeahead?.source"
           [value]="word">{{word}}</mat-option>
