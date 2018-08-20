@@ -6064,17 +6064,17 @@
             }
             else if (newNode.name && !/^\d+$/.test(newNode.name)) {
                 buttonText =
-                    (/^add\b/i.test(newNode.name) ? '' : 'Add ') + fixTitle(newNode.name);
+                    (/^add\b/i.test(newNode.name) ? '' : 'Add another to ') + fixTitle(newNode.name);
                 // If newNode doesn't have a title, look for title of parent array item
             }
             else {
                 var parentSchema = JsonPointer.get(jsf.schema, schemaPointer, 0, -1);
                 if (hasOwn(parentSchema, 'title')) {
-                    buttonText = 'Add to ' + parentSchema.title;
+                    buttonText = 'Add another to ' + parentSchema.title;
                 }
                 else {
                     var pointerArray = JsonPointer.parse(newNode.dataPointer);
-                    buttonText = 'Add to ' + fixTitle(pointerArray[pointerArray.length - 2]);
+                    buttonText = 'Add another to ' + fixTitle(pointerArray[pointerArray.length - 2]);
                 }
             }
             Object.assign(newNode, {
