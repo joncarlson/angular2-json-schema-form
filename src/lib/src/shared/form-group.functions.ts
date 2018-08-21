@@ -505,7 +505,7 @@ export function getControl(
   // or formGroup.get() failed to return the control,
   // search the formGroup object for dataPointer's control
   let subGroup = formGroup;
-  for (const key of dataPointerArray) {
+  for (const key of dataPointerArray) {    
     if (hasOwn(subGroup, 'controls')) { subGroup = subGroup.controls; }
     if (isArray(subGroup) && (key === '-')) {
       subGroup = subGroup[subGroup.length - 1];

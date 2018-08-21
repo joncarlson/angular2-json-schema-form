@@ -378,7 +378,7 @@ export function buildLayout(jsf, widgetLibrary) {
           newNode.options.minItems < newNode.options.maxItems &&
           (newNode.items[newNode.items.length - 1] || {}).type !== '$ref'
         ) {
-          let buttonText = 'Add another to ';
+          let buttonText = 'Add another to';
           if (newNode.options.title) {
             if (/^add\b/i.test(newNode.options.title)) {
               buttonText = newNode.options.title;

@@ -10,7 +10,7 @@
     "@angular/forms": "^6.0.0-rc.5",
     "@angular/material": "^6.0.0-rc.12",
     "ajv": "^6.4.0",
-    "lodash": "4.x",
+    "lodash": "^4.17.0",
     "rxjs": "^6.0.0-uncanny-rc.7",
     "rxjs-compat": "^6.0.0-uncanny-rc.7",
     "zone.js": "^0.8.26"
