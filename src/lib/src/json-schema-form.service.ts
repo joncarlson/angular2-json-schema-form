@@ -73,6 +73,8 @@ export class JsonSchemaFormService {
 
   language = 'en-US'; // Does the form include a recursive reference to itself?
 
+  defaultLayoutOptions: any = {};
+
   // Default global form options
   defaultFormOptions: any = {
     addSubmit: 'auto', // Add a submit button if layout does not have one?

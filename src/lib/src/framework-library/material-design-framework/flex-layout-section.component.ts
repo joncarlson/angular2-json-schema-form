@@ -183,6 +183,9 @@ export class FlexLayoutSectionComponent implements OnInit {
       default: // 'div', 'flex', 'tab', 'conditional', 'actions'
         this.containerType = 'div';
     }
+
+    // apply defaults to section options
+    this.options = Object.assign(this.jsf.defaultLayoutOptions, this.options)
   }
 
   toggleExpanded() {

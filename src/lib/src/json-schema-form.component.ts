@@ -99,6 +99,7 @@ export class JsonSchemaFormComponent implements ControlValueAccessor, OnChanges,
   // Recommended inputs
   @Input() schema: any; // The JSON Schema
   @Input() layout: any[]; // The form layout
+  @Input() defaultLayoutOptions: any; // default options for the form layout
   @Input() data: any; // The form data
   @Input() options: any; // The global form options
   @Input() framework: any|string; // The framework to load
@@ -304,6 +305,7 @@ export class JsonSchemaFormComponent implements ControlValueAccessor, OnChanges,
       this.initializeSchema();    // Update schema, schemaRefLibrary,
                                   // schemaRecursiveRefMap, & dataRecursiveRefMap
       this.initializeLayout();    // Update layout, layoutRefLibrary,
+      this.initializeLayoutDefaults();
       this.initializeData();      // Update formValues
       this.activateForm();        // Update dataMap, templateRefLibrary,
                                   // formGroupTemplate, formGroup
@@ -630,6 +632,10 @@ export class JsonSchemaFormComponent implements ControlValueAccessor, OnChanges,
         }
       });
     }
+  }
+
+  private initializeLayoutDefaults() {
+    this.jsf.defaultLayoutOptions = this.defaultLayoutOptions;
   }
 
   /**
