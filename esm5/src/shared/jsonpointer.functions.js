@@ -6,6 +6,19 @@ var JsonPointer = /** @class */ (function () {
     function JsonPointer() {
     }
     /**
+     * 'get' function
+     *
+     * Uses a JSON Pointer to retrieve a value from an object.
+     *
+     * @param  { object } object - Object to get value from
+     * @param  { Pointer } pointer - JSON Pointer (string or array)
+     * @param  { number = 0 } startSlice - Zero-based index of first Pointer key to use
+     * @param  { number } endSlice - Zero-based index of last Pointer key to use
+     * @param  { boolean = false } getBoolean - Return only true or false?
+     * @param  { boolean = false } errors - Show error if not found?
+     * @return { object } - Located value (or true or false if getBoolean = true)
+     */
+    /**
        * 'get' function
        *
        * Uses a JSON Pointer to retrieve a value from an object.
@@ -18,7 +31,20 @@ var JsonPointer = /** @class */ (function () {
        * @param  { boolean = false } errors - Show error if not found?
        * @return { object } - Located value (or true or false if getBoolean = true)
        */
-    JsonPointer.get = function (object, pointer, startSlice, endSlice, getBoolean, errors) {
+    JsonPointer.get = /**
+       * 'get' function
+       *
+       * Uses a JSON Pointer to retrieve a value from an object.
+       *
+       * @param  { object } object - Object to get value from
+       * @param  { Pointer } pointer - JSON Pointer (string or array)
+       * @param  { number = 0 } startSlice - Zero-based index of first Pointer key to use
+       * @param  { number } endSlice - Zero-based index of last Pointer key to use
+       * @param  { boolean = false } getBoolean - Return only true or false?
+       * @param  { boolean = false } errors - Show error if not found?
+       * @return { object } - Located value (or true or false if getBoolean = true)
+       */
+    function (object, pointer, startSlice, endSlice, getBoolean, errors) {
         if (startSlice === void 0) { startSlice = 0; }
         if (endSlice === void 0) { endSlice = null; }
         if (getBoolean === void 0) { getBoolean = false; }
@@ -82,6 +108,19 @@ var JsonPointer = /** @class */ (function () {
         var e_1, _a;
     };
     /**
+     * 'getCopy' function
+     *
+     * Uses a JSON Pointer to deeply clone a value from an object.
+     *
+     * @param  { object } object - Object to get value from
+     * @param  { Pointer } pointer - JSON Pointer (string or array)
+     * @param  { number = 0 } startSlice - Zero-based index of first Pointer key to use
+     * @param  { number } endSlice - Zero-based index of last Pointer key to use
+     * @param  { boolean = false } getBoolean - Return only true or false?
+     * @param  { boolean = false } errors - Show error if not found?
+     * @return { object } - Located value (or true or false if getBoolean = true)
+     */
+    /**
        * 'getCopy' function
        *
        * Uses a JSON Pointer to deeply clone a value from an object.
@@ -94,7 +133,20 @@ var JsonPointer = /** @class */ (function () {
        * @param  { boolean = false } errors - Show error if not found?
        * @return { object } - Located value (or true or false if getBoolean = true)
        */
-    JsonPointer.getCopy = function (object, pointer, startSlice, endSlice, getBoolean, errors) {
+    JsonPointer.getCopy = /**
+       * 'getCopy' function
+       *
+       * Uses a JSON Pointer to deeply clone a value from an object.
+       *
+       * @param  { object } object - Object to get value from
+       * @param  { Pointer } pointer - JSON Pointer (string or array)
+       * @param  { number = 0 } startSlice - Zero-based index of first Pointer key to use
+       * @param  { number } endSlice - Zero-based index of last Pointer key to use
+       * @param  { boolean = false } getBoolean - Return only true or false?
+       * @param  { boolean = false } errors - Show error if not found?
+       * @return { object } - Located value (or true or false if getBoolean = true)
+       */
+    function (object, pointer, startSlice, endSlice, getBoolean, errors) {
         if (startSlice === void 0) { startSlice = 0; }
         if (endSlice === void 0) { endSlice = null; }
         if (getBoolean === void 0) { getBoolean = false; }
@@ -102,6 +154,18 @@ var JsonPointer = /** @class */ (function () {
         var objectToCopy = this.get(object, pointer, startSlice, endSlice, getBoolean, errors);
         return this.forEachDeepCopy(objectToCopy);
     };
+    /**
+     * 'getFirst' function
+     *
+     * Takes an array of JSON Pointers and objects,
+     * checks each object for a value specified by the pointer,
+     * and returns the first value found.
+     *
+     * @param  { [object, pointer][] } items - Array of objects and pointers to check
+     * @param  { any = null } defaultValue - Value to return if nothing found
+     * @param  { boolean = false } getCopy - Return a copy instead?
+     * @return { any } - First value found
+     */
     /**
        * 'getFirst' function
        *
@@ -114,7 +178,19 @@ var JsonPointer = /** @class */ (function () {
        * @param  { boolean = false } getCopy - Return a copy instead?
        * @return { any } - First value found
        */
-    JsonPointer.getFirst = function (items, defaultValue, getCopy) {
+    JsonPointer.getFirst = /**
+       * 'getFirst' function
+       *
+       * Takes an array of JSON Pointers and objects,
+       * checks each object for a value specified by the pointer,
+       * and returns the first value found.
+       *
+       * @param  { [object, pointer][] } items - Array of objects and pointers to check
+       * @param  { any = null } defaultValue - Value to return if nothing found
+       * @param  { boolean = false } getCopy - Return a copy instead?
+       * @return { any } - First value found
+       */
+    function (items, defaultValue, getCopy) {
         if (defaultValue === void 0) { defaultValue = null; }
         if (getCopy === void 0) { getCopy = false; }
         if (isEmpty(items)) {
@@ -183,6 +259,15 @@ var JsonPointer = /** @class */ (function () {
         var e_2, _a, e_3, _c;
     };
     /**
+     * 'getFirstCopy' function
+     *
+     * Similar to getFirst, but always returns a copy.
+     *
+     * @param  { [object, pointer][] } items - Array of objects and pointers to check
+     * @param  { any = null } defaultValue - Value to return if nothing found
+     * @return { any } - Copy of first value found
+     */
+    /**
        * 'getFirstCopy' function
        *
        * Similar to getFirst, but always returns a copy.
@@ -191,11 +276,41 @@ var JsonPointer = /** @class */ (function () {
        * @param  { any = null } defaultValue - Value to return if nothing found
        * @return { any } - Copy of first value found
        */
-    JsonPointer.getFirstCopy = function (items, defaultValue) {
+    JsonPointer.getFirstCopy = /**
+       * 'getFirstCopy' function
+       *
+       * Similar to getFirst, but always returns a copy.
+       *
+       * @param  { [object, pointer][] } items - Array of objects and pointers to check
+       * @param  { any = null } defaultValue - Value to return if nothing found
+       * @return { any } - Copy of first value found
+       */
+    function (items, defaultValue) {
         if (defaultValue === void 0) { defaultValue = null; }
         var firstCopy = this.getFirst(items, defaultValue, true);
         return firstCopy;
     };
+    /**
+     * 'set' function
+     *
+     * Uses a JSON Pointer to set a value on an object.
+     * Also creates any missing sub objects or arrays to contain that value.
+     *
+     * If the optional fourth parameter is TRUE and the inner-most container
+     * is an array, the function will insert the value as a new item at the
+     * specified location in the array, rather than overwriting the existing
+     * value (if any) at that location.
+     *
+     * So set([1, 2, 3], '/1', 4) => [1, 4, 3]
+     * and
+     * So set([1, 2, 3], '/1', 4, true) => [1, 4, 2, 3]
+     *
+     * @param  { object } object - The object to set value in
+     * @param  { Pointer } pointer - The JSON Pointer (string or array)
+     * @param  { any } value - The new value to set
+     * @param  { boolean } insert - insert value?
+     * @return { object } - The original object, modified with the set value
+     */
     /**
        * 'set' function
        *
@@ -217,7 +332,28 @@ var JsonPointer = /** @class */ (function () {
        * @param  { boolean } insert - insert value?
        * @return { object } - The original object, modified with the set value
        */
-    JsonPointer.set = function (object, pointer, value, insert) {
+    JsonPointer.set = /**
+       * 'set' function
+       *
+       * Uses a JSON Pointer to set a value on an object.
+       * Also creates any missing sub objects or arrays to contain that value.
+       *
+       * If the optional fourth parameter is TRUE and the inner-most container
+       * is an array, the function will insert the value as a new item at the
+       * specified location in the array, rather than overwriting the existing
+       * value (if any) at that location.
+       *
+       * So set([1, 2, 3], '/1', 4) => [1, 4, 3]
+       * and
+       * So set([1, 2, 3], '/1', 4, true) => [1, 4, 2, 3]
+       *
+       * @param  { object } object - The object to set value in
+       * @param  { Pointer } pointer - The JSON Pointer (string or array)
+       * @param  { any } value - The new value to set
+       * @param  { boolean } insert - insert value?
+       * @return { object } - The original object, modified with the set value
+       */
+    function (object, pointer, value, insert) {
         if (insert === void 0) { insert = false; }
         var keyArray = this.parse(pointer);
         if (keyArray !== null && keyArray.length) {
@@ -256,6 +392,22 @@ var JsonPointer = /** @class */ (function () {
         return object;
     };
     /**
+     * 'setCopy' function
+     *
+     * Copies an object and uses a JSON Pointer to set a value on the copy.
+     * Also creates any missing sub objects or arrays to contain that value.
+     *
+     * If the optional fourth parameter is TRUE and the inner-most container
+     * is an array, the function will insert the value as a new item at the
+     * specified location in the array, rather than overwriting the existing value.
+     *
+     * @param  { object } object - The object to copy and set value in
+     * @param  { Pointer } pointer - The JSON Pointer (string or array)
+     * @param  { any } value - The value to set
+     * @param  { boolean } insert - insert value?
+     * @return { object } - The new object with the set value
+     */
+    /**
        * 'setCopy' function
        *
        * Copies an object and uses a JSON Pointer to set a value on the copy.
@@ -271,7 +423,23 @@ var JsonPointer = /** @class */ (function () {
        * @param  { boolean } insert - insert value?
        * @return { object } - The new object with the set value
        */
-    JsonPointer.setCopy = function (object, pointer, value, insert) {
+    JsonPointer.setCopy = /**
+       * 'setCopy' function
+       *
+       * Copies an object and uses a JSON Pointer to set a value on the copy.
+       * Also creates any missing sub objects or arrays to contain that value.
+       *
+       * If the optional fourth parameter is TRUE and the inner-most container
+       * is an array, the function will insert the value as a new item at the
+       * specified location in the array, rather than overwriting the existing value.
+       *
+       * @param  { object } object - The object to copy and set value in
+       * @param  { Pointer } pointer - The JSON Pointer (string or array)
+       * @param  { any } value - The value to set
+       * @param  { boolean } insert - insert value?
+       * @return { object } - The new object with the set value
+       */
+    function (object, pointer, value, insert) {
         if (insert === void 0) { insert = false; }
         var keyArray = this.parse(pointer);
         if (keyArray !== null) {
@@ -313,6 +481,16 @@ var JsonPointer = /** @class */ (function () {
         return object;
     };
     /**
+     * 'insert' function
+     *
+     * Calls 'set' with insert = TRUE
+     *
+     * @param  { object } object - object to insert value in
+     * @param  { Pointer } pointer - JSON Pointer (string or array)
+     * @param  { any } value - value to insert
+     * @return { object }
+     */
+    /**
        * 'insert' function
        *
        * Calls 'set' with insert = TRUE
@@ -322,10 +500,30 @@ var JsonPointer = /** @class */ (function () {
        * @param  { any } value - value to insert
        * @return { object }
        */
-    JsonPointer.insert = function (object, pointer, value) {
+    JsonPointer.insert = /**
+       * 'insert' function
+       *
+       * Calls 'set' with insert = TRUE
+       *
+       * @param  { object } object - object to insert value in
+       * @param  { Pointer } pointer - JSON Pointer (string or array)
+       * @param  { any } value - value to insert
+       * @return { object }
+       */
+    function (object, pointer, value) {
         var updatedObject = this.set(object, pointer, value, true);
         return updatedObject;
     };
+    /**
+     * 'insertCopy' function
+     *
+     * Calls 'setCopy' with insert = TRUE
+     *
+     * @param  { object } object - object to insert value in
+     * @param  { Pointer } pointer - JSON Pointer (string or array)
+     * @param  { any } value - value to insert
+     * @return { object }
+     */
     /**
        * 'insertCopy' function
        *
@@ -336,10 +534,29 @@ var JsonPointer = /** @class */ (function () {
        * @param  { any } value - value to insert
        * @return { object }
        */
-    JsonPointer.insertCopy = function (object, pointer, value) {
+    JsonPointer.insertCopy = /**
+       * 'insertCopy' function
+       *
+       * Calls 'setCopy' with insert = TRUE
+       *
+       * @param  { object } object - object to insert value in
+       * @param  { Pointer } pointer - JSON Pointer (string or array)
+       * @param  { any } value - value to insert
+       * @return { object }
+       */
+    function (object, pointer, value) {
         var updatedObject = this.setCopy(object, pointer, value, true);
         return updatedObject;
     };
+    /**
+     * 'remove' function
+     *
+     * Uses a JSON Pointer to remove a key and its attribute from an object
+     *
+     * @param  { object } object - object to delete attribute from
+     * @param  { Pointer } pointer - JSON Pointer (string or array)
+     * @return { object }
+     */
     /**
        * 'remove' function
        *
@@ -349,7 +566,16 @@ var JsonPointer = /** @class */ (function () {
        * @param  { Pointer } pointer - JSON Pointer (string or array)
        * @return { object }
        */
-    JsonPointer.remove = function (object, pointer) {
+    JsonPointer.remove = /**
+       * 'remove' function
+       *
+       * Uses a JSON Pointer to remove a key and its attribute from an object
+       *
+       * @param  { object } object - object to delete attribute from
+       * @param  { Pointer } pointer - JSON Pointer (string or array)
+       * @return { object }
+       */
+    function (object, pointer) {
         var keyArray = this.parse(pointer);
         if (keyArray !== null && keyArray.length) {
             var lastKey = keyArray.pop();
@@ -369,6 +595,15 @@ var JsonPointer = /** @class */ (function () {
         return object;
     };
     /**
+     * 'has' function
+     *
+     * Tests if an object has a value at the location specified by a JSON Pointer
+     *
+     * @param  { object } object - object to chek for value
+     * @param  { Pointer } pointer - JSON Pointer (string or array)
+     * @return { boolean }
+     */
+    /**
        * 'has' function
        *
        * Tests if an object has a value at the location specified by a JSON Pointer
@@ -377,10 +612,27 @@ var JsonPointer = /** @class */ (function () {
        * @param  { Pointer } pointer - JSON Pointer (string or array)
        * @return { boolean }
        */
-    JsonPointer.has = function (object, pointer) {
+    JsonPointer.has = /**
+       * 'has' function
+       *
+       * Tests if an object has a value at the location specified by a JSON Pointer
+       *
+       * @param  { object } object - object to chek for value
+       * @param  { Pointer } pointer - JSON Pointer (string or array)
+       * @return { boolean }
+       */
+    function (object, pointer) {
         var hasValue = this.get(object, pointer, 0, null, true);
         return hasValue;
     };
+    /**
+     * 'dict' function
+     *
+     * Returns a (pointer -> value) dictionary for an object
+     *
+     * @param  { object } object - The object to create a dictionary from
+     * @return { object } - The resulting dictionary object
+     */
     /**
        * 'dict' function
        *
@@ -389,7 +641,15 @@ var JsonPointer = /** @class */ (function () {
        * @param  { object } object - The object to create a dictionary from
        * @return { object } - The resulting dictionary object
        */
-    JsonPointer.dict = function (object) {
+    JsonPointer.dict = /**
+       * 'dict' function
+       *
+       * Returns a (pointer -> value) dictionary for an object
+       *
+       * @param  { object } object - The object to create a dictionary from
+       * @return { object } - The resulting dictionary object
+       */
+    function (object) {
         var results = {};
         this.forEachDeep(object, function (value, pointer) {
             if (typeof value !== 'object') {
@@ -398,6 +658,34 @@ var JsonPointer = /** @class */ (function () {
         });
         return results;
     };
+    /**
+     * 'forEachDeep' function
+     *
+     * Iterates over own enumerable properties of an object or items in an array
+     * and invokes an iteratee function for each key/value or index/value pair.
+     * By default, iterates over items within objects and arrays after calling
+     * the iteratee function on the containing object or array itself.
+     *
+     * The iteratee is invoked with three arguments: (value, pointer, rootObject),
+     * where pointer is a JSON pointer indicating the location of the current
+     * value within the root object, and rootObject is the root object initially
+     * submitted to th function.
+     *
+     * If a third optional parameter 'bottomUp' is set to TRUE, the iterator
+     * function will be called on sub-objects and arrays after being
+     * called on their contents, rather than before, which is the default.
+     *
+     * This function can also optionally be called directly on a sub-object by
+     * including optional 4th and 5th parameterss to specify the initial
+     * root object and pointer.
+     *
+     * @param  { object } object - the initial object or array
+     * @param  { (v: any, p?: string, o?: any) => any } function - iteratee function
+     * @param  { boolean = false } bottomUp - optional, set to TRUE to reverse direction
+     * @param  { object = object } rootObject - optional, root object or array
+     * @param  { string = '' } pointer - optional, JSON Pointer to object within rootObject
+     * @return { object } - The modified object
+     */
     /**
        * 'forEachDeep' function
        *
@@ -426,7 +714,35 @@ var JsonPointer = /** @class */ (function () {
        * @param  { string = '' } pointer - optional, JSON Pointer to object within rootObject
        * @return { object } - The modified object
        */
-    JsonPointer.forEachDeep = function (object, fn, bottomUp, pointer, rootObject) {
+    JsonPointer.forEachDeep = /**
+       * 'forEachDeep' function
+       *
+       * Iterates over own enumerable properties of an object or items in an array
+       * and invokes an iteratee function for each key/value or index/value pair.
+       * By default, iterates over items within objects and arrays after calling
+       * the iteratee function on the containing object or array itself.
+       *
+       * The iteratee is invoked with three arguments: (value, pointer, rootObject),
+       * where pointer is a JSON pointer indicating the location of the current
+       * value within the root object, and rootObject is the root object initially
+       * submitted to th function.
+       *
+       * If a third optional parameter 'bottomUp' is set to TRUE, the iterator
+       * function will be called on sub-objects and arrays after being
+       * called on their contents, rather than before, which is the default.
+       *
+       * This function can also optionally be called directly on a sub-object by
+       * including optional 4th and 5th parameterss to specify the initial
+       * root object and pointer.
+       *
+       * @param  { object } object - the initial object or array
+       * @param  { (v: any, p?: string, o?: any) => any } function - iteratee function
+       * @param  { boolean = false } bottomUp - optional, set to TRUE to reverse direction
+       * @param  { object = object } rootObject - optional, root object or array
+       * @param  { string = '' } pointer - optional, JSON Pointer to object within rootObject
+       * @return { object } - The modified object
+       */
+    function (object, fn, bottomUp, pointer, rootObject) {
         if (fn === void 0) { fn = function (v) { return v; }; }
         if (bottomUp === void 0) { bottomUp = false; }
         if (pointer === void 0) { pointer = ''; }
@@ -460,6 +776,20 @@ var JsonPointer = /** @class */ (function () {
         var e_4, _c;
     };
     /**
+     * 'forEachDeepCopy' function
+     *
+     * Similar to forEachDeep, but returns a copy of the original object, with
+     * the same keys and indexes, but with values replaced with the result of
+     * the iteratee function.
+     *
+     * @param  { object } object - the initial object or array
+     * @param  { (v: any, k?: string, o?: any, p?: any) => any } function - iteratee function
+     * @param  { boolean = false } bottomUp - optional, set to TRUE to reverse direction
+     * @param  { object = object } rootObject - optional, root object or array
+     * @param  { string = '' } pointer - optional, JSON Pointer to object within rootObject
+     * @return { object } - The copied object
+     */
+    /**
        * 'forEachDeepCopy' function
        *
        * Similar to forEachDeep, but returns a copy of the original object, with
@@ -473,7 +803,21 @@ var JsonPointer = /** @class */ (function () {
        * @param  { string = '' } pointer - optional, JSON Pointer to object within rootObject
        * @return { object } - The copied object
        */
-    JsonPointer.forEachDeepCopy = function (object, fn, bottomUp, pointer, rootObject) {
+    JsonPointer.forEachDeepCopy = /**
+       * 'forEachDeepCopy' function
+       *
+       * Similar to forEachDeep, but returns a copy of the original object, with
+       * the same keys and indexes, but with values replaced with the result of
+       * the iteratee function.
+       *
+       * @param  { object } object - the initial object or array
+       * @param  { (v: any, k?: string, o?: any, p?: any) => any } function - iteratee function
+       * @param  { boolean = false } bottomUp - optional, set to TRUE to reverse direction
+       * @param  { object = object } rootObject - optional, root object or array
+       * @param  { string = '' } pointer - optional, JSON Pointer to object within rootObject
+       * @return { object } - The copied object
+       */
+    function (object, fn, bottomUp, pointer, rootObject) {
         if (fn === void 0) { fn = function (v) { return v; }; }
         if (bottomUp === void 0) { bottomUp = false; }
         if (pointer === void 0) { pointer = ''; }
@@ -483,7 +827,7 @@ var JsonPointer = /** @class */ (function () {
             return null;
         }
         if (isObject(object) || isArray(object)) {
-            var newObject = isArray(object) ? tslib_1.__spread(object) : Object.assign({}, object);
+            var newObject = isArray(object) ? tslib_1.__spread(object) : tslib_1.__assign({}, object);
             if (!bottomUp) {
                 newObject = fn(newObject, pointer, rootObject);
             }
@@ -512,6 +856,14 @@ var JsonPointer = /** @class */ (function () {
         var e_5, _c;
     };
     /**
+     * 'escape' function
+     *
+     * Escapes a string reference key
+     *
+     * @param  { string } key - string key to escape
+     * @return { string } - escaped key
+     */
+    /**
        * 'escape' function
        *
        * Escapes a string reference key
@@ -519,10 +871,26 @@ var JsonPointer = /** @class */ (function () {
        * @param  { string } key - string key to escape
        * @return { string } - escaped key
        */
-    JsonPointer.escape = function (key) {
+    JsonPointer.escape = /**
+       * 'escape' function
+       *
+       * Escapes a string reference key
+       *
+       * @param  { string } key - string key to escape
+       * @return { string } - escaped key
+       */
+    function (key) {
         var escaped = key.toString().replace(/~/g, '~0').replace(/\//g, '~1');
         return escaped;
     };
+    /**
+     * 'unescape' function
+     *
+     * Unescapes a string reference key
+     *
+     * @param  { string } key - string key to unescape
+     * @return { string } - unescaped key
+     */
     /**
        * 'unescape' function
        *
@@ -531,10 +899,28 @@ var JsonPointer = /** @class */ (function () {
        * @param  { string } key - string key to unescape
        * @return { string } - unescaped key
        */
-    JsonPointer.unescape = function (key) {
+    JsonPointer.unescape = /**
+       * 'unescape' function
+       *
+       * Unescapes a string reference key
+       *
+       * @param  { string } key - string key to unescape
+       * @return { string } - unescaped key
+       */
+    function (key) {
         var unescaped = key.toString().replace(/~1/g, '/').replace(/~0/g, '~');
         return unescaped;
     };
+    /**
+     * 'parse' function
+     *
+     * Converts a string JSON Pointer into a array of keys
+     * (if input is already an an array of keys, it is returned unchanged)
+     *
+     * @param  { Pointer } pointer - JSON Pointer (string or array)
+     * @param  { boolean = false } errors - Show error if invalid pointer?
+     * @return { string[] } - JSON Pointer array of keys
+     */
     /**
        * 'parse' function
        *
@@ -545,7 +931,17 @@ var JsonPointer = /** @class */ (function () {
        * @param  { boolean = false } errors - Show error if invalid pointer?
        * @return { string[] } - JSON Pointer array of keys
        */
-    JsonPointer.parse = function (pointer, errors) {
+    JsonPointer.parse = /**
+       * 'parse' function
+       *
+       * Converts a string JSON Pointer into a array of keys
+       * (if input is already an an array of keys, it is returned unchanged)
+       *
+       * @param  { Pointer } pointer - JSON Pointer (string or array)
+       * @param  { boolean = false } errors - Show error if invalid pointer?
+       * @return { string[] } - JSON Pointer array of keys
+       */
+    function (pointer, errors) {
         if (errors === void 0) { errors = false; }
         if (!this.isJsonPointer(pointer)) {
             if (errors) {
@@ -567,6 +963,19 @@ var JsonPointer = /** @class */ (function () {
         }
     };
     /**
+     * 'compile' function
+     *
+     * Converts an array of keys into a JSON Pointer string
+     * (if input is already a string, it is normalized and returned)
+     *
+     * The optional second parameter is a default which will replace any empty keys.
+     *
+     * @param  { Pointer } pointer - JSON Pointer (string or array)
+     * @param  { string | number = '' } defaultValue - Default value
+     * @param  { boolean = false } errors - Show error if invalid pointer?
+     * @return { string } - JSON Pointer string
+     */
+    /**
        * 'compile' function
        *
        * Converts an array of keys into a JSON Pointer string
@@ -579,7 +988,20 @@ var JsonPointer = /** @class */ (function () {
        * @param  { boolean = false } errors - Show error if invalid pointer?
        * @return { string } - JSON Pointer string
        */
-    JsonPointer.compile = function (pointer, defaultValue, errors) {
+    JsonPointer.compile = /**
+       * 'compile' function
+       *
+       * Converts an array of keys into a JSON Pointer string
+       * (if input is already a string, it is normalized and returned)
+       *
+       * The optional second parameter is a default which will replace any empty keys.
+       *
+       * @param  { Pointer } pointer - JSON Pointer (string or array)
+       * @param  { string | number = '' } defaultValue - Default value
+       * @param  { boolean = false } errors - Show error if invalid pointer?
+       * @return { string } - JSON Pointer string
+       */
+    function (pointer, defaultValue, errors) {
         var _this = this;
         if (defaultValue === void 0) { defaultValue = ''; }
         if (errors === void 0) { errors = false; }
@@ -606,6 +1028,15 @@ var JsonPointer = /** @class */ (function () {
         }
     };
     /**
+     * 'toKey' function
+     *
+     * Extracts name of the final key from a JSON Pointer.
+     *
+     * @param  { Pointer } pointer - JSON Pointer (string or array)
+     * @param  { boolean = false } errors - Show error if invalid pointer?
+     * @return { string } - the extracted key
+     */
+    /**
        * 'toKey' function
        *
        * Extracts name of the final key from a JSON Pointer.
@@ -614,7 +1045,16 @@ var JsonPointer = /** @class */ (function () {
        * @param  { boolean = false } errors - Show error if invalid pointer?
        * @return { string } - the extracted key
        */
-    JsonPointer.toKey = function (pointer, errors) {
+    JsonPointer.toKey = /**
+       * 'toKey' function
+       *
+       * Extracts name of the final key from a JSON Pointer.
+       *
+       * @param  { Pointer } pointer - JSON Pointer (string or array)
+       * @param  { boolean = false } errors - Show error if invalid pointer?
+       * @return { string } - the extracted key
+       */
+    function (pointer, errors) {
         if (errors === void 0) { errors = false; }
         var keyArray = this.parse(pointer, errors);
         if (keyArray === null) {
@@ -626,6 +1066,16 @@ var JsonPointer = /** @class */ (function () {
         return keyArray[keyArray.length - 1];
     };
     /**
+     * 'isJsonPointer' function
+     *
+     * Checks a string or array value to determine if it is a valid JSON Pointer.
+     * Returns true if a string is empty, or starts with '/' or '#/'.
+     * Returns true if an array contains only string values.
+     *
+     * @param  { any } value - value to check
+     * @return { boolean } - true if value is a valid JSON Pointer, otherwise false
+     */
+    /**
        * 'isJsonPointer' function
        *
        * Checks a string or array value to determine if it is a valid JSON Pointer.
@@ -635,7 +1085,17 @@ var JsonPointer = /** @class */ (function () {
        * @param  { any } value - value to check
        * @return { boolean } - true if value is a valid JSON Pointer, otherwise false
        */
-    JsonPointer.isJsonPointer = function (value) {
+    JsonPointer.isJsonPointer = /**
+       * 'isJsonPointer' function
+       *
+       * Checks a string or array value to determine if it is a valid JSON Pointer.
+       * Returns true if a string is empty, or starts with '/' or '#/'.
+       * Returns true if an array contains only string values.
+       *
+       * @param  { any } value - value to check
+       * @return { boolean } - true if value is a valid JSON Pointer, otherwise false
+       */
+    function (value) {
         if (isArray(value)) {
             return value.every(function (key) { return typeof key === 'string'; });
         }
@@ -650,6 +1110,17 @@ var JsonPointer = /** @class */ (function () {
         return false;
     };
     /**
+     * 'isSubPointer' function
+     *
+     * Checks whether one JSON Pointer is a subset of another.
+     *
+     * @param  { Pointer } shortPointer - potential subset JSON Pointer
+     * @param  { Pointer } longPointer - potential superset JSON Pointer
+     * @param  { boolean = false } trueIfMatching - return true if pointers match?
+     * @param  { boolean = false } errors - Show error if invalid pointer?
+     * @return { boolean } - true if shortPointer is a subset of longPointer, false if not
+     */
+    /**
        * 'isSubPointer' function
        *
        * Checks whether one JSON Pointer is a subset of another.
@@ -660,7 +1131,18 @@ var JsonPointer = /** @class */ (function () {
        * @param  { boolean = false } errors - Show error if invalid pointer?
        * @return { boolean } - true if shortPointer is a subset of longPointer, false if not
        */
-    JsonPointer.isSubPointer = function (shortPointer, longPointer, trueIfMatching, errors) {
+    JsonPointer.isSubPointer = /**
+       * 'isSubPointer' function
+       *
+       * Checks whether one JSON Pointer is a subset of another.
+       *
+       * @param  { Pointer } shortPointer - potential subset JSON Pointer
+       * @param  { Pointer } longPointer - potential superset JSON Pointer
+       * @param  { boolean = false } trueIfMatching - return true if pointers match?
+       * @param  { boolean = false } errors - Show error if invalid pointer?
+       * @return { boolean } - true if shortPointer is a subset of longPointer, false if not
+       */
+    function (shortPointer, longPointer, trueIfMatching, errors) {
         if (trueIfMatching === void 0) { trueIfMatching = false; }
         if (errors === void 0) { errors = false; }
         if (!this.isJsonPointer(shortPointer) || !this.isJsonPointer(longPointer)) {
@@ -682,6 +1164,21 @@ var JsonPointer = /** @class */ (function () {
             shortPointer + "/" === longPointer.slice(0, shortPointer.length + 1);
     };
     /**
+     * 'toIndexedPointer' function
+     *
+     * Merges an array of numeric indexes and a generic pointer to create an
+     * indexed pointer for a specific item.
+     *
+     * For example, merging the generic pointer '/foo/-/bar/-/baz' and
+     * the array [4, 2] would result in the indexed pointer '/foo/4/bar/2/baz'
+     *
+     * @function
+     * @param  { Pointer } genericPointer - The generic pointer
+     * @param  { number[] } indexArray - The array of numeric indexes
+     * @param  { Map<string, number> } arrayMap - An optional array map
+     * @return { string } - The merged pointer with indexes
+     */
+    /**
        * 'toIndexedPointer' function
        *
        * Merges an array of numeric indexes and a generic pointer to create an
@@ -696,14 +1193,31 @@ var JsonPointer = /** @class */ (function () {
        * @param  { Map<string, number> } arrayMap - An optional array map
        * @return { string } - The merged pointer with indexes
        */
-    JsonPointer.toIndexedPointer = function (genericPointer, indexArray, arrayMap) {
+    JsonPointer.toIndexedPointer = /**
+       * 'toIndexedPointer' function
+       *
+       * Merges an array of numeric indexes and a generic pointer to create an
+       * indexed pointer for a specific item.
+       *
+       * For example, merging the generic pointer '/foo/-/bar/-/baz' and
+       * the array [4, 2] would result in the indexed pointer '/foo/4/bar/2/baz'
+       *
+       * @function
+       * @param  { Pointer } genericPointer - The generic pointer
+       * @param  { number[] } indexArray - The array of numeric indexes
+       * @param  { Map<string, number> } arrayMap - An optional array map
+       * @return { string } - The merged pointer with indexes
+       */
+    function (genericPointer, indexArray, arrayMap) {
         if (arrayMap === void 0) { arrayMap = null; }
         if (this.isJsonPointer(genericPointer) && isArray(indexArray)) {
             var indexedPointer_1 = this.compile(genericPointer);
             if (isMap(arrayMap)) {
                 var arrayIndex_1 = 0;
-                return indexedPointer_1.replace(/\/\-(?=\/|$)/g, function (key, stringIndex) { return arrayMap.has(indexedPointer_1.slice(0, stringIndex)) ?
-                    '/' + indexArray[arrayIndex_1++] : key; });
+                return indexedPointer_1.replace(/\/\-(?=\/|$)/g, function (key, stringIndex) {
+                    return arrayMap.has(indexedPointer_1.slice(0, stringIndex)) ?
+                        '/' + indexArray[arrayIndex_1++] : key;
+                });
             }
             else {
                 try {
@@ -731,6 +1245,27 @@ var JsonPointer = /** @class */ (function () {
         var e_6, _a;
     };
     /**
+     * 'toGenericPointer' function
+     *
+     * Compares an indexed pointer to an array map and removes list array
+     * indexes (but leaves tuple arrray indexes and all object keys, including
+     * numeric keys) to create a generic pointer.
+     *
+     * For example, using the indexed pointer '/foo/1/bar/2/baz/3' and
+     * the arrayMap [['/foo', 0], ['/foo/-/bar', 3], ['/foo/-/bar/-/baz', 0]]
+     * would result in the generic pointer '/foo/-/bar/2/baz/-'
+     * Using the indexed pointer '/foo/1/bar/4/baz/3' and the same arrayMap
+     * would result in the generic pointer '/foo/-/bar/-/baz/-'
+     * (the bar array has 3 tuple items, so index 2 is retained, but 4 is removed)
+     *
+     * The structure of the arrayMap is: [['path to array', number of tuple items]...]
+     *
+     * @function
+     * @param  { Pointer } indexedPointer - The indexed pointer (array or string)
+     * @param  { Map<string, number> } arrayMap - The optional array map (for preserving tuple indexes)
+     * @return { string } - The generic pointer with indexes removed
+     */
+    /**
        * 'toGenericPointer' function
        *
        * Compares an indexed pointer to an array map and removes list array
@@ -751,7 +1286,28 @@ var JsonPointer = /** @class */ (function () {
        * @param  { Map<string, number> } arrayMap - The optional array map (for preserving tuple indexes)
        * @return { string } - The generic pointer with indexes removed
        */
-    JsonPointer.toGenericPointer = function (indexedPointer, arrayMap) {
+    JsonPointer.toGenericPointer = /**
+       * 'toGenericPointer' function
+       *
+       * Compares an indexed pointer to an array map and removes list array
+       * indexes (but leaves tuple arrray indexes and all object keys, including
+       * numeric keys) to create a generic pointer.
+       *
+       * For example, using the indexed pointer '/foo/1/bar/2/baz/3' and
+       * the arrayMap [['/foo', 0], ['/foo/-/bar', 3], ['/foo/-/bar/-/baz', 0]]
+       * would result in the generic pointer '/foo/-/bar/2/baz/-'
+       * Using the indexed pointer '/foo/1/bar/4/baz/3' and the same arrayMap
+       * would result in the generic pointer '/foo/-/bar/-/baz/-'
+       * (the bar array has 3 tuple items, so index 2 is retained, but 4 is removed)
+       *
+       * The structure of the arrayMap is: [['path to array', number of tuple items]...]
+       *
+       * @function
+       * @param  { Pointer } indexedPointer - The indexed pointer (array or string)
+       * @param  { Map<string, number> } arrayMap - The optional array map (for preserving tuple indexes)
+       * @return { string } - The generic pointer with indexes removed
+       */
+    function (indexedPointer, arrayMap) {
         if (arrayMap === void 0) { arrayMap = new Map(); }
         if (this.isJsonPointer(indexedPointer) && isMap(arrayMap)) {
             var pointerArray = this.parse(indexedPointer);
@@ -772,6 +1328,17 @@ var JsonPointer = /** @class */ (function () {
         }
     };
     /**
+     * 'toControlPointer' function
+     *
+     * Accepts a JSON Pointer for a data object and returns a JSON Pointer for the
+     * matching control in an Angular FormGroup.
+     *
+     * @param  { Pointer } dataPointer - JSON Pointer (string or array) to a data object
+     * @param  { FormGroup } formGroup - Angular FormGroup to get value from
+     * @param  { boolean = false } controlMustExist - Only return if control exists?
+     * @return { Pointer } - JSON Pointer (string) to the formGroup object
+     */
+    /**
        * 'toControlPointer' function
        *
        * Accepts a JSON Pointer for a data object and returns a JSON Pointer for the
@@ -782,7 +1349,18 @@ var JsonPointer = /** @class */ (function () {
        * @param  { boolean = false } controlMustExist - Only return if control exists?
        * @return { Pointer } - JSON Pointer (string) to the formGroup object
        */
-    JsonPointer.toControlPointer = function (dataPointer, formGroup, controlMustExist) {
+    JsonPointer.toControlPointer = /**
+       * 'toControlPointer' function
+       *
+       * Accepts a JSON Pointer for a data object and returns a JSON Pointer for the
+       * matching control in an Angular FormGroup.
+       *
+       * @param  { Pointer } dataPointer - JSON Pointer (string or array) to a data object
+       * @param  { FormGroup } formGroup - Angular FormGroup to get value from
+       * @param  { boolean = false } controlMustExist - Only return if control exists?
+       * @return { Pointer } - JSON Pointer (string) to the formGroup object
+       */
+    function (dataPointer, formGroup, controlMustExist) {
         if (controlMustExist === void 0) { controlMustExist = false; }
         var dataPointerArray = this.parse(dataPointer);
         var controlPointerArray = [];
@@ -828,6 +1406,18 @@ var JsonPointer = /** @class */ (function () {
         var e_7, _a;
     };
     /**
+     * 'toSchemaPointer' function
+     *
+     * Accepts a JSON Pointer to a value inside a data object and a JSON schema
+     * for that object.
+     *
+     * Returns a Pointer to the sub-schema for the value inside the object's schema.
+     *
+     * @param  { Pointer } dataPointer - JSON Pointer (string or array) to an object
+     * @param  { any } schema - JSON schema for the object
+     * @return { Pointer } - JSON Pointer (string) to the object's schema
+     */
+    /**
        * 'toSchemaPointer' function
        *
        * Accepts a JSON Pointer to a value inside a data object and a JSON schema
@@ -839,7 +1429,19 @@ var JsonPointer = /** @class */ (function () {
        * @param  { any } schema - JSON schema for the object
        * @return { Pointer } - JSON Pointer (string) to the object's schema
        */
-    JsonPointer.toSchemaPointer = function (dataPointer, schema) {
+    JsonPointer.toSchemaPointer = /**
+       * 'toSchemaPointer' function
+       *
+       * Accepts a JSON Pointer to a value inside a data object and a JSON schema
+       * for that object.
+       *
+       * Returns a Pointer to the sub-schema for the value inside the object's schema.
+       *
+       * @param  { Pointer } dataPointer - JSON Pointer (string or array) to an object
+       * @param  { any } schema - JSON schema for the object
+       * @return { Pointer } - JSON Pointer (string) to the object's schema
+       */
+    function (dataPointer, schema) {
         if (this.isJsonPointer(dataPointer) && typeof schema === 'object') {
             var pointerArray = this.parse(dataPointer);
             if (!pointerArray.length) {
@@ -890,6 +1492,23 @@ var JsonPointer = /** @class */ (function () {
         return null;
     };
     /**
+     * 'toDataPointer' function
+     *
+     * Accepts a JSON Pointer to a sub-schema inside a JSON schema and the schema.
+     *
+     * If possible, returns a generic Pointer to the corresponding value inside
+     * the data object described by the JSON schema.
+     *
+     * Returns null if the sub-schema is in an ambiguous location (such as
+     * definitions or additionalProperties) where the corresponding value
+     * location cannot be determined.
+     *
+     * @param  { Pointer } schemaPointer - JSON Pointer (string or array) to a JSON schema
+     * @param  { any } schema - the JSON schema
+     * @param  { boolean = false } errors - Show errors?
+     * @return { Pointer } - JSON Pointer (string) to the value in the data object
+     */
+    /**
        * 'toDataPointer' function
        *
        * Accepts a JSON Pointer to a sub-schema inside a JSON schema and the schema.
@@ -906,7 +1525,24 @@ var JsonPointer = /** @class */ (function () {
        * @param  { boolean = false } errors - Show errors?
        * @return { Pointer } - JSON Pointer (string) to the value in the data object
        */
-    JsonPointer.toDataPointer = function (schemaPointer, schema, errors) {
+    JsonPointer.toDataPointer = /**
+       * 'toDataPointer' function
+       *
+       * Accepts a JSON Pointer to a sub-schema inside a JSON schema and the schema.
+       *
+       * If possible, returns a generic Pointer to the corresponding value inside
+       * the data object described by the JSON schema.
+       *
+       * Returns null if the sub-schema is in an ambiguous location (such as
+       * definitions or additionalProperties) where the corresponding value
+       * location cannot be determined.
+       *
+       * @param  { Pointer } schemaPointer - JSON Pointer (string or array) to a JSON schema
+       * @param  { any } schema - the JSON schema
+       * @param  { boolean = false } errors - Show errors?
+       * @return { Pointer } - JSON Pointer (string) to the value in the data object
+       */
+    function (schemaPointer, schema, errors) {
         if (errors === void 0) { errors = false; }
         if (this.isJsonPointer(schemaPointer) && typeof schema === 'object' &&
             this.has(schema, schemaPointer)) {
@@ -956,6 +1592,18 @@ var JsonPointer = /** @class */ (function () {
         return null;
     };
     /**
+     * 'parseObjectPath' function
+     *
+     * Parses a JavaScript object path into an array of keys, which
+     * can then be passed to compile() to convert into a string JSON Pointer.
+     *
+     * Based on mike-marcacci's excellent objectpath parse function:
+     * https://github.com/mike-marcacci/objectpath
+     *
+     * @param  { Pointer } path - The object path to parse
+     * @return { string[] } - The resulting array of keys
+     */
+    /**
        * 'parseObjectPath' function
        *
        * Parses a JavaScript object path into an array of keys, which
@@ -967,7 +1615,19 @@ var JsonPointer = /** @class */ (function () {
        * @param  { Pointer } path - The object path to parse
        * @return { string[] } - The resulting array of keys
        */
-    JsonPointer.parseObjectPath = function (path) {
+    JsonPointer.parseObjectPath = /**
+       * 'parseObjectPath' function
+       *
+       * Parses a JavaScript object path into an array of keys, which
+       * can then be passed to compile() to convert into a string JSON Pointer.
+       *
+       * Based on mike-marcacci's excellent objectpath parse function:
+       * https://github.com/mike-marcacci/objectpath
+       *
+       * @param  { Pointer } path - The object path to parse
+       * @return { string[] } - The resulting array of keys
+       */
+    function (path) {
         if (isArray(path)) {
             return path;
         }
@@ -1028,10 +1688,11 @@ var JsonPointer = /** @class */ (function () {
         }
         console.error('parseObjectPath error: Input object path must be a string.');
     };
+    JsonPointer.decorators = [
+        { type: Injectable },
+    ];
     return JsonPointer;
 }());
 export { JsonPointer };
-JsonPointer.decorators = [
-    { type: Injectable },
-];
-//# sourceMappingURL=jsonpointer.functions.js.map
+
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoianNvbnBvaW50ZXIuZnVuY3Rpb25zLmpzIiwic291cmNlUm9vdCI6Im5nOi8vYW5ndWxhcjItanNvbi1zY2hlbWEtZm9ybS8iLCJzb3VyY2VzIjpbInNyYy9zaGFyZWQvanNvbnBvaW50ZXIuZnVuY3Rpb25zLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7QUFBQSxPQUFPLEVBQUUsVUFBVSxFQUFFLE1BQU0sZUFBZSxDQUFDO0FBRTNDLE9BQU8sRUFDTCxTQUFTLEVBQUUsT0FBTyxFQUFFLFFBQVEsRUFBRSxPQUFPLEVBQUUsS0FBSyxFQUFFLFFBQVEsRUFBRSxRQUFRLEVBQ2pFLE1BQU0sdUJBQXVCLENBQUM7QUFDL0IsT0FBTyxFQUFFLE1BQU0sRUFBRSxJQUFJLEVBQUUsTUFBTSxxQkFBcUIsQ0FBQzs7OztJQXFCakQ7Ozs7Ozs7Ozs7OztPQVlHOzs7Ozs7Ozs7Ozs7OztJQUNJLGVBQUc7Ozs7Ozs7Ozs7Ozs7SUFBVixVQUNFLE1BQU0sRUFBRSxPQUFPLEVBQUUsVUFBYyxFQUFFLFFBQXVCLEVBQ3hELFVBQWtCLEVBQUUsTUFBYztRQURqQiwyQkFBQSxFQUFBLGNBQWM7UUFBRSx5QkFBQSxFQUFBLGVBQXVCO1FBQ3hELDJCQUFBLEVBQUEsa0JBQWtCO1FBQUUsdUJBQUEsRUFBQSxjQUFjO1FBRWxDLEVBQUUsQ0FBQyxDQUFDLE1BQU0sS0FBSyxJQUFJLENBQUMsQ0FBQyxDQUFDO1lBQUMsTUFBTSxDQUFDLFVBQVUsQ0FBQyxDQUFDLENBQUMsS0FBSyxDQUFDLENBQUMsQ0FBQyxTQUFTLENBQUM7U0FBRTtRQUMvRCxJQUFJLFFBQVEsR0FBVSxJQUFJLENBQUMsS0FBSyxDQUFDLE9BQU8sRUFBRSxNQUFNLENBQUMsQ0FBQztRQUNsRCxFQUFFLENBQUMsQ0FBQyxPQUFPLE1BQU0sS0FBSyxRQUFRLElBQUksUUFBUSxLQUFLLElBQUksQ0FBQyxDQUFDLENBQUM7WUFDcEQsSUFBSSxTQUFTLEdBQUcsTUFBTSxDQUFDO1lBQ3ZCLEVBQUUsQ0FBQyxDQUFDLFVB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bEQsS0FBSyxHQUFHLE1BQU0sR0FBRyxDQUFDLENBQUM7cUJBQ3BCO29CQUFDLElBQUksQ0FBQyxDQUFDOzt3QkFDTixJQUFJLE1BQU0sR0FBRyxJQUFJLENBQUMsT0FBTyxDQUFDLEdBQUcsRUFBRSxNQUFNLENBQUMsQ0FBQzt3QkFDdkMsRUFBRSxDQUFDLENBQUMsTUFBTSxLQUFLLENBQUMsQ0FBQyxDQUFDLENBQUMsQ0FBQzs0QkFBQyxNQUFNLEdBQUcsSUFBSSxDQUFDLE1BQU0sQ0FBQzt5QkFBRTt3QkFDNUMsS0FBSyxDQUFDLElBQUksQ0FBQyxJQUFJLENBQUMsS0FBSyxDQUFDLEtBQUssR0FBRyxDQUFDLEVBQUUsTUFBTSxDQUFDLENBQUMsQ0FBQzt3QkFDMUMsS0FBSyxHQUFHLE1BQU0sR0FBRyxDQUFDLENBQUM7cUJBQ3BCO29CQUNELEVBQUUsQ0FBQyxDQUFDLElBQUksQ0FBQyxNQUFNLENBQUMsS0FBSyxDQUFDLEtBQUssR0FBRyxDQUFDLENBQUMsQ0FBQzt3QkFBQyxLQUFLLEVBQUUsQ0FBQztxQkFBRTtpQkFDN0M7YUFDRjtZQUNELE1BQU0sQ0FBQyxLQUFLLENBQUM7U0FDZDtRQUNELE9BQU8sQ0FBQyxLQUFLLENBQUMsNERBQTRELENBQUMsQ0FBQztLQUM3RTs7Z0JBajJCRixVQUFVOztzQkF2Qlg7O1NBd0JhLFdBQVciLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgeyBJbmplY3RhYmxlIH0gZnJvbSAnQGFuZ3VsYXIvY29yZSc7XG5cbmltcG9ydCB7XG4gIGlzRGVmaW5lZCwgaXNFbXB0eSwgaXNPYmplY3QsIGlzQXJyYXksIGlzTWFwLCBpc051bWJlciwgaXNTdHJpbmdcbn0gZnJvbSAnLi92YWxpZGF0b3IuZnVuY3Rpb25zJztcbmltcG9ydCB7IGhhc093biwgY29weSB9IGZyb20gJy4vdXRpbGl0eS5mdW5jdGlvbnMnO1xuXG4vKipcbiAqICdKc29uUG9pbnRlcicgY2xhc3NcbiAqXG4gKiBTb21lIHV0aWxpdGllcyBmb3IgdXNpbmcgSlNPTiBQb2ludGVycyB3aXRoIEpTT04gb2JqZWN0c1xuICogaHR0cHM6Ly90b29scy5pZXRmLm9yZy9odG1sL3JmYzY5MDFcbiAqXG4gKiBnZXQsIGdldENvcHksIGdldEZpcnN0LCBzZXQsIHNldENvcHksIGluc2VydCwgaW5zZXJ0Q29weSwgcmVtb3ZlLCBoYXMsIGRpY3QsXG4gKiBmb3JFYWNoRGVlcCwgZm9yRWFjaERlZXBDb3B5LCBlc2NhcGUsIHVuZXNjYXBlLCBwYXJzZSwgY29tcGlsZSwgdG9LZXksXG4gKiBpc0pzb25Qb2ludGVyLCBpc1N1YlBvaW50ZXIsIHRvSW5kZXhlZFBvaW50ZXIsIHRvR2VuZXJpY1BvaW50ZXIsXG4gKiB0b0NvbnRyb2xQb2ludGVyLCB0b1NjaGVtYVBvaW50ZXIsIHRvRGF0YVBvaW50ZXIsIHBhcnNlT2JqZWN0UGF0aFxuICpcbiAqIFNvbWUgZnVuY3Rpb25zIGJhc2VkIG9uIG1hbnVlbHN0b2ZlcidzIGpzb24tcG9pbnRlciB1dGlsaXRpZXNcbiAqIGh0dHBzOi8vZ2l0aHViLmNvbS9tYW51ZWxzdG9mZXIvanNvbi1wb2ludGVyXG4gKi9cbmV4cG9ydCB0eXBlIFBvaW50ZXIgPSBzdHJpbmcgfCBzdHJpbmdbXTtcblxuQEluamVjdGFibGUoKVxuZXhwb3J0IGNsYXNzIEpzb25Qb2ludGVyIHtcblxuICAvKipcbiAgICogJ2dldCcgZnVuY3Rpb25cbiAgICpcbiAgICogVXNlcyBhIEpTT04gUG9pbnRlciB0byByZXRyaWV2ZSBhIHZhbHVlIGZyb20gYW4gb2JqZWN0LlxuICAgKlxuICAgKiBAcGFyYW0gIHsgb2JqZWN0IH0gb2JqZWN0IC0gT2JqZWN0IHRvIGdldCB2YWx1ZSBmcm9tXG4gICAqIEBwYXJhbSAgeyBQb2ludGVyIH0gcG9pbnRlciAtIEpTT04gUG9pbnRlciAoc3RyaW5nIG9yIGFycmF5KVxuICAgKiBAcGFyYW0gIHsgbnVtYmVyID0gMCB9IHN0YXJ0U2xpY2UgLSBaZXJvLWJhc2VkIGluZGV4IG9mIGZpcnN0IFBvaW50ZXIga2V5IHRvIHVzZVxuICAgKiBAcGFyYW0gIHsgbnVtYmVyIH0gZW5kU2xpY2UgLSBaZXJvLWJhc2VkIGluZGV4IG9mIGxhc3QgUG9pbnRlciBrZXkgdG8gdXNlXG4gICAqIEBwYXJhbSAgeyBib29sZWFuID0gZmFsc2UgfSBnZXRCb29sZWFuIC0gUmV0dXJuIG9ubHkgdHJ1ZSBvciBmYWxzZT9cbiAgICogQHBhcmFtICB7IGJvb2xlYW4gPSBmYWxzZSB9IGVycm9ycyAtIFNob3cgZXJyb3IgaWYgbm90IGZvdW5kP1xuICAgKiBAcmV0dXJuIHsgb2JqZWN0IH0gLSBMb2NhdGVkIHZhbHVlIChvciB0cnVlIG9yIGZhbHNlIGlmIGdldEJvb2xlYW4gPSB0cnVlKVxuICAgKi9cbiAgc3RhdGljIGdldChcbiAgICBvYmplY3QsIHBvaW50ZXIsIHN0YXJ0U2xpY2UgPSAwLCBlbmRTbGljZTogbnVtYmVyID0gbnVsbCxcbiAgICBnZXRCb29sZWFuID0gZmFsc2UsIGVycm9ycyA9IGZhbHNlXG4gICkge1xuICAgIGlmIChvYmplY3QgPT09IG51bGwpIHsgcmV0dXJuIGdldEJvb2xlYW4gPyBmYWxzZSA6IHVuZGVmaW5lZDsgfVxuICAgIGxldCBrZXlBcnJheTogYW55W10gPSB0aGlzLnBhcnNlKHBvaW50ZXIsIGVycm9ycyk7XG4gICAgaWYgKHR5cGVvZiBvYmplY3QgPT09ICdvYmplY3QnICYmIGtleUFycmF5ICE9PSBudWxsKSB7XG4gICAgICBsZXQgc3ViT2JqZWN0ID0gb2JqZWN0O1xuICAgICAgaWYgKHN0YXJ0U2xpY2UgPj0ga2V5QXJyYXkubGVuZ3RoIHx8IGVuZFNsaWNlIDw9IC1rZXlBcnJheS5sZW5ndGgpIHsgcmV0dXJuIG9iamVjdDsgfVxuICAgICAgaWYgKHN0YXJ0U2xpY2UgPD0gLWtleUFycmF5Lmxlbmd0aCkgeyBzdGFydFNsaWNlID0gMDsgfVxuICAgICAgaWYgKCFpc0RlZmluZWQoZW5kU2xpY2UpIHx8IGVuZFNsaWNlID49IGtleUFycmF5Lmxlbmd0aCkgeyBlbmRTbGljZSA9IGtleUFycmF5Lmxlbmd0aDsgfVxuICAgICAga2V5QXJyYXkgPSBrZXlBcnJheS5zbGljZShzdGFydFNsaWNlLCBlbmRTbGljZSk7XG4gICAgICBmb3IgKGxldCBrZXkgb2Yga2V5QXJyYXkpIHtcbiAgICAgICAgaWYgKGtleSA9PT0gJy0nICYmIGlzQXJyYXkoc3ViT2JqZWN0KSAmJiBzdWJPYmplY3QubGVuZ3RoKSB7XG4gICAgICAgICAga2V5ID0gc3ViT2JqZWN0Lmxlbmd0aCAtIDE7XG4gICAgICAgIH1cbiAgICAgICAgaWYgKGlzTWFwKHN1Yk9iamVjdCkgJiYgc3ViT2JqZWN0LmhhcyhrZXkpKSB7XG4gICAgICAgICAgc3ViT2JqZWN0ID0gc3ViT2JqZWN0LmdldChrZXkpO1xuICAgICAgICB9IGVsc2UgaWYgKHR5cGVvZiBzdWJPYmplY3QgPT09ICdvYmplY3QnICYmIHN1Yk9iamVjdCAhPT0gbnVsbCAmJlxuICAgICAgICAgIGhhc093bihzdWJPYmplY3QsIGtleSlcbiAgICAgICAgKSB7XG4gICAgICAgICAgc3ViT2JqZWN0ID0gc3ViT2JqZWN0W2tleV07XG4gICAgICAgIH0gZWxzZSB7XG4gICAgICAgICAgaWYgKGVycm9ycykge1xuICAgICAgICAgICAgY29uc29sZS5lcnJvcihgZ2V0IGVycm9yOiBcIiR7a2V5fVwiIGtleSBub3QgZm91bmQgaW4gb2JqZWN0LmApO1xuICAgICAgICAgICAgY29uc29sZS5lcnJvcihwb2ludGVyKTtcbiAgICAgICAgICAgIGNvbnNvbGUuZXJyb3Iob2JqZWN0KTtcbiAgICAgICAgICB9XG4gICAgICAgICAgcmV0dXJuIGdldEJvb2xlYW4gPyBmYWxzZSA6IHVuZGVmaW5lZDtcbiAgICAgICAgfVxuICAgICAgfVxuICAgICAgcmV0dXJuIGdldEJvb2xlYW4gPyB0cnVlIDogc3ViT2JqZWN0O1xuICAgIH1cbiAgICBpZiAoZXJyb3JzICYmIGtleUFycmF5ID09PSBudWxsKSB7XG4gICAgICBjb25zb2xlLmVycm9yKGBnZXQgZXJyb3I6IEludmFsaWQgSlNPTiBQb2ludGVyOiAke3BvaW50ZXJ9YCk7XG4gICAgfVxuICAgIGlmIChlcnJvcnMgJiYgdHlwZW9mIG9iamVjdCAhPT0gJ29iamVjdCcpIHtcbiAgICAgIGNvbnNvbGUuZXJyb3IoJ2dldCBlcnJvcjogSW52YWxpZCBvYmplY3Q6Jyk7XG4gICAgICBjb25zb2xlLmVycm9yKG9iamVjdCk7XG4gICAgfVxuICAgIHJldHVybiBnZXRCb29sZWFuID8gZmFsc2UgOiB1bmRlZmluZWQ7XG4gIH1cblxuICAvKipcbiAgICogJ2dldENvcHknIGZ1bmN0aW9uXG4gICAqXG4gICAqIFVzZXMgYSBKU09OIFBvaW50ZXIgdG8gZGVlcGx5IGNsb25lIGEgdmFsdWUgZnJvbSBhbiBvYmplY3QuXG4gICAqXG4gICAqIEBwYXJhbSAgeyBvYmplY3QgfSBvYmplY3QgLSBPYmplY3QgdG8gZ2V0IHZhbHVlIGZyb21cbiAgICogQHBhcmFtICB7IFBvaW50ZXIgfSBwb2ludGVyIC0gSlNPTiBQb2ludGVyIChzdHJpbmcgb3IgYXJyYXkpXG4gICAqIEBwYXJhbSAgeyBudW1iZXIgPSAwIH0gc3RhcnRTbGljZSAtIFplcm8tYmFzZWQgaW5kZXggb2YgZmlyc3QgUG9pbnRlciBrZXkgdG8gdXNlXG4gICAqIEBwYXJhbSAgeyBudW1iZXIgfSBlbmRTbGljZSAtIFplcm8tYmFzZWQgaW5kZXggb2YgbGFzdCBQb2ludGVyIGtleSB0byB1c2VcbiAgICogQHBhcmFtICB7IGJvb2xlYW4gPSBmYWxzZSB9IGdldEJvb2xlYW4gLSBSZXR1cm4gb25seSB0cnVlIG9yIGZhbHNlP1xuICAgKiBAcGFyYW0gIHsgYm9vbGVhbiA9IGZhbHNlIH0gZXJyb3JzIC0gU2hvdyBlcnJvciBpZiBub3QgZm91bmQ/XG4gICAqIEByZXR1cm4geyBvYmplY3QgfSAtIExvY2F0ZWQgdmFsdWUgKG9yIHRydWUgb3IgZmFsc2UgaWYgZ2V0Qm9vbGVhbiA9IHRydWUpXG4gICAqL1xuICBzdGF0aWMgZ2V0Q29weShcbiAgICBvYmplY3QsIHBvaW50ZXIsIHN0YXJ0U2xpY2UgPSAwLCBlbmRTbGljZTogbnVtYmVyID0gbnVsbCxcbiAgICBnZXRCb29sZWFuID0gZmFsc2UsIGVycm9ycyA9IGZhbHNlXG4gICkge1xuICAgIGNvbnN0IG9iamVjdFRvQ29weSA9XG4gICAgICB0aGlzLmdldChvYmplY3QsIHBvaW50ZXIsIHN0YXJ0U2xpY2UsIGVuZFNsaWNlLCBnZXRCb29sZWFuLCBlcnJvcnMpO1xuICAgIHJldHVybiB0aGlzLmZvckVhY2hEZWVwQ29weShvYmplY3RUb0NvcHkpO1xuICB9XG5cbiAgLyoqXG4gICAqICdnZXRGaXJzdCcgZnVuY3Rpb25cbiAgICpcbiAgICogVGFrZXMgYW4gYXJyYXkgb2YgSlNPTiBQb2ludGVycyBhbmQgb2JqZWN0cyxcbiAgICogY2hlY2tzIGVhY2ggb2JqZWN0IGZvciBhIHZhbHVlIHNwZWNpZmllZCBieSB0aGUgcG9pbnRlcixcbiAgICogYW5kIHJldHVybnMgdGhlIGZpcnN0IHZhbHVlIGZvdW5kLlxuICAgKlxuICAgKiBAcGFyYW0gIHsgW29iamVjdCwgcG9pbnRlcl1bXSB9IGl0ZW1zIC0gQXJyYXkgb2Ygb2JqZWN0cyBhbmQgcG9pbnRlcnMgdG8gY2hlY2tcbiAgICogQHBhcmFtICB7IGFueSA9IG51bGwgfSBkZWZhdWx0VmFsdWUgLSBWYWx1ZSB0byByZXR1cm4gaWYgbm90aGluZyBmb3VuZFxuICAgKiBAcGFyYW0gIHsgYm9vbGVhbiA9IGZhbHNlIH0gZ2V0Q29weSAtIFJldHVybiBhIGNvcHkgaW5zdGVhZD9cbiAgICogQHJldHVybiB7IGFueSB9IC0gRmlyc3QgdmFsdWUgZm91bmRcbiAgICovXG4gIHN0YXRpYyBnZXRGaXJzdChpdGVtcywgZGVmYXVsdFZhbHVlOiBhbnkgPSBudWxsLCBnZXRDb3B5ID0gZmFsc2UpIHtcbiAgICBpZiAoaXNFbXB0eShpdGVtcykpIHsgcmV0dXJuOyB9XG4gICAgaWYgKGlzQXJyYXkoaXRlbXMpKSB7XG4gICAgICBmb3IgKGNvbnN0IGl0ZW0gb2YgaXRlbXMpIHtcbiAgICAgICAgaWYgKGlzRW1wdHkoaXRlbSkpIHsgY29udGludWU7IH1cbiAgICAgICAgaWYgKGlzQXJyYXkoaXRlbSkgJiYgaXRlbS5sZW5ndGggPj0gMikge1xuICAgICAgICAgIGlmIChpc0VtcHR5KGl0ZW1bMF0pIHx8IGlzRW1wdHkoaXRlbVsxXSkpIHsgY29udGludWU7IH1cbiAgICAgICAgICBjb25zdCB2YWx1ZSA9IGdldENvcHkgP1xuICAgICAgICAgICAgdGhpcy5nZXRDb3B5KGl0ZW1bMF0sIGl0ZW1bMV0pIDpcbiAgICAgICAgICAgIHRoaXMuZ2V0KGl0ZW1bMF0sIGl0ZW1bMV0pO1xuICAgICAgICAgIGlmICh2YWx1ZSkgeyByZXR1cm4gdmFsdWU7IH1cbiAgICAgICAgICBjb250aW51ZTtcbiAgICAgICAgfVxuICAgICAgICBjb25zb2xlLmVycm9yKCdnZXRGaXJzdCBlcnJvcjogSW5wdXQgbm90IGluIGNvcnJlY3QgZm9ybWF0LlxcbicgK1xuICAgICAgICAgICdTaG91bGQgYmU6IFsgWyBvYmplY3QxLCBwb2ludGVyMSBdLCBbIG9iamVjdCAyLCBwb2ludGVyMiBdLCBldGMuLi4gXScpO1xuICAgICAgICByZXR1cm47XG4gICAgICB9XG4gICAgICByZXR1cm4gZGVmYXVsdFZhbHVlO1xuICAgIH1cbiAgICBpZiAoaXNNYXAoaXRlbXMpKSB7XG4gICAgICBmb3IgKGNvbnN0IFtvYmplY3QsIHBvaW50ZXJdIG9mIGl0ZW1zKSB7XG4gICAgICAgIGlmIChvYmplY3QgPT09IG51bGwgfHwgIXRoaXMuaXNKc29uUG9pbnRlcihwb2ludGVyKSkgeyBjb250aW51ZTsgfVxuICAgICAgICBjb25zdCB2YWx1ZSA9IGdldENvcHkgP1xuICAgICAgICAgIHRoaXMuZ2V0Q29weShvYmplY3QsIHBvaW50ZXIpIDpcbiAgICAgICAgICB0aGlzLmdldChvYmplY3QsIHBvaW50ZXIpO1xuICAgICAgICBpZiAodmFsdWUpIHsgcmV0dXJuIHZhbHVlOyB9XG4gICAgICB9XG4gICAgICByZXR1cm4gZGVmYXVsdFZhbHVlO1xuICAgIH1cbiAgICBjb25zb2xlLmVycm9yKCdnZXRGaXJzdCBlcnJvcjogSW5wdXQgbm90IGluIGNvcnJlY3QgZm9ybWF0LlxcbicgK1xuICAgICAgJ1Nob3VsZCBiZTogWyBbIG9iamVjdDEsIHBvaW50ZXIxIF0sIFsgb2JqZWN0IDIsIHBvaW50ZXIyIF0sIGV0Yy4uLiBdJyk7XG4gICAgcmV0dXJuIGRlZmF1bHRWYWx1ZTtcbiAgfVxuXG4gIC8qKlxuICAgKiAnZ2V0Rmlyc3RDb3B5JyBmdW5jdGlvblxuICAgKlxuICAgKiBTaW1pbGFyIHRvIGdldEZpcnN0LCBidXQgYWx3YXlzIHJldHVybnMgYSBjb3B5LlxuICAgKlxuICAgKiBAcGFyYW0gIHsgW29iamVjdCwgcG9pbnRlcl1bXSB9IGl0ZW1zIC0gQXJyYXkgb2Ygb2JqZWN0cyBhbmQgcG9pbnRlcnMgdG8gY2hlY2tcbiAgICogQHBhcmFtICB7IGFueSA9IG51bGwgfSBkZWZhdWx0VmFsdWUgLSBWYWx1ZSB0byByZXR1cm4gaWYgbm90aGluZyBmb3VuZFxuICAgKiBAcmV0dXJuIHsgYW55IH0gLSBDb3B5IG9mIGZpcnN0IHZhbHVlIGZvdW5kXG4gICAqL1xuICBzdGF0aWMgZ2V0Rmlyc3RDb3B5KGl0ZW1zLCBkZWZhdWx0VmFsdWU6IGFueSA9IG51bGwpIHtcbiAgICBjb25zdCBmaXJzdENvcHkgPSB0aGlzLmdldEZpcnN0KGl0ZW1zLCBkZWZhdWx0VmFsdWUsIHRydWUpO1xuICAgIHJldHVybiBmaXJzdENvcHk7XG4gIH1cblxuICAvKipcbiAgICogJ3NldCcgZnVuY3Rpb25cbiAgICpcbiAgICogVXNlcyBhIEpTT04gUG9pbnRlciB0byBzZXQgYSB2YWx1ZSBvbiBhbiBvYmplY3QuXG4gICAqIEFsc28gY3JlYXRlcyBhbnkgbWlzc2luZyBzdWIgb2JqZWN0cyBvciBhcnJheXMgdG8gY29udGFpbiB0aGF0IHZhbHVlLlxuICAgKlxuICAgKiBJZiB0aGUgb3B0aW9uYWwgZm91cnRoIHBhcmFtZXRlciBpcyBUUlVFIGFuZCB0aGUgaW5uZXItbW9zdCBjb250YWluZXJcbiAgICogaXMgYW4gYXJyYXksIHRoZSBmdW5jdGlvbiB3aWxsIGluc2VydCB0aGUgdmFsdWUgYXMgYSBuZXcgaXRlbSBhdCB0aGVcbiAgICogc3BlY2lmaWVkIGxvY2F0aW9uIGluIHRoZSBhcnJheSwgcmF0aGVyIHRoYW4gb3ZlcndyaXRpbmcgdGhlIGV4aXN0aW5nXG4gICAqIHZhbHVlIChpZiBhbnkpIGF0IHRoYXQgbG9jYXRpb24uXG4gICAqXG4gICAqIFNvIHNldChbMSwgMiwgM10sICcvMScsIDQpID0+IFsxLCA0LCAzXVxuICAgKiBhbmRcbiAgICogU28gc2V0KFsxLCAyLCAzXSwgJy8xJywgNCwgdHJ1ZSkgPT4gWzEsIDQsIDIsIDNdXG4gICAqXG4gICAqIEBwYXJhbSAgeyBvYmplY3QgfSBvYmplY3QgLSBUaGUgb2JqZWN0IHRvIHNldCB2YWx1ZSBpblxuICAgKiBAcGFyYW0gIHsgUG9pbnRlciB9IHBvaW50ZXIgLSBUaGUgSlNPTiBQb2ludGVyIChzdHJpbmcgb3IgYXJyYXkpXG4gICAqIEBwYXJhbSAgeyBhbnkgfSB2YWx1ZSAtIFRoZSBuZXcgdmFsdWUgdG8gc2V0XG4gICAqIEBwYXJhbSAgeyBib29sZWFuIH0gaW5zZXJ0IC0gaW5zZXJ0IHZhbHVlP1xuICAgKiBAcmV0dXJuIHsgb2JqZWN0IH0gLSBUaGUgb3JpZ2luYWwgb2JqZWN0LCBtb2RpZmllZCB3aXRoIHRoZSBzZXQgdmFsdWVcbiAgICovXG4gIHN0YXRpYyBzZXQob2JqZWN0LCBwb2ludGVyLCB2YWx1ZSwgaW5zZXJ0ID0gZmFsc2UpIHtcbiAgICBjb25zdCBrZXlBcnJheSA9IHRoaXMucGFyc2UocG9pbnRlcik7XG4gICAgaWYgKGtleUFycmF5ICE9PSBudWxsICYmIGtleUFycmF5Lmxlbmd0aCkge1xuICAgICAgbGV0IHN1Yk9iamVjdCA9IG9iamVjdDtcbiAgICAgIGZvciAobGV0IGkgPSAwOyBpIDwga2V5QXJyYXkubGVuZ3RoIC0gMTsgKytpKSB7XG4gICAgICAgIGxldCBrZXkgPSBrZXlBcnJheVtpXTtcbiAgICAgICAgaWYgKGtleSA9PT0gJy0nICYmIGlzQXJyYXkoc3ViT2JqZWN0KSkge1xuICAgICAgICAgIGtleSA9IHN1Yk9iamVjdC5sZW5ndGg7XG4gICAgICAgIH1cbiAgICAgICAgaWYgKGlzTWFwKHN1Yk9iamVjdCkgJiYgc3ViT2JqZWN0LmhhcyhrZXkpKSB7XG4gICAgICAgICAgc3ViT2JqZWN0ID0gc3ViT2JqZWN0LmdldChrZXkpO1xuICAgICAgICB9IGVsc2Uge1xuICAgICAgICAgIGlmICghaGFzT3duKHN1Yk9iamVjdCwga2V5KSkge1xuICAgICAgICAgICAgc3ViT2JqZWN0W2tleV0gPSAoa2V5QXJyYXlbaSArIDFdLm1hdGNoKC9eKFxcZCt8LSkkLykpID8gW10gOiB7fTtcbiAgICAgICAgICB9XG4gICAgICAgICAgc3ViT2JqZWN0ID0gc3ViT2JqZWN0W2tleV07XG4gICAgICAgIH1cbiAgICAgIH1cbiAgICAgIGNvbnN0IGxhc3RLZXkgPSBrZXlBcnJheVtrZXlBcnJheS5sZW5ndGggLSAxXTtcbiAgICAgIGlmIChpc0FycmF5KHN1Yk9iamVjdCkgJiYgbGFzdEtleSA9PT0gJy0nKSB7XG4gICAgICAgIHN1Yk9iamVjdC5wdXNoKHZhbHVlKTtcbiAgICAgIH0gZWxzZSBpZiAoaW5zZXJ0ICYmIGlzQXJyYXkoc3ViT2JqZWN0KSAmJiAhaXNOYU4oK2xhc3RLZXkpKSB7XG4gICAgICAgIHN1Yk9iamVjdC5zcGxpY2UobGFzdEtleSwgMCwgdmFsdWUpO1xuICAgICAgfSBlbHNlIGlmIChpc01hcChzdWJPYmplY3QpKSB7XG4gICAgICAgIHN1Yk9iamVjdC5zZXQobGFzdEtleSwgdmFsdWUpO1xuICAgICAgfSBlbHNlIHtcbiAgICAgICAgc3ViT2JqZWN0W2xhc3RLZXldID0gdmFsdWU7XG4gICAgICB9XG4gICAgICByZXR1cm4gb2JqZWN0O1xuICAgIH1cbiAgICBjb25zb2xlLmVycm9yKGBzZXQgZXJyb3I6IEludmFsaWQgSlNPTiBQb2ludGVyOiAke3BvaW50ZXJ9YCk7XG4gICAgcmV0dXJuIG9iamVjdDtcbiAgfVxuXG4gIC8qKlxuICAgKiAnc2V0Q29weScgZnVuY3Rpb25cbiAgICpcbiAgICogQ29waWVzIGFuIG9iamVjdCBhbmQgdXNlcyBhIEpTT04gUG9pbnRlciB0byBzZXQgYSB2YWx1ZSBvbiB0aGUgY29weS5cbiAgICogQWxzbyBjcmVhdGVzIGFueSBtaXNzaW5nIHN1YiBvYmplY3RzIG9yIGFycmF5cyB0byBjb250YWluIHRoYXQgdmFsdWUuXG4gICAqXG4gICAqIElmIHRoZSBvcHRpb25hbCBmb3VydGggcGFyYW1ldGVyIGlzIFRSVUUgYW5kIHRoZSBpbm5lci1tb3N0IGNvbnRhaW5lclxuICAgKiBpcyBhbiBhcnJheSwgdGhlIGZ1bmN0aW9uIHdpbGwgaW5zZXJ0IHRoZSB2YWx1ZSBhcyBhIG5ldyBpdGVtIGF0IHRoZVxuICAgKiBzcGVjaWZpZWQgbG9jYXRpb24gaW4gdGhlIGFycmF5LCByYXRoZXIgdGhhbiBvdmVyd3JpdGluZyB0aGUgZXhpc3RpbmcgdmFsdWUuXG4gICAqXG4gICAqIEBwYXJhbSAgeyBvYmplY3QgfSBvYmplY3QgLSBUaGUgb2JqZWN0IHRvIGNvcHkgYW5kIHNldCB2YWx1ZSBpblxuICAgKiBAcGFyYW0gIHsgUG9pbnRlciB9IHBvaW50ZXIgLSBUaGUgSlNPTiBQb2ludGVyIChzdHJpbmcgb3IgYXJyYXkpXG4gICAqIEBwYXJhbSAgeyBhbnkgfSB2YWx1ZSAtIFRoZSB2YWx1ZSB0byBzZXRcbiAgICogQHBhcmFtICB7IGJvb2xlYW4gfSBpbnNlcnQgLSBpbnNlcnQgdmFsdWU/XG4gICAqIEByZXR1cm4geyBvYmplY3QgfSAtIFRoZSBuZXcgb2JqZWN0IHdpdGggdGhlIHNldCB2YWx1ZVxuICAgKi9cbiAgc3RhdGljIHNldENvcHkob2JqZWN0LCBwb2ludGVyLCB2YWx1ZSwgaW5zZXJ0ID0gZmFsc2UpIHtcbiAgICBjb25zdCBrZXlBcnJheSA9IHRoaXMucGFyc2UocG9pbnRlcik7XG4gICAgaWYgKGtleUFycmF5ICE9PSBudWxsKSB7XG4gICAgICBjb25zdCBuZXdPYmplY3QgPSBjb3B5KG9iamVjdCk7XG4gICAgICBsZXQgc3ViT2JqZWN0ID0gbmV3T2JqZWN0O1xuICAgICAgZm9yIChsZXQgaSA9IDA7IGkgPCBrZXlBcnJheS5sZW5ndGggLSAxOyArK2kpIHtcbiAgICAgICAgbGV0IGtleSA9IGtleUFycmF5W2ldO1xuICAgICAgICBpZiAoa2V5ID09PSAnLScgJiYgaXNBcnJheShzdWJPYmplY3QpKSB7XG4gICAgICAgICAga2V5ID0gc3ViT2JqZWN0Lmxlbmd0aDtcbiAgICAgICAgfVxuICAgICAgICBpZiAoaXNNYXAoc3ViT2JqZWN0KSAmJiBzdWJPYmplY3QuaGFzKGtleSkpIHtcbiAgICAgICAgICBzdWJPYmplY3Quc2V0KGtleSwgY29weShzdWJPYmplY3QuZ2V0KGtleSkpKTtcbiAgICAgICAgICBzdWJPYmplY3QgPSBzdWJPYmplY3QuZ2V0KGtleSk7XG4gICAgICAgIH0gZWxzZSB7XG4gICAgICAgICAgaWYgKCFoYXNPd24oc3ViT2JqZWN0LCBrZXkpKSB7XG4gICAgICAgICAgICBzdWJPYmplY3Rba2V5XSA9IChrZXlBcnJheVtpICsgMV0ubWF0Y2goL14oXFxkK3wtKSQvKSkgPyBbXSA6IHt9O1xuICAgICAgICAgIH1cbiAgICAgICAgICBzdWJPYmplY3Rba2V5XSA9IGNvcHkoc3ViT2JqZWN0W2tleV0pO1xuICAgICAgICAgIHN1Yk9iamVjdCA9IHN1Yk9iamVjdFtrZXldO1xuICAgICAgICB9XG4gICAgICB9XG4gICAgICBjb25zdCBsYXN0S2V5ID0ga2V5QXJyYXlba2V5QXJyYXkubGVuZ3RoIC0gMV07XG4gICAgICBpZiAoaXNBcnJheShzdWJPYmplY3QpICYmIGxhc3RLZXkgPT09ICctJykge1xuICAgICAgICBzdWJPYmplY3QucHVzaCh2YWx1ZSk7XG4gICAgICB9IGVsc2UgaWYgKGluc2VydCAmJiBpc0FycmF5KHN1Yk9iamVjdCkgJiYgIWlzTmFOKCtsYXN0S2V5KSkge1xuICAgICAgICBzdWJPYmplY3Quc3BsaWNlKGxhc3RLZXksIDAsIHZhbHVlKTtcbiAgICAgIH0gZWxzZSBpZiAoaXNNYXAoc3ViT2JqZWN0KSkge1xuICAgICAgICBzdWJPYmplY3Quc2V0KGxhc3RLZXksIHZhbHVlKTtcbiAgICAgIH0gZWxzZSB7XG4gICAgICAgIHN1Yk9iamVjdFtsYXN0S2V5XSA9IHZhbHVlO1xuICAgICAgfVxuICAgICAgcmV0dXJuIG5ld09iamVjdDtcbiAgICB9XG4gICAgY29uc29sZS5lcnJvcihgc2V0Q29weSBlcnJvcjogSW52YWxpZCBKU09OIFBvaW50ZXI6ICR7cG9pbnRlcn1gKTtcbiAgICByZXR1cm4gb2JqZWN0O1xuICB9XG5cbiAgLyoqXG4gICAqICdpbnNlcnQnIGZ1bmN0aW9uXG4gICAqXG4gICAqIENhbGxzICdzZXQnIHdpdGggaW5zZXJ0ID0gVFJVRVxuICAgKlxuICAgKiBAcGFyYW0gIHsgb2JqZWN0IH0gb2JqZWN0IC0gb2JqZWN0IHRvIGluc2VydCB2YWx1ZSBpblxuICAgKiBAcGFyYW0gIHsgUG9pbnRlciB9IHBvaW50ZXIgLSBKU09OIFBvaW50ZXIgKHN0cmluZyBvciBhcnJheSlcbiAgICogQHBhcmFtICB7IGFueSB9IHZhbHVlIC0gdmFsdWUgdG8gaW5zZXJ0XG4gICAqIEByZXR1cm4geyBvYmplY3QgfVxuICAgKi9cbiAgc3RhdGljIGluc2VydChvYmplY3QsIHBvaW50ZXIsIHZhbHVlKSB7XG4gICAgY29uc3QgdXBkYXRlZE9iamVjdCA9IHRoaXMuc2V0KG9iamVjdCwgcG9pbnRlciwgdmFsdWUsIHRydWUpO1xuICAgIHJldHVybiB1cGRhdGVkT2JqZWN0O1xuICB9XG5cbiAgLyoqXG4gICAqICdpbnNlcnRDb3B5JyBmdW5jdGlvblxuICAgKlxuICAgKiBDYWxscyAnc2V0Q29weScgd2l0aCBpbnNlcnQgPSBUUlVFXG4gICAqXG4gICAqIEBwYXJhbSAgeyBvYmplY3QgfSBvYmplY3QgLSBvYmplY3QgdG8gaW5zZXJ0IHZhbHVlIGluXG4gICAqIEBwYXJhbSAgeyBQb2ludGVyIH0gcG9pbnRlciAtIEpTT04gUG9pbnRlciAoc3RyaW5nIG9yIGFycmF5KVxuICAgKiBAcGFyYW0gIHsgYW55IH0gdmFsdWUgLSB2YWx1ZSB0byBpbnNlcnRcbiAgICogQHJldHVybiB7IG9iamVjdCB9XG4gICAqL1xuICBzdGF0aWMgaW5zZXJ0Q29weShvYmplY3QsIHBvaW50ZXIsIHZhbHVlKSB7XG4gICAgY29uc3QgdXBkYXRlZE9iamVjdCA9IHRoaXMuc2V0Q29weShvYmplY3QsIHBvaW50ZXIsIHZhbHVlLCB0cnVlKTtcbiAgICByZXR1cm4gdXBkYXRlZE9iamVjdDtcbiAgfVxuXG4gIC8qKlxuICAgKiAncmVtb3ZlJyBmdW5jdGlvblxuICAgKlxuICAgKiBVc2VzIGEgSlNPTiBQb2ludGVyIHRvIHJlbW92ZSBhIGtleSBhbmQgaXRzIGF0dHJpYnV0ZSBmcm9tIGFuIG9iamVjdFxuICAgKlxuICAgKiBAcGFyYW0gIHsgb2JqZWN0IH0gb2JqZWN0IC0gb2JqZWN0IHRvIGRlbGV0ZSBhdHRyaWJ1dGUgZnJvbVxuICAgKiBAcGFyYW0gIHsgUG9pbnRlciB9IHBvaW50ZXIgLSBKU09OIFBvaW50ZXIgKHN0cmluZyBvciBhcnJheSlcbiAgICogQHJldHVybiB7IG9iamVjdCB9XG4gICAqL1xuICBzdGF0aWMgcmVtb3ZlKG9iamVjdCwgcG9pbnRlcikge1xuICAgIGNvbnN0IGtleUFycmF5ID0gdGhpcy5wYXJzZShwb2ludGVyKTtcbiAgICBpZiAoa2V5QXJyYXkgIT09IG51bGwgJiYga2V5QXJyYXkubGVuZ3RoKSB7XG4gICAgICBsZXQgbGFzdEtleSA9IGtleUFycmF5LnBvcCgpO1xuICAgICAgY29uc3QgcGFyZW50T2JqZWN0ID0gdGhpcy5nZXQob2JqZWN0LCBrZXlBcnJheSk7XG4gICAgICBpZiAoaXNBcnJheShwYXJlbnRPYmplY3QpKSB7XG4gICAgICAgIGlmIChsYXN0S2V5ID09PSAnLScpIHsgbGFzdEtleSA9IHBhcmVudE9iamVjdC5sZW5ndGggLSAxOyB9XG4gICAgICAgIHBhcmVudE9iamVjdC5zcGxpY2UobGFzdEtleSwgMSk7XG4gICAgICB9IGVsc2UgaWYgKGlzT2JqZWN0KHBhcmVudE9iamVjdCkpIHtcbiAgICAgICAgZGVsZXRlIHBhcmVudE9iamVjdFtsYXN0S2V5XTtcbiAgICAgIH1cbiAgICAgIHJldHVybiBvYmplY3Q7XG4gICAgfVxuICAgIGNvbnNvbGUuZXJyb3IoYHJlbW92ZSBlcnJvcjogSW52YWxpZCBKU09OIFBvaW50ZXI6ICR7cG9pbnRlcn1gKTtcbiAgICByZXR1cm4gb2JqZWN0O1xuICB9XG5cbiAgLyoqXG4gICAqICdoYXMnIGZ1bmN0aW9uXG4gICAqXG4gICAqIFRlc3RzIGlmIGFuIG9iamVjdCBoYXMgYSB2YWx1ZSBhdCB0aGUgbG9jYXRpb24gc3BlY2lmaWVkIGJ5IGEgSlNPTiBQb2ludGVyXG4gICAqXG4gICAqIEBwYXJhbSAgeyBvYmplY3QgfSBvYmplY3QgLSBvYmplY3QgdG8gY2hlayBmb3IgdmFsdWVcbiAgICogQHBhcmFtICB7IFBvaW50ZXIgfSBwb2ludGVyIC0gSlNPTiBQb2ludGVyIChzdHJpbmcgb3IgYXJyYXkpXG4gICAqIEByZXR1cm4geyBib29sZWFuIH1cbiAgICovXG4gIHN0YXRpYyBoYXMob2JqZWN0LCBwb2ludGVyKSB7XG4gICAgY29uc3QgaGFzVmFsdWUgPSB0aGlzLmdldChvYmplY3QsIHBvaW50ZXIsIDAsIG51bGwsIHRydWUpO1xuICAgIHJldHVybiBoYXNWYWx1ZTtcbiAgfVxuXG4gIC8qKlxuICAgKiAnZGljdCcgZnVuY3Rpb25cbiAgICpcbiAgICogUmV0dXJucyBhIChwb2ludGVyIC0+IHZhbHVlKSBkaWN0aW9uYXJ5IGZvciBhbiBvYmplY3RcbiAgICpcbiAgICogQHBhcmFtICB7IG9iamVjdCB9IG9iamVjdCAtIFRoZSBvYmplY3QgdG8gY3JlYXRlIGEgZGljdGlvbmFyeSBmcm9tXG4gICAqIEByZXR1cm4geyBvYmplY3QgfSAtIFRoZSByZXN1bHRpbmcgZGljdGlvbmFyeSBvYmplY3RcbiAgICovXG4gIHN0YXRpYyBkaWN0KG9iamVjdCkge1xuICAgIGNvbnN0IHJlc3VsdHM6IGFueSA9IHt9O1xuICAgIHRoaXMuZm9yRWFjaERlZXAob2JqZWN0LCAodmFsdWUsIHBvaW50ZXIpID0+IHtcbiAgICAgIGlmICh0eXBlb2YgdmFsdWUgIT09ICdvYmplY3QnKSB7IHJlc3VsdHNbcG9pbnRlcl0gPSB2YWx1ZTsgfVxuICAgIH0pO1xuICAgIHJldHVybiByZXN1bHRzO1xuICB9XG5cbiAgLyoqXG4gICAqICdmb3JFYWNoRGVlcCcgZnVuY3Rpb25cbiAgICpcbiAgICogSXRlcmF0ZXMgb3ZlciBvd24gZW51bWVyYWJsZSBwcm9wZXJ0aWVzIG9mIGFuIG9iamVjdCBvciBpdGVtcyBpbiBhbiBhcnJheVxuICAgKiBhbmQgaW52b2tlcyBhbiBpdGVyYXRlZSBmdW5jdGlvbiBmb3IgZWFjaCBrZXkvdmFsdWUgb3IgaW5kZXgvdmFsdWUgcGFpci5cbiAgICogQnkgZGVmYXVsdCwgaXRlcmF0ZXMgb3ZlciBpdGVtcyB3aXRoaW4gb2JqZWN0cyBhbmQgYXJyYXlzIGFmdGVyIGNhbGxpbmdcbiAgICogdGhlIGl0ZXJhdGVlIGZ1bmN0aW9uIG9uIHRoZSBjb250YWluaW5nIG9iamVjdCBvciBhcnJheSBpdHNlbGYuXG4gICAqXG4gICAqIFRoZSBpdGVyYXRlZSBpcyBpbnZva2VkIHdpdGggdGhyZWUgYXJndW1lbnRzOiAodmFsdWUsIHBvaW50ZXIsIHJvb3RPYmplY3QpLFxuICAgKiB3aGVyZSBwb2ludGVyIGlzIGEgSlNPTiBwb2ludGVyIGluZGljYXRpbmcgdGhlIGxvY2F0aW9uIG9mIHRoZSBjdXJyZW50XG4gICAqIHZhbHVlIHdpdGhpbiB0aGUgcm9vdCBvYmplY3QsIGFuZCByb290T2JqZWN0IGlzIHRoZSByb290IG9iamVjdCBpbml0aWFsbHlcbiAgICogc3VibWl0dGVkIHRvIHRoIGZ1bmN0aW9uLlxuICAgKlxuICAgKiBJZiBhIHRoaXJkIG9wdGlvbmFsIHBhcmFtZXRlciAnYm90dG9tVXAnIGlzIHNldCB0byBUUlVFLCB0aGUgaXRlcmF0b3JcbiAgICogZnVuY3Rpb24gd2lsbCBiZSBjYWxsZWQgb24gc3ViLW9iamVjdHMgYW5kIGFycmF5cyBhZnRlciBiZWluZ1xuICAgKiBjYWxsZWQgb24gdGhlaXIgY29udGVudHMsIHJhdGhlciB0aGFuIGJlZm9yZSwgd2hpY2ggaXMgdGhlIGRlZmF1bHQuXG4gICAqXG4gICAqIFRoaXMgZnVuY3Rpb24gY2FuIGFsc28gb3B0aW9uYWxseSBiZSBjYWxsZWQgZGlyZWN0bHkgb24gYSBzdWItb2JqZWN0IGJ5XG4gICAqIGluY2x1ZGluZyBvcHRpb25hbCA0dGggYW5kIDV0aCBwYXJhbWV0ZXJzcyB0byBzcGVjaWZ5IHRoZSBpbml0aWFsXG4gICAqIHJvb3Qgb2JqZWN0IGFuZCBwb2ludGVyLlxuICAgKlxuICAgKiBAcGFyYW0gIHsgb2JqZWN0IH0gb2JqZWN0IC0gdGhlIGluaXRpYWwgb2JqZWN0IG9yIGFycmF5XG4gICAqIEBwYXJhbSAgeyAodjogYW55LCBwPzogc3RyaW5nLCBvPzogYW55KSA9PiBhbnkgfSBmdW5jdGlvbiAtIGl0ZXJhdGVlIGZ1bmN0aW9uXG4gICAqIEBwYXJhbSAgeyBib29sZWFuID0gZmFsc2UgfSBib3R0b21VcCAtIG9wdGlvbmFsLCBzZXQgdG8gVFJVRSB0byByZXZlcnNlIGRpcmVjdGlvblxuICAgKiBAcGFyYW0gIHsgb2JqZWN0ID0gb2JqZWN0IH0gcm9vdE9iamVjdCAtIG9wdGlvbmFsLCByb290IG9iamVjdCBvciBhcnJheVxuICAgKiBAcGFyYW0gIHsgc3RyaW5nID0gJycgfSBwb2ludGVyIC0gb3B0aW9uYWwsIEpTT04gUG9pbnRlciB0byBvYmplY3Qgd2l0aGluIHJvb3RPYmplY3RcbiAgICogQHJldHVybiB7IG9iamVjdCB9IC0gVGhlIG1vZGlmaWVkIG9iamVjdFxuICAgKi9cbiAgc3RhdGljIGZvckVhY2hEZWVwKFxuICAgIG9iamVjdCwgZm46ICh2OiBhbnksIHA/OiBzdHJpbmcsIG8/OiBhbnkpID0+IGFueSA9ICh2KSA9PiB2LFxuICAgIGJvdHRvbVVwID0gZmFsc2UsIHBvaW50ZXIgPSAnJywgcm9vdE9iamVjdCA9IG9iamVjdFxuICApIHtcbiAgICBpZiAodHlwZW9mIGZuICE9PSAnZnVuY3Rpb24nKSB7XG4gICAgICBjb25zb2xlLmVycm9yKGBmb3JFYWNoRGVlcCBlcnJvcjogSXRlcmF0b3IgaXMgbm90IGEgZnVuY3Rpb246YCwgZm4pO1xuICAgICAgcmV0dXJuO1xuICAgIH1cbiAgICBpZiAoIWJvdHRvbVVwKSB7IGZuKG9iamVjdCwgcG9pbnRlciwgcm9vdE9iamVjdCk7IH1cbiAgICBpZiAoaXNPYmplY3Qob2JqZWN0KSB8fCBpc0FycmF5KG9iamVjdCkpIHtcbiAgICAgIGZvciAoY29uc3Qga2V5IG9mIE9iamVjdC5rZXlzKG9iamVjdCkpIHtcbiAgICAgICAgY29uc3QgbmV3UG9pbnRlciA9IHBvaW50ZXIgKyAnLycgKyB0aGlzLmVzY2FwZShrZXkpO1xuICAgICAgICB0aGlzLmZvckVhY2hEZWVwKG9iamVjdFtrZXldLCBmbiwgYm90dG9tVXAsIG5ld1BvaW50ZXIsIHJvb3RPYmplY3QpO1xuICAgICAgfVxuICAgIH1cbiAgICBpZiAoYm90dG9tVXApIHsgZm4ob2JqZWN0LCBwb2ludGVyLCByb290T2JqZWN0KTsgfVxuICB9XG5cbiAgLyoqXG4gICAqICdmb3JFYWNoRGVlcENvcHknIGZ1bmN0aW9uXG4gICAqXG4gICAqIFNpbWlsYXIgdG8gZm9yRWFjaERlZXAsIGJ1dCByZXR1cm5zIGEgY29weSBvZiB0aGUgb3JpZ2luYWwgb2JqZWN0LCB3aXRoXG4gICAqIHRoZSBzYW1lIGtleXMgYW5kIGluZGV4ZXMsIGJ1dCB3aXRoIHZhbHVlcyByZXBsYWNlZCB3aXRoIHRoZSByZXN1bHQgb2ZcbiAgICogdGhlIGl0ZXJhdGVlIGZ1bmN0aW9uLlxuICAgKlxuICAgKiBAcGFyYW0gIHsgb2JqZWN0IH0gb2JqZWN0IC0gdGhlIGluaXRpYWwgb2JqZWN0IG9yIGFycmF5XG4gICAqIEBwYXJhbSAgeyAodjogYW55LCBrPzogc3RyaW5nLCBvPzogYW55LCBwPzogYW55KSA9PiBhbnkgfSBmdW5jdGlvbiAtIGl0ZXJhdGVlIGZ1bmN0aW9uXG4gICAqIEBwYXJhbSAgeyBib29sZWFuID0gZmFsc2UgfSBib3R0b21VcCAtIG9wdGlvbmFsLCBzZXQgdG8gVFJVRSB0byByZXZlcnNlIGRpcmVjdGlvblxuICAgKiBAcGFyYW0gIHsgb2JqZWN0ID0gb2JqZWN0IH0gcm9vdE9iamVjdCAtIG9wdGlvbmFsLCByb290IG9iamVjdCBvciBhcnJheVxuICAgKiBAcGFyYW0gIHsgc3RyaW5nID0gJycgfSBwb2ludGVyIC0gb3B0aW9uYWwsIEpTT04gUG9pbnRlciB0byBvYmplY3Qgd2l0aGluIHJvb3RPYmplY3RcbiAgICogQHJldHVybiB7IG9iamVjdCB9IC0gVGhlIGNvcGllZCBvYmplY3RcbiAgICovXG4gIHN0YXRpYyBmb3JFYWNoRGVlcENvcHkoXG4gICAgb2JqZWN0LCBmbjogKHY6IGFueSwgcD86IHN0cmluZywgbz86IGFueSkgPT4gYW55ID0gKHYpID0+IHYsXG4gICAgYm90dG9tVXAgPSBmYWxzZSwgcG9pbnRlciA9ICcnLCByb290T2JqZWN0ID0gb2JqZWN0XG4gICkge1xuICAgIGlmICh0eXBlb2YgZm4gIT09ICdmdW5jdGlvbicpIHtcbiAgICAgIGNvbnNvbGUuZXJyb3IoYGZvckVhY2hEZWVwQ29weSBlcnJvcjogSXRlcmF0b3IgaXMgbm90IGEgZnVuY3Rpb246YCwgZm4pO1xuICAgICAgcmV0dXJuIG51bGw7XG4gICAgfVxuICAgIGlmIChpc09iamVjdChvYmplY3QpIHx8IGlzQXJyYXkob2JqZWN0KSkge1xuICAgICAgbGV0IG5ld09iamVjdCA9IGlzQXJyYXkob2JqZWN0KSA/IFsgLi4ub2JqZWN0IF0gOiB7IC4uLm9iamVjdCB9O1xuICAgICAgaWYgKCFib3R0b21VcCkgeyBuZXdPYmplY3QgPSBmbihuZXdPYmplY3QsIHBvaW50ZXIsIHJvb3RPYmplY3QpOyB9XG4gICAgICBmb3IgKGNvbnN0IGtleSBvZiBPYmplY3Qua2V5cyhuZXdPYmplY3QpKSB7XG4gICAgICAgIGNvbnN0IG5ld1BvaW50ZXIgPSBwb2ludGVyICsgJy8nICsgdGhpcy5lc2NhcGUoa2V5KTtcbiAgICAgICAgbmV3T2JqZWN0W2tleV0gPSB0aGlzLmZvckVhY2hEZWVwQ29weShcbiAgICAgICAgICBuZXdPYmplY3Rba2V5XSwgZm4sIGJvdHRvbVVwLCBuZXdQb2ludGVyLCByb290T2JqZWN0XG4gICAgICAgICk7XG4gICAgICB9XG4gICAgICBpZiAoYm90dG9tVXApIHsgbmV3T2JqZWN0ID0gZm4obmV3T2JqZWN0LCBwb2ludGVyLCByb290T2JqZWN0KTsgfVxuICAgICAgcmV0dXJuIG5ld09iamVjdDtcbiAgICB9IGVsc2Uge1xuICAgICAgcmV0dXJuIGZuKG9iamVjdCwgcG9pbnRlciwgcm9vdE9iamVjdCk7XG4gICAgfVxuICB9XG5cbiAgLyoqXG4gICAqICdlc2NhcGUnIGZ1bmN0aW9uXG4gICAqXG4gICAqIEVzY2FwZXMgYSBzdHJpbmcgcmVmZXJlbmNlIGtleVxuICAgKlxuICAgKiBAcGFyYW0gIHsgc3RyaW5nIH0ga2V5IC0gc3RyaW5nIGtleSB0byBlc2NhcGVcbiAgICogQHJldHVybiB7IHN0cmluZyB9IC0gZXNjYXBlZCBrZXlcbiAgICovXG4gIHN0YXRpYyBlc2NhcGUoa2V5KSB7XG4gICAgY29uc3QgZXNjYXBlZCA9IGtleS50b1N0cmluZygpLnJlcGxhY2UoL34vZywgJ34wJykucmVwbGFjZSgvXFwvL2csICd+MScpO1xuICAgIHJldHVybiBlc2NhcGVkO1xuICB9XG5cbiAgLyoqXG4gICAqICd1bmVzY2FwZScgZnVuY3Rpb25cbiAgICpcbiAgICogVW5lc2NhcGVzIGEgc3RyaW5nIHJlZmVyZW5jZSBrZXlcbiAgICpcbiAgICogQHBhcmFtICB7IHN0cmluZyB9IGtleSAtIHN0cmluZyBrZXkgdG8gdW5lc2NhcGVcbiAgICogQHJldHVybiB7IHN0cmluZyB9IC0gdW5lc2NhcGVkIGtleVxuICAgKi9cbiAgc3RhdGljIHVuZXNjYXBlKGtleSkge1xuICAgIGNvbnN0IHVuZXNjYXBlZCA9IGtleS50b1N0cmluZygpLnJlcGxhY2UoL34xL2csICcvJykucmVwbGFjZSgvfjAvZywgJ34nKTtcbiAgICByZXR1cm4gdW5lc2NhcGVkO1xuICB9XG5cbiAgLyoqXG4gICAqICdwYXJzZScgZnVuY3Rpb25cbiAgICpcbiAgICogQ29udmVydHMgYSBzdHJpbmcgSlNPTiBQb2ludGVyIGludG8gYSBhcnJheSBvZiBrZXlzXG4gICAqIChpZiBpbnB1dCBpcyBhbHJlYWR5IGFuIGFuIGFycmF5IG9mIGtleXMsIGl0IGlzIHJldHVybmVkIHVuY2hhbmdlZClcbiAgICpcbiAgICogQHBhcmFtICB7IFBvaW50ZXIgfSBwb2ludGVyIC0gSlNPTiBQb2ludGVyIChzdHJpbmcgb3IgYXJyYXkpXG4gICAqIEBwYXJhbSAgeyBib29sZWFuID0gZmFsc2UgfSBlcnJvcnMgLSBTaG93IGVycm9yIGlmIGludmFsaWQgcG9pbnRlcj9cbiAgICogQHJldHVybiB7IHN0cmluZ1tdIH0gLSBKU09OIFBvaW50ZXIgYXJyYXkgb2Yga2V5c1xuICAgKi9cbiAgc3RhdGljIHBhcnNlKHBvaW50ZXIsIGVycm9ycyA9IGZhbHNlKSB7XG4gICAgaWYgKCF0aGlzLmlzSnNvblBvaW50ZXIocG9pbnRlcikpIHtcbiAgICAgIGlmIChlcnJvcnMpIHsgY29uc29sZS5lcnJvcihgcGFyc2UgZXJyb3I6IEludmFsaWQgSlNPTiBQb2ludGVyOiAke3BvaW50ZXJ9YCk7IH1cbiAgICAgIHJldHVybiBudWxsO1xuICAgIH1cbiAgICBpZiAoaXNBcnJheShwb2ludGVyKSkgeyByZXR1cm4gPHN0cmluZ1tdPnBvaW50ZXI7IH1cbiAgICBpZiAodHlwZW9mIHBvaW50ZXIgPT09ICdzdHJpbmcnKSB7XG4gICAgICBpZiAoKDxzdHJpbmc+cG9pbnRlcilbMF0gPT09ICcjJykgeyBwb2ludGVyID0gcG9pbnRlci5zbGljZSgxKTsgfVxuICAgICAgaWYgKDxzdHJpbmc+cG9pbnRlciA9PT0gJycgfHwgPHN0cmluZz5wb2ludGVyID09PSAnLycpIHsgcmV0dXJuIFtdOyB9XG4gICAgICByZXR1cm4gKDxzdHJpbmc+cG9pbnRlcikuc2xpY2UoMSkuc3BsaXQoJy8nKS5tYXAodGhpcy51bmVzY2FwZSk7XG4gICAgfVxuICB9XG5cbiAgLyoqXG4gICAqICdjb21waWxlJyBmdW5jdGlvblxuICAgKlxuICAgKiBDb252ZXJ0cyBhbiBhcnJheSBvZiBrZXlzIGludG8gYSBKU09OIFBvaW50ZXIgc3RyaW5nXG4gICAqIChpZiBpbnB1dCBpcyBhbHJlYWR5IGEgc3RyaW5nLCBpdCBpcyBub3JtYWxpemVkIGFuZCByZXR1cm5lZClcbiAgICpcbiAgICogVGhlIG9wdGlvbmFsIHNlY29uZCBwYXJhbWV0ZXIgaXMgYSBkZWZhdWx0IHdoaWNoIHdpbGwgcmVwbGFjZSBhbnkgZW1wdHkga2V5cy5cbiAgICpcbiAgICogQHBhcmFtICB7IFBvaW50ZXIgfSBwb2ludGVyIC0gSlNPTiBQb2ludGVyIChzdHJpbmcgb3IgYXJyYXkpXG4gICAqIEBwYXJhbSAgeyBzdHJpbmcgfCBudW1iZXIgPSAnJyB9IGRlZmF1bHRWYWx1ZSAtIERlZmF1bHQgdmFsdWVcbiAgICogQHBhcmFtICB7IGJvb2xlYW4gPSBmYWxzZSB9IGVycm9ycyAtIFNob3cgZXJyb3IgaWYgaW52YWxpZCBwb2ludGVyP1xuICAgKiBAcmV0dXJuIHsgc3RyaW5nIH0gLSBKU09OIFBvaW50ZXIgc3RyaW5nXG4gICAqL1xuICBzdGF0aWMgY29tcGlsZShwb2ludGVyLCBkZWZhdWx0VmFsdWUgPSAnJywgZXJyb3JzID0gZmFsc2UpIHtcbiAgICBpZiAocG9pbnRlciA9PT0gJyMnKSB7IHJldHVybiAnJzsgfVxuICAgIGlmICghdGhpcy5pc0pzb25Qb2ludGVyKHBvaW50ZXIpKSB7XG4gICAgICBpZiAoZXJyb3JzKSB7IGNvbnNvbGUuZXJyb3IoYGNvbXBpbGUgZXJyb3I6IEludmFsaWQgSlNPTiBQb2ludGVyOiAke3BvaW50ZXJ9YCk7IH1cbiAgICAgIHJldHVybiBudWxsO1xuICAgIH1cbiAgICBpZiAoaXNBcnJheShwb2ludGVyKSkge1xuICAgICAgaWYgKCg8c3RyaW5nW10+cG9pbnRlcikubGVuZ3RoID09PSAwKSB7IHJldHVybiAnJzsgfVxuICAgICAgcmV0dXJuICcvJyArICg8c3RyaW5nW10+cG9pbnRlcikubWFwKFxuICAgICAgICBrZXkgPT4ga2V5ID09PSAnJyA/IGRlZmF1bHRWYWx1ZSA6IHRoaXMuZXNjYXBlKGtleSlcbiAgICAgICkuam9pbignLycpO1xuICAgIH1cbiAgICBpZiAodHlwZW9mIHBvaW50ZXIgPT09ICdzdHJpbmcnKSB7XG4gICAgICBpZiAocG9pbnRlclswXSA9PT0gJyMnKSB7IHBvaW50ZXIgPSBwb2ludGVyLnNsaWNlKDEpOyB9XG4gICAgICByZXR1cm4gcG9pbnRlcjtcbiAgICB9XG4gIH1cblxuICAvKipcbiAgICogJ3RvS2V5JyBmdW5jdGlvblxuICAgKlxuICAgKiBFeHRyYWN0cyBuYW1lIG9mIHRoZSBmaW5hbCBrZXkgZnJvbSBhIEpTT04gUG9pbnRlci5cbiAgICpcbiAgICogQHBhcmFtICB7IFBvaW50ZXIgfSBwb2ludGVyIC0gSlNPTiBQb2ludGVyIChzdHJpbmcgb3IgYXJyYXkpXG4gICAqIEBwYXJhbSAgeyBib29sZWFuID0gZmFsc2UgfSBlcnJvcnMgLSBTaG93IGVycm9yIGlmIGludmFsaWQgcG9pbnRlcj9cbiAgICogQHJldHVybiB7IHN0cmluZyB9IC0gdGhlIGV4dHJhY3RlZCBrZXlcbiAgICovXG4gIHN0YXRpYyB0b0tleShwb2ludGVyLCBlcnJvcnMgPSBmYWxzZSkge1xuICAgIGNvbnN0IGtleUFycmF5ID0gdGhpcy5wYXJzZShwb2ludGVyLCBlcnJvcnMpO1xuICAgIGlmIChrZXlBcnJheSA9PT0gbnVsbCkgeyByZXR1cm4gbnVsbDsgfVxuICAgIGlmICgha2V5QXJyYXkubGVuZ3RoKSB7IHJldHVybiAnJzsgfVxuICAgIHJldHVybiBrZXlBcnJheVtrZXlBcnJheS5sZW5ndGggLSAxXTtcbiAgfVxuXG4gIC8qKlxuICAgKiAnaXNKc29uUG9pbnRlcicgZnVuY3Rpb25cbiAgICpcbiAgICogQ2hlY2tzIGEgc3RyaW5nIG9yIGFycmF5IHZhbHVlIHRvIGRldGVybWluZSBpZiBpdCBpcyBhIHZhbGlkIEpTT04gUG9pbnRlci5cbiAgICogUmV0dXJucyB0cnVlIGlmIGEgc3RyaW5nIGlzIGVtcHR5LCBvciBzdGFydHMgd2l0aCAnLycgb3IgJyMvJy5cbiAgICogUmV0dXJucyB0cnVlIGlmIGFuIGFycmF5IGNvbnRhaW5zIG9ubHkgc3RyaW5nIHZhbHVlcy5cbiAgICpcbiAgICogQHBhcmFtICB7IGFueSB9IHZhbHVlIC0gdmFsdWUgdG8gY2hlY2tcbiAgICogQHJldHVybiB7IGJvb2xlYW4gfSAtIHRydWUgaWYgdmFsdWUgaXMgYSB2YWxpZCBKU09OIFBvaW50ZXIsIG90aGVyd2lzZSBmYWxzZVxuICAgKi9cbiAgc3RhdGljIGlzSnNvblBvaW50ZXIodmFsdWUpIHtcbiAgICBpZiAoaXNBcnJheSh2YWx1ZSkpIHtcbiAgICAgIHJldHVybiB2YWx1ZS5ldmVyeShrZXkgPT4gdHlwZW9mIGtleSA9PT0gJ3N0cmluZycpO1xuICAgIH0gZWxzZSBpZiAoaXNTdHJpbmcodmFsdWUpKSB7XG4gICAgICBpZiAodmFsdWUgPT09ICcnIHx8IHZhbHVlID09PSAnIycpIHsgcmV0dXJuIHRydWU7IH1cbiAgICAgIGlmICh2YWx1ZVswXSA9PT0gJy8nIHx8IHZhbHVlLnNsaWNlKDAsIDIpID09PSAnIy8nKSB7XG4gICAgICAgIHJldHVybiAhLyh+W14wMV18fiQpL2cudGVzdCh2YWx1ZSk7XG4gICAgICB9XG4gICAgfVxuICAgIHJldHVybiBmYWxzZTtcbiAgfVxuXG4gIC8qKlxuICAgKiAnaXNTdWJQb2ludGVyJyBmdW5jdGlvblxuICAgKlxuICAgKiBDaGVja3Mgd2hldGhlciBvbmUgSlNPTiBQb2ludGVyIGlzIGEgc3Vic2V0IG9mIGFub3RoZXIuXG4gICAqXG4gICAqIEBwYXJhbSAgeyBQb2ludGVyIH0gc2hvcnRQb2ludGVyIC0gcG90ZW50aWFsIHN1YnNldCBKU09OIFBvaW50ZXJcbiAgICogQHBhcmFtICB7IFBvaW50ZXIgfSBsb25nUG9pbnRlciAtIHBvdGVudGlhbCBzdXBlcnNldCBKU09OIFBvaW50ZXJcbiAgICogQHBhcmFtICB7IGJvb2xlYW4gPSBmYWxzZSB9IHRydWVJZk1hdGNoaW5nIC0gcmV0dXJuIHRydWUgaWYgcG9pbnRlcnMgbWF0Y2g/XG4gICAqIEBwYXJhbSAgeyBib29sZWFuID0gZmFsc2UgfSBlcnJvcnMgLSBTaG93IGVycm9yIGlmIGludmFsaWQgcG9pbnRlcj9cbiAgICogQHJldHVybiB7IGJvb2xlYW4gfSAtIHRydWUgaWYgc2hvcnRQb2ludGVyIGlzIGEgc3Vic2V0IG9mIGxvbmdQb2ludGVyLCBmYWxzZSBpZiBub3RcbiAgICovXG4gIHN0YXRpYyBpc1N1YlBvaW50ZXIoXG4gICAgc2hvcnRQb2ludGVyLCBsb25nUG9pbnRlciwgdHJ1ZUlmTWF0Y2hpbmcgPSBmYWxzZSwgZXJyb3JzID0gZmFsc2VcbiAgKSB7XG4gICAgaWYgKCF0aGlzLmlzSnNvblBvaW50ZXIoc2hvcnRQb2ludGVyKSB8fCAhdGhpcy5pc0pzb25Qb2ludGVyKGxvbmdQb2ludGVyKSkge1xuICAgICAgaWYgKGVycm9ycykge1xuICAgICAgICBsZXQgaW52YWxpZCA9ICcnO1xuICAgICAgICBpZiAoIXRoaXMuaXNKc29uUG9pbnRlcihzaG9ydFBvaW50ZXIpKSB7IGludmFsaWQgKz0gYCAxOiAke3Nob3J0UG9pbnRlcn1gOyB9XG4gICAgICAgIGlmICghdGhpcy5pc0pzb25Qb2ludGVyKGxvbmdQb2ludGVyKSkgeyBpbnZhbGlkICs9IGAgMjogJHtsb25nUG9pbnRlcn1gOyB9XG4gICAgICAgIGNvbnNvbGUuZXJyb3IoYGlzU3ViUG9pbnRlciBlcnJvcjogSW52YWxpZCBKU09OIFBvaW50ZXIgJHtpbnZhbGlkfWApO1xuICAgICAgfVxuICAgICAgcmV0dXJuO1xuICAgIH1cbiAgICBzaG9ydFBvaW50ZXIgPSB0aGlzLmNvbXBpbGUoc2hvcnRQb2ludGVyLCAnJywgZXJyb3JzKTtcbiAgICBsb25nUG9pbnRlciA9IHRoaXMuY29tcGlsZShsb25nUG9pbnRlciwgJycsIGVycm9ycyk7XG4gICAgcmV0dXJuIHNob3J0UG9pbnRlciA9PT0gbG9uZ1BvaW50ZXIgPyB0cnVlSWZNYXRjaGluZyA6XG4gICAgICBgJHtzaG9ydFBvaW50ZXJ9L2AgPT09IGxvbmdQb2ludGVyLnNsaWNlKDAsIHNob3J0UG9pbnRlci5sZW5ndGggKyAxKTtcbiAgfVxuXG4gIC8qKlxuICAgKiAndG9JbmRleGVkUG9pbnRlcicgZnVuY3Rpb25cbiAgICpcbiAgICogTWVyZ2VzIGFuIGFycmF5IG9mIG51bWVyaWMgaW5kZXhlcyBhbmQgYSBnZW5lcmljIHBvaW50ZXIgdG8gY3JlYXRlIGFuXG4gICAqIGluZGV4ZWQgcG9pbnRlciBmb3IgYSBzcGVjaWZpYyBpdGVtLlxuICAgKlxuICAgKiBGb3IgZXhhbXBsZSwgbWVyZ2luZyB0aGUgZ2VuZXJpYyBwb2ludGVyICcvZm9vLy0vYmFyLy0vYmF6JyBhbmRcbiAgICogdGhlIGFycmF5IFs0LCAyXSB3b3VsZCByZXN1bHQgaW4gdGhlIGluZGV4ZWQgcG9pbnRlciAnL2Zvby80L2Jhci8yL2JheidcbiAgICpcbiAgICogQGZ1bmN0aW9uXG4gICAqIEBwYXJhbSAgeyBQb2ludGVyIH0gZ2VuZXJpY1BvaW50ZXIgLSBUaGUgZ2VuZXJpYyBwb2ludGVyXG4gICAqIEBwYXJhbSAgeyBudW1iZXJbXSB9IGluZGV4QXJyYXkgLSBUaGUgYXJyYXkgb2YgbnVtZXJpYyBpbmRleGVzXG4gICAqIEBwYXJhbSAgeyBNYXA8c3RyaW5nLCBudW1iZXI+IH0gYXJyYXlNYXAgLSBBbiBvcHRpb25hbCBhcnJheSBtYXBcbiAgICogQHJldHVybiB7IHN0cmluZyB9IC0gVGhlIG1lcmdlZCBwb2ludGVyIHdpdGggaW5kZXhlc1xuICAgKi9cbiAgc3RhdGljIHRvSW5kZXhlZFBvaW50ZXIoXG4gICAgZ2VuZXJpY1BvaW50ZXIsIGluZGV4QXJyYXksIGFycmF5TWFwOiBNYXA8c3RyaW5nLCBudW1iZXI+ID0gbnVsbFxuICApIHtcbiAgICBpZiAodGhpcy5pc0pzb25Qb2ludGVyKGdlbmVyaWNQb2ludGVyKSAmJiBpc0FycmF5KGluZGV4QXJyYXkpKSB7XG4gICAgICBsZXQgaW5kZXhlZFBvaW50ZXIgPSB0aGlzLmNvbXBpbGUoZ2VuZXJpY1BvaW50ZXIpO1xuICAgICAgaWYgKGlzTWFwKGFycmF5TWFwKSkge1xuICAgICAgICBsZXQgYXJyYXlJbmRleCA9IDA7XG4gICAgICAgIHJldHVybiBpbmRleGVkUG9pbnRlci5yZXBsYWNlKC9cXC9cXC0oPz1cXC98JCkvZywgKGtleSwgc3RyaW5nSW5kZXgpID0+XG4gICAgICAgICAgYXJyYXlNYXAuaGFzKCg8c3RyaW5nPmluZGV4ZWRQb2ludGVyKS5zbGljZSgwLCBzdHJpbmdJbmRleCkpID9cbiAgICAgICAgICAgICcvJyArIGluZGV4QXJyYXlbYXJyYXlJbmRleCsrXSA6IGtleVxuICAgICAgICApO1xuICAgICAgfSBlbHNlIHtcbiAgICAgICAgZm9yIChjb25zdCBwb2ludGVySW5kZXggb2YgaW5kZXhBcnJheSkge1xuICAgICAgICAgIGluZGV4ZWRQb2ludGVyID0gaW5kZXhlZFBvaW50ZXIucmVwbGFjZSgnLy0nLCAnLycgKyBwb2ludGVySW5kZXgpO1xuICAgICAgICB9XG4gICAgICAgIHJldHVybiBpbmRleGVkUG9pbnRlcjtcbiAgICAgIH1cbiAgICB9XG4gICAgaWYgKCF0aGlzLmlzSnNvblBvaW50ZXIoZ2VuZXJpY1BvaW50ZXIpKSB7XG4gICAgICBjb25zb2xlLmVycm9yKGB0b0luZGV4ZWRQb2ludGVyIGVycm9yOiBJbnZhbGlkIEpTT04gUG9pbnRlcjogJHtnZW5lcmljUG9pbnRlcn1gKTtcbiAgICB9XG4gICAgaWYgKCFpc0FycmF5KGluZGV4QXJyYXkpKSB7XG4gICAgICBjb25zb2xlLmVycm9yKGB0b0luZGV4ZWRQb2ludGVyIGVycm9yOiBJbnZhbGlkIGluZGV4QXJyYXk6ICR7aW5kZXhBcnJheX1gKTtcbiAgICB9XG4gIH1cblxuICAvKipcbiAgICogJ3RvR2VuZXJpY1BvaW50ZXInIGZ1bmN0aW9uXG4gICAqXG4gICAqIENvbXBhcmVzIGFuIGluZGV4ZWQgcG9pbnRlciB0byBhbiBhcnJheSBtYXAgYW5kIHJlbW92ZXMgbGlzdCBhcnJheVxuICAgKiBpbmRleGVzIChidXQgbGVhdmVzIHR1cGxlIGFycnJheSBpbmRleGVzIGFuZCBhbGwgb2JqZWN0IGtleXMsIGluY2x1ZGluZ1xuICAgKiBudW1lcmljIGtleXMpIHRvIGNyZWF0ZSBhIGdlbmVyaWMgcG9pbnRlci5cbiAgICpcbiAgICogRm9yIGV4YW1wbGUsIHVzaW5nIHRoZSBpbmRleGVkIHBvaW50ZXIgJy9mb28vMS9iYXIvMi9iYXovMycgYW5kXG4gICAqIHRoZSBhcnJheU1hcCBbWycvZm9vJywgMF0sIFsnL2Zvby8tL2JhcicsIDNdLCBbJy9mb28vLS9iYXIvLS9iYXonLCAwXV1cbiAgICogd291bGQgcmVzdWx0IGluIHRoZSBnZW5lcmljIHBvaW50ZXIgJy9mb28vLS9iYXIvMi9iYXovLSdcbiAgICogVXNpbmcgdGhlIGluZGV4ZWQgcG9pbnRlciAnL2Zvby8xL2Jhci80L2Jhei8zJyBhbmQgdGhlIHNhbWUgYXJyYXlNYXBcbiAgICogd291bGQgcmVzdWx0IGluIHRoZSBnZW5lcmljIHBvaW50ZXIgJy9mb28vLS9iYXIvLS9iYXovLSdcbiAgICogKHRoZSBiYXIgYXJyYXkgaGFzIDMgdHVwbGUgaXRlbXMsIHNvIGluZGV4IDIgaXMgcmV0YWluZWQsIGJ1dCA0IGlzIHJlbW92ZWQpXG4gICAqXG4gICAqIFRoZSBzdHJ1Y3R1cmUgb2YgdGhlIGFycmF5TWFwIGlzOiBbWydwYXRoIHRvIGFycmF5JywgbnVtYmVyIG9mIHR1cGxlIGl0ZW1zXS4uLl1cbiAgICpcbiAgICogQGZ1bmN0aW9uXG4gICAqIEBwYXJhbSAgeyBQb2ludGVyIH0gaW5kZXhlZFBvaW50ZXIgLSBUaGUgaW5kZXhlZCBwb2ludGVyIChhcnJheSBvciBzdHJpbmcpXG4gICAqIEBwYXJhbSAgeyBNYXA8c3RyaW5nLCBudW1iZXI+IH0gYXJyYXlNYXAgLSBUaGUgb3B0aW9uYWwgYXJyYXkgbWFwIChmb3IgcHJlc2VydmluZyB0dXBsZSBpbmRleGVzKVxuICAgKiBAcmV0dXJuIHsgc3RyaW5nIH0gLSBUaGUgZ2VuZXJpYyBwb2ludGVyIHdpdGggaW5kZXhlcyByZW1vdmVkXG4gICAqL1xuICBzdGF0aWMgdG9HZW5lcmljUG9pbnRlcihpbmRleGVkUG9pbnRlciwgYXJyYXlNYXAgPSBuZXcgTWFwPHN0cmluZywgbnVtYmVyPigpKSB7XG4gICAgaWYgKHRoaXMuaXNKc29uUG9pbnRlcihpbmRleGVkUG9pbnRlcikgJiYgaXNNYXAoYXJyYXlNYXApKSB7XG4gICAgICBjb25zdCBwb2ludGVyQXJyYXkgPSB0aGlzLnBhcnNlKGluZGV4ZWRQb2ludGVyKTtcbiAgICAgIGZvciAobGV0IGkgPSAxOyBpIDwgcG9pbnRlckFycmF5Lmxlbmd0aDsgaSsrKSB7XG4gICAgICAgIGNvbnN0IHN1YlBvaW50ZXIgPSB0aGlzLmNvbXBpbGUocG9pbnRlckFycmF5LnNsaWNlKDAsIGkpKTtcbiAgICAgICAgaWYgKGFycmF5TWFwLmhhcyhzdWJQb2ludGVyKSAmJlxuICAgICAgICAgIGFycmF5TWFwLmdldChzdWJQb2ludGVyKSA8PSArcG9pbnRlckFycmF5W2ldXG4gICAgICAgICkge1xuICAgICAgICAgIHBvaW50ZXJBcnJheVtpXSA9ICctJztcbiAgICAgICAgfVxuICAgICAgfVxuICAgICAgcmV0dXJuIHRoaXMuY29tcGlsZShwb2ludGVyQXJyYXkpO1xuICAgIH1cbiAgICBpZiAoIXRoaXMuaXNKc29uUG9pbnRlcihpbmRleGVkUG9pbnRlcikpIHtcbiAgICAgIGNvbnNvbGUuZXJyb3IoYHRvR2VuZXJpY1BvaW50ZXIgZXJyb3I6IGludmFsaWQgSlNPTiBQb2ludGVyOiAke2luZGV4ZWRQb2ludGVyfWApO1xuICAgIH1cbiAgICBpZiAoIWlzTWFwKGFycmF5TWFwKSkge1xuICAgICAgY29uc29sZS5lcnJvcihgdG9HZW5lcmljUG9pbnRlciBlcnJvcjogaW52YWxpZCBhcnJheU1hcDogJHthcnJheU1hcH1gKTtcbiAgICB9XG4gIH1cblxuICAvKipcbiAgICogJ3RvQ29udHJvbFBvaW50ZXInIGZ1bmN0aW9uXG4gICAqXG4gICAqIEFjY2VwdHMgYSBKU09OIFBvaW50ZXIgZm9yIGEgZGF0YSBvYmplY3QgYW5kIHJldHVybnMgYSBKU09OIFBvaW50ZXIgZm9yIHRoZVxuICAgKiBtYXRjaGluZyBjb250cm9sIGluIGFuIEFuZ3VsYXIgRm9ybUdyb3VwLlxuICAgKlxuICAgKiBAcGFyYW0gIHsgUG9pbnRlciB9IGRhdGFQb2ludGVyIC0gSlNPTiBQb2ludGVyIChzdHJpbmcgb3IgYXJyYXkpIHRvIGEgZGF0YSBvYmplY3RcbiAgICogQHBhcmFtICB7IEZvcm1Hcm91cCB9IGZvcm1Hcm91cCAtIEFuZ3VsYXIgRm9ybUdyb3VwIHRvIGdldCB2YWx1ZSBmcm9tXG4gICAqIEBwYXJhbSAgeyBib29sZWFuID0gZmFsc2UgfSBjb250cm9sTXVzdEV4aXN0IC0gT25seSByZXR1cm4gaWYgY29udHJvbCBleGlzdHM/XG4gICAqIEByZXR1cm4geyBQb2ludGVyIH0gLSBKU09OIFBvaW50ZXIgKHN0cmluZykgdG8gdGhlIGZvcm1Hcm91cCBvYmplY3RcbiAgICovXG4gIHN0YXRpYyB0b0NvbnRyb2xQb2ludGVyKGRhdGFQb2ludGVyLCBmb3JtR3JvdXAsIGNvbnRyb2xNdXN0RXhpc3QgPSBmYWxzZSkge1xuICAgIGNvbnN0IGRhdGFQb2ludGVyQXJyYXkgPSB0aGlzLnBhcnNlKGRhdGFQb2ludGVyKTtcbiAgICBjb25zdCBjb250cm9sUG9pbnRlckFycmF5OiBzdHJpbmdbXSA9IFtdO1xuICAgIGxldCBzdWJHcm91cCA9IGZvcm1Hcm91cDtcbiAgICBpZiAoZGF0YVBvaW50ZXJBcnJheSAhPT0gbnVsbCkge1xuICAgICAgZm9yIChjb25zdCBrZXkgb2YgZGF0YVBvaW50ZXJBcnJheSkge1xuICAgICAgICBpZiAoaGFzT3duKHN1Ykdyb3VwLCAnY29udHJvbHMnKSkge1xuICAgICAgICAgIGNvbnRyb2xQb2ludGVyQXJyYXkucHVzaCgnY29udHJvbHMnKTtcbiAgICAgICAgICBzdWJHcm91cCA9IHN1Ykdyb3VwLmNvbnRyb2xzO1xuICAgICAgICB9XG4gICAgICAgIGlmIChpc0FycmF5KHN1Ykdyb3VwKSAmJiAoa2V5ID09PSAnLScpKSB7XG4gICAgICAgICAgY29udHJvbFBvaW50ZXJBcnJheS5wdXNoKChzdWJHcm91cC5sZW5ndGggLSAxKS50b1N0cmluZygpKTtcbiAgICAgICAgICBzdWJHcm91cCA9IHN1Ykdyb3VwW3N1Ykdyb3VwLmxlbmd0aCAtIDFdO1xuICAgICAgICB9IGVsc2UgaWYgKGhhc093bihzdWJHcm91cCwga2V5KSkge1xuICAgICAgICAgIGNvbnRyb2xQb2ludGVyQXJyYXkucHVzaChrZXkpO1xuICAgICAgICAgIHN1Ykdyb3VwID0gc3ViR3JvdXBba2V5XTtcbiAgICAgICAgfSBlbHNlIGlmIChjb250cm9sTXVzdEV4aXN0KSB7XG4gICAgICAgICAgY29uc29sZS5lcnJvcihgdG9Db250cm9sUG9pbnRlciBlcnJvcjogVW5hYmxlIHRvIGZpbmQgXCIke2tleX1cIiBpdGVtIGluIEZvcm1Hcm91cC5gKTtcbiAgICAgICAgICBjb25zb2xlLmVycm9yKGRhdGFQb2ludGVyKTtcbiAgICAgICAgICBjb25zb2xlLmVycm9yKGZvcm1Hcm91cCk7XG4gICAgICAgICAgcmV0dXJuO1xuICAgICAgICB9IGVsc2Uge1xuICAgICAgICAgIGNvbnRyb2xQb2ludGVyQXJyYXkucHVzaChrZXkpO1xuICAgICAgICAgIHN1Ykdyb3VwID0geyBjb250cm9sczoge30gfTtcbiAgICAgICAgfVxuICAgICAgfVxuICAgICAgcmV0dXJuIHRoaXMuY29tcGlsZShjb250cm9sUG9pbnRlckFycmF5KTtcbiAgICB9XG4gICAgY29uc29sZS5lcnJvcihgdG9Db250cm9sUG9pbnRlciBlcnJvcjogSW52YWxpZCBKU09OIFBvaW50ZXI6ICR7ZGF0YVBvaW50ZXJ9YCk7XG4gIH1cblxuICAvKipcbiAgICogJ3RvU2NoZW1hUG9pbnRlcicgZnVuY3Rpb25cbiAgICpcbiAgICogQWNjZXB0cyBhIEpTT04gUG9pbnRlciB0byBhIHZhbHVlIGluc2lkZSBhIGRhdGEgb2JqZWN0IGFuZCBhIEpTT04gc2NoZW1hXG4gICAqIGZvciB0aGF0IG9iamVjdC5cbiAgICpcbiAgICogUmV0dXJucyBhIFBvaW50ZXIgdG8gdGhlIHN1Yi1zY2hlbWEgZm9yIHRoZSB2YWx1ZSBpbnNpZGUgdGhlIG9iamVjdCdzIHNjaGVtYS5cbiAgICpcbiAgICogQHBhcmFtICB7IFBvaW50ZXIgfSBkYXRhUG9pbnRlciAtIEpTT04gUG9pbnRlciAoc3RyaW5nIG9yIGFycmF5KSB0byBhbiBvYmplY3RcbiAgICogQHBhcmFtICB7IGFueSB9IHNjaGVtYSAtIEpTT04gc2NoZW1hIGZvciB0aGUgb2JqZWN0XG4gICAqIEByZXR1cm4geyBQb2ludGVyIH0gLSBKU09OIFBvaW50ZXIgKHN0cmluZykgdG8gdGhlIG9iamVjdCdzIHNjaGVtYVxuICAgKi9cbiAgc3RhdGljIHRvU2NoZW1hUG9pbnRlcihkYXRhUG9pbnRlciwgc2NoZW1hKSB7XG4gICAgaWYgKHRoaXMuaXNKc29uUG9pbnRlcihkYXRhUG9pbnRlcikgJiYgdHlwZW9mIHNjaGVtYSA9PT0gJ29iamVjdCcpIHtcbiAgICAgIGNvbnN0IHBvaW50ZXJBcnJheSA9IHRoaXMucGFyc2UoZGF0YVBvaW50ZXIpO1xuICAgICAgaWYgKCFwb2ludGVyQXJyYXkubGVuZ3RoKSB7IHJldHVybiAnJzsgfVxuICAgICAgY29uc3QgZmlyc3RLZXkgPSBwb2ludGVyQXJyYXkuc2hpZnQoKTtcbiAgICAgIGlmIChzY2hlbWEudHlwZSA9PT0gJ29iamVjdCcgfHwgc2NoZW1hLnByb3BlcnRpZXMgfHwgc2NoZW1hLmFkZGl0aW9uYWxQcm9wZXJ0aWVzKSB7XG4gICAgICAgIGlmICgoc2NoZW1hLnByb3BlcnRpZXMgfHwge30pW2ZpcnN0S2V5XSkge1xuICAgICAgICAgIHJldHVybiBgL3Byb3BlcnRpZXMvJHt0aGlzLmVzY2FwZShmaXJzdEtleSl9YCArXG4gICAgICAgICAgICB0aGlzLnRvU2NoZW1hUG9pbnRlcihwb2ludGVyQXJyYXksIHNjaGVtYS5wcm9wZXJ0aWVzW2ZpcnN0S2V5XSk7XG4gICAgICAgIH0gZWxzZSAgaWYgKHNjaGVtYS5hZGRpdGlvbmFsUHJvcGVydGllcykge1xuICAgICAgICAgIHJldHVybiAnL2FkZGl0aW9uYWxQcm9wZXJ0aWVzJyArXG4gICAgICAgICAgICB0aGlzLnRvU2NoZW1hUG9pbnRlcihwb2ludGVyQXJyYXksIHNjaGVtYS5hZGRpdGlvbmFsUHJvcGVydGllcyk7XG4gICAgICAgIH1cbiAgICAgIH1cbiAgICAgIGlmICgoc2NoZW1hLnR5cGUgPT09ICdhcnJheScgfHwgc2NoZW1hLml0ZW1zKSAmJlxuICAgICAgICAoaXNOdW1iZXIoZmlyc3RLZXkpIHx8IGZpcnN0S2V5ID09PSAnLScgfHwgZmlyc3RLZXkgPT09ICcnKVxuICAgICAgKSB7XG4gICAgICAgIGNvbnN0IGFycmF5SXRlbSA9IGZpcnN0S2V5ID09PSAnLScgfHwgZmlyc3RLZXkgPT09ICcnID8gMCA6ICtmaXJzdEtleTtcbiAgICAgICAgaWYgKGlzQXJyYXkoc2NoZW1hLml0ZW1zKSkge1xuICAgICAgICAgIGlmIChhcnJheUl0ZW0gPCBzY2hlbWEuaXRlbXMubGVuZ3RoKSB7XG4gICAgICAgICAgICByZXR1cm4gJy9pdGVtcy8nICsgYXJyYXlJdGVtICtcbiAgICAgICAgICAgICAgdGhpcy50b1NjaGVtYVBvaW50ZXIocG9pbnRlckFycmF5LCBzY2hlbWEuaXRlbXNbYXJyYXlJdGVtXSk7XG4gICAgICAgICAgfSBlbHNlIGlmIChzY2hlbWEuYWRkaXRpb25hbEl0ZW1zKSB7XG4gICAgICAgICAgICByZXR1cm4gJy9hZGRpdGlvbmFsSXRlbXMnICtcbiAgICAgICAgICAgICAgdGhpcy50b1NjaGVtYVBvaW50ZXIocG9pbnRlckFycmF5LCBzY2hlbWEuYWRkaXRpb25hbEl0ZW1zKTtcbiAgICAgICAgICB9XG4gICAgICAgIH0gZWxzZSBpZiAoaXNPYmplY3Qoc2NoZW1hLml0ZW1zKSkge1xuICAgICAgICAgIHJldHVybiAnL2l0ZW1zJyArIHRoaXMudG9TY2hlbWFQb2ludGVyKHBvaW50ZXJBcnJheSwgc2NoZW1hLml0ZW1zKTtcbiAgICAgICAgfSBlbHNlIGlmIChpc09iamVjdChzY2hlbWEuYWRkaXRpb25hbEl0ZW1zKSkge1xuICAgICAgICAgIHJldHVybiAnL2FkZGl0aW9uYWxJdGVtcycgK1xuICAgICAgICAgICAgdGhpcy50b1NjaGVtYVBvaW50ZXIocG9pbnRlckFycmF5LCBzY2hlbWEuYWRkaXRpb25hbEl0ZW1zKTtcbiAgICAgICAgfVxuICAgICAgfVxuICAgICAgY29uc29sZS5lcnJvcihgdG9TY2hlbWFQb2ludGVyIGVycm9yOiBEYXRhIHBvaW50ZXIgJHtkYXRhUG9pbnRlcn0gYCArXG4gICAgICAgIGBub3QgY29tcGF0aWJsZSB3aXRoIHNjaGVtYSAke3NjaGVtYX1gKTtcbiAgICAgIHJldHVybiBudWxsO1xuICAgIH1cbiAgICBpZiAoIXRoaXMuaXNKc29uUG9pbnRlcihkYXRhUG9pbnRlcikpIHtcbiAgICAgIGNvbnNvbGUuZXJyb3IoYHRvU2NoZW1hUG9pbnRlciBlcnJvcjogSW52YWxpZCBKU09OIFBvaW50ZXI6ICR7ZGF0YVBvaW50ZXJ9YCk7XG4gICAgfVxuICAgIGlmICh0eXBlb2Ygc2NoZW1hICE9PSAnb2JqZWN0Jykge1xuICAgICAgY29uc29sZS5lcnJvcihgdG9TY2hlbWFQb2ludGVyIGVycm9yOiBJbnZhbGlkIEpTT04gU2NoZW1hOiAke3NjaGVtYX1gKTtcbiAgICB9XG4gICAgcmV0dXJuIG51bGw7XG4gIH1cblxuICAvKipcbiAgICogJ3RvRGF0YVBvaW50ZXInIGZ1bmN0aW9uXG4gICAqXG4gICAqIEFjY2VwdHMgYSBKU09OIFBvaW50ZXIgdG8gYSBzdWItc2NoZW1hIGluc2lkZSBhIEpTT04gc2NoZW1hIGFuZCB0aGUgc2NoZW1hLlxuICAgKlxuICAgKiBJZiBwb3NzaWJsZSwgcmV0dXJucyBhIGdlbmVyaWMgUG9pbnRlciB0byB0aGUgY29ycmVzcG9uZGluZyB2YWx1ZSBpbnNpZGVcbiAgICogdGhlIGRhdGEgb2JqZWN0IGRlc2NyaWJlZCBieSB0aGUgSlNPTiBzY2hlbWEuXG4gICAqXG4gICAqIFJldHVybnMgbnVsbCBpZiB0aGUgc3ViLXNjaGVtYSBpcyBpbiBhbiBhbWJpZ3VvdXMgbG9jYXRpb24gKHN1Y2ggYXNcbiAgICogZGVmaW5pdGlvbnMgb3IgYWRkaXRpb25hbFByb3BlcnRpZXMpIHdoZXJlIHRoZSBjb3JyZXNwb25kaW5nIHZhbHVlXG4gICAqIGxvY2F0aW9uIGNhbm5vdCBiZSBkZXRlcm1pbmVkLlxuICAgKlxuICAgKiBAcGFyYW0gIHsgUG9pbnRlciB9IHNjaGVtYVBvaW50ZXIgLSBKU09OIFBvaW50ZXIgKHN0cmluZyBvciBhcnJheSkgdG8gYSBKU09OIHNjaGVtYVxuICAgKiBAcGFyYW0gIHsgYW55IH0gc2NoZW1hIC0gdGhlIEpTT04gc2NoZW1hXG4gICAqIEBwYXJhbSAgeyBib29sZWFuID0gZmFsc2UgfSBlcnJvcnMgLSBTaG93IGVycm9ycz9cbiAgICogQHJldHVybiB7IFBvaW50ZXIgfSAtIEpTT04gUG9pbnRlciAoc3RyaW5nKSB0byB0aGUgdmFsdWUgaW4gdGhlIGRhdGEgb2JqZWN0XG4gICAqL1xuICBzdGF0aWMgdG9EYXRhUG9pbnRlcihzY2hlbWFQb2ludGVyLCBzY2hlbWEsIGVycm9ycyA9IGZhbHNlKSB7XG4gICAgaWYgKHRoaXMuaXNKc29uUG9pbnRlcihzY2hlbWFQb2ludGVyKSAmJiB0eXBlb2Ygc2NoZW1hID09PSAnb2JqZWN0JyAmJlxuICAgICAgdGhpcy5oYXMoc2NoZW1hLCBzY2hlbWFQb2ludGVyKVxuICAgICkge1xuICAgICAgY29uc3QgcG9pbnRlckFycmF5ID0gdGhpcy5wYXJzZShzY2hlbWFQb2ludGVyKTtcbiAgICAgIGlmICghcG9pbnRlckFycmF5Lmxlbmd0aCkgeyByZXR1cm4gJyc7IH1cbiAgICAgIGNvbnN0IGRhdGFQb2ludGVyID0gJyc7XG4gICAgICBjb25zdCBmaXJzdEtleSA9IHBvaW50ZXJBcnJheS5zaGlmdCgpO1xuICAgICAgaWYgKGZpcnN0S2V5ID09PSAncHJvcGVydGllcycgfHxcbiAgICAgICAgKGZpcnN0S2V5ID09PSAnaXRlbXMnICYmIGlzQXJyYXkoc2NoZW1hLml0ZW1zKSlcbiAgICAgICkge1xuICAgICAgICBjb25zdCBzZWNvbmRLZXkgPSBwb2ludGVyQXJyYXkuc2hpZnQoKTtcbiAgICAgICAgY29uc3QgcG9pbnRlclN1ZmZpeCA9IHRoaXMudG9EYXRhUG9pbnRlcihwb2ludGVyQXJyYXksIHNjaGVtYVtmaXJzdEtleV1bc2Vjb25kS2V5XSk7XG4gICAgICAgIHJldHVybiBwb2ludGVyU3VmZml4ID09PSBudWxsID8gbnVsbCA6ICcvJyArIHNlY29uZEtleSArIHBvaW50ZXJTdWZmaXg7XG4gICAgICB9IGVsc2UgaWYgKGZpcnN0S2V5ID09PSAnYWRkaXRpb25hbEl0ZW1zJyB8fFxuICAgICAgICAoZmlyc3RLZXkgPT09ICdpdGVtcycgJiYgaXNPYmplY3Qoc2NoZW1hLml0ZW1zKSlcbiAgICAgICkge1xuICAgICAgICBjb25zdCBwb2ludGVyU3VmZml4ID0gdGhpcy50b0RhdGFQb2ludGVyKHBvaW50ZXJBcnJheSwgc2NoZW1hW2ZpcnN0S2V5XSk7XG4gICAgICAgIHJldHVybiBwb2ludGVyU3VmZml4ID09PSBudWxsID8gbnVsbCA6ICcvLScgKyBwb2ludGVyU3VmZml4O1xuICAgICAgfSBlbHNlIGlmIChbJ2FsbE9mJywgJ2FueU9mJywgJ29uZU9mJ10uaW5jbHVkZXMoZmlyc3RLZXkpKSB7XG4gICAgICAgIGNvbnN0IHNlY29uZEtleSA9IHBvaW50ZXJBcnJheS5zaGlmdCgpO1xuICAgICAgICByZXR1cm4gdGhpcy50b0RhdGFQb2ludGVyKHBvaW50ZXJBcnJheSwgc2NoZW1hW2ZpcnN0S2V5XVtzZWNvbmRLZXldKTtcbiAgICAgIH0gZWxzZSBpZiAoZmlyc3RLZXkgPT09ICdub3QnKSB7XG4gICAgICAgIHJldHVybiB0aGlzLnRvRGF0YVBvaW50ZXIocG9pbnRlckFycmF5LCBzY2hlbWFbZmlyc3RLZXldKTtcbiAgICAgIH0gZWxzZSBpZiAoWydjb250YWlucycsICdkZWZpbml0aW9ucycsICdkZXBlbmRlbmNpZXMnLCAnYWRkaXRpb25hbEl0ZW1zJyxcbiAgICAgICAgJ2FkZGl0aW9uYWxQcm9wZXJ0aWVzJywgJ3BhdHRlcm5Qcm9wZXJ0aWVzJywgJ3Byb3BlcnR5TmFtZXMnXS5pbmNsdWRlcyhmaXJzdEtleSlcbiAgICAgICkge1xuICAgICAgICBpZiAoZXJyb3JzKSB7IGNvbnNvbGUuZXJyb3IoYHRvRGF0YVBvaW50ZXIgZXJyb3I6IEFtYmlndW91cyBsb2NhdGlvbmApOyB9XG4gICAgICB9XG4gICAgICByZXR1cm4gJyc7XG4gICAgfVxuICAgIGlmIChlcnJvcnMpIHtcbiAgICAgIGlmICghdGhpcy5pc0pzb25Qb2ludGVyKHNjaGVtYVBvaW50ZXIpKSB7XG4gICAgICAgIGNvbnNvbGUuZXJyb3IoYHRvRGF0YVBvaW50ZXIgZXJyb3I6IEludmFsaWQgSlNPTiBQb2ludGVyOiAke3NjaGVtYVBvaW50ZXJ9YCk7XG4gICAgICB9XG4gICAgICBpZiAodHlwZW9mIHNjaGVtYSAhPT0gJ29iamVjdCcpIHtcbiAgICAgICAgY29uc29sZS5lcnJvcihgdG9EYXRhUG9pbnRlciBlcnJvcjogSW52YWxpZCBKU09OIFNjaGVtYTogJHtzY2hlbWF9YCk7XG4gICAgICB9XG4gICAgICBpZiAodHlwZW9mIHNjaGVtYSAhPT0gJ29iamVjdCcpIHtcbiAgICAgICAgY29uc29sZS5lcnJvcihgdG9EYXRhUG9pbnRlciBlcnJvcjogUG9pbnRlciAke3NjaGVtYVBvaW50ZXJ9IGludmFsaWQgZm9yIFNjaGVtYTogJHtzY2hlbWF9YCk7XG4gICAgICB9XG4gICAgfVxuICAgIHJldHVybiBudWxsO1xuICB9XG5cbiAgLyoqXG4gICAqICdwYXJzZU9iamVjdFBhdGgnIGZ1bmN0aW9uXG4gICAqXG4gICAqIFBhcnNlcyBhIEphdmFTY3JpcHQgb2JqZWN0IHBhdGggaW50byBhbiBhcnJheSBvZiBrZXlzLCB3aGljaFxuICAgKiBjYW4gdGhlbiBiZSBwYXNzZWQgdG8gY29tcGlsZSgpIHRvIGNvbnZlcnQgaW50byBhIHN0cmluZyBKU09OIFBvaW50ZXIuXG4gICAqXG4gICAqIEJhc2VkIG9uIG1pa2UtbWFyY2FjY2kncyBleGNlbGxlbnQgb2JqZWN0cGF0aCBwYXJzZSBmdW5jdGlvbjpcbiAgICogaHR0cHM6Ly9naXRodWIuY29tL21pa2UtbWFyY2FjY2kvb2JqZWN0cGF0aFxuICAgKlxuICAgKiBAcGFyYW0gIHsgUG9pbnRlciB9IHBhdGggLSBUaGUgb2JqZWN0IHBhdGggdG8gcGFyc2VcbiAgICogQHJldHVybiB7IHN0cmluZ1tdIH0gLSBUaGUgcmVzdWx0aW5nIGFycmF5IG9mIGtleXNcbiAgICovXG4gIHN0YXRpYyBwYXJzZU9iamVjdFBhdGgocGF0aCkge1xuICAgIGlmIChpc0FycmF5KHBhdGgpKSB7IHJldHVybiA8c3RyaW5nW10+cGF0aDsgfVxuICAgIGlmICh0aGlzLmlzSnNvblBvaW50ZXIocGF0aCkpIHsgcmV0dXJuIHRoaXMucGFyc2UocGF0aCk7IH1cbiAgICBpZiAodHlwZW9mIHBhdGggPT09ICdzdHJpbmcnKSB7XG4gICAgICBsZXQgaW5kZXggPSAwO1xuICAgICAgY29uc3QgcGFydHM6IHN0cmluZ1tdID0gW107XG4gICAgICB3aGlsZSAoaW5kZXggPCBwYXRoLmxlbmd0aCkge1xuICAgICAgICBjb25zdCBuZXh0RG90ID0gcGF0aC5pbmRleE9mKCcuJywgaW5kZXgpO1xuICAgICAgICBjb25zdCBuZXh0T0IgPSBwYXRoLmluZGV4T2YoJ1snLCBpbmRleCk7IC8vIG5leHQgb3BlbiBicmFja2V0XG4gICAgICAgIGlmIChuZXh0RG90ID09PSAtMSAmJiBuZXh0T0IgPT09IC0xKSB7IC8vIGxhc3QgaXRlbVxuICAgICAgICAgIHBhcnRzLnB1c2gocGF0aC5zbGljZShpbmRleCkpO1xuICAgICAgICAgIGluZGV4ID0gcGF0aC5sZW5ndGg7XG4gICAgICAgIH0gZWxzZSBpZiAobmV4dERvdCAhPT0gLTEgJiYgKG5leHREb3QgPCBuZXh0T0IgfHwgbmV4dE9CID09PSAtMSkpIHsgLy8gZG90IG5vdGF0aW9uXG4gICAgICAgICAgcGFydHMucHVzaChwYXRoLnNsaWNlKGluZGV4LCBuZXh0RG90KSk7XG4gICAgICAgICAgaW5kZXggPSBuZXh0RG90ICsgMTtcbiAgICAgICAgfSBlbHNlIHsgLy8gYnJhY2tldCBub3RhdGlvblxuICAgICAgICAgIGlmIChuZXh0T0IgPiBpbmRleCkge1xuICAgICAgICAgICAgcGFydHMucHVzaChwYXRoLnNsaWNlKGluZGV4LCBuZXh0T0IpKTtcbiAgICAgICAgICAgIGluZGV4ID0gbmV4dE9CO1xuICAgICAgICAgIH1cbiAgICAgICAgICBjb25zdCBxdW90ZSA9IHBhdGguY2hhckF0KG5leHRPQiArIDEpO1xuICAgICAgICAgIGlmIChxdW90ZSA9PT0gJ1wiJyB8fCBxdW90ZSA9PT0gJ1xcJycpIHsgLy8gZW5jbG9zaW5nIHF1b3Rlc1xuICAgICAgICAgICAgbGV0IG5leHRDQiA9IHBhdGguaW5kZXhPZihxdW90ZSArICddJywgbmV4dE9CKTsgLy8gbmV4dCBjbG9zZSBicmFja2V0XG4gICAgICAgICAgICB3aGlsZSAobmV4dENCICE9PSAtMSAmJiBwYXRoLmNoYXJBdChuZXh0Q0IgLSAxKSA9PT0gJ1xcXFwnKSB7XG4gICAgICAgICAgICAgIG5leHRDQiA9IHBhdGguaW5kZXhPZihxdW90ZSArICddJywgbmV4dENCICsgMik7XG4gICAgICAgICAgICB9XG4gICAgICAgICAgICBpZiAobmV4dENCID09PSAtMSkgeyBuZXh0Q0IgPSBwYXRoLmxlbmd0aDsgfVxuICAgICAgICAgICAgcGFydHMucHVzaChwYXRoLnNsaWNlKGluZGV4ICsgMiwgbmV4dENCKVxuICAgICAgICAgICAgICAucmVwbGFjZShuZXcgUmVnRXhwKCdcXFxcJyArIHF1b3RlLCAnZycpLCBxdW90ZSkpO1xuICAgICAgICAgICAgaW5kZXggPSBuZXh0Q0IgKyAyO1xuICAgICAgICAgIH0gZWxzZSB7IC8vIG5vIGVuY2xvc2luZyBxdW90ZXNcbiAgICAgICAgICAgIGxldCBuZXh0Q0IgPSBwYXRoLmluZGV4T2YoJ10nLCBuZXh0T0IpOyAvLyBuZXh0IGNsb3NlIGJyYWNrZXRcbiAgICAgICAgICAgIGlmIChuZXh0Q0IgPT09IC0xKSB7IG5leHRDQiA9IHBhdGgubGVuZ3RoOyB9XG4gICAgICAgICAgICBwYXJ0cy5wdXNoKHBhdGguc2xpY2UoaW5kZXggKyAxLCBuZXh0Q0IpKTtcbiAgICAgICAgICAgIGluZGV4ID0gbmV4dENCICsgMTtcbiAgICAgICAgICB9XG4gICAgICAgICAgaWYgKHBhdGguY2hhckF0KGluZGV4KSA9PT0gJy4nKSB7IGluZGV4Kys7IH1cbiAgICAgICAgfVxuICAgICAgfVxuICAgICAgcmV0dXJuIHBhcnRzO1xuICAgIH1cbiAgICBjb25zb2xlLmVycm9yKCdwYXJzZU9iamVjdFBhdGggZXJyb3I6IElucHV0IG9iamVjdCBwYXRoIG11c3QgYmUgYSBzdHJpbmcuJyk7XG4gIH1cbn1cbiJdfQ==

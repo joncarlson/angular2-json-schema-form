@@ -47,6 +47,7 @@ export declare class JsonSchemaFormService {
     templateRefLibrary: any;
     hasRootReference: boolean;
     language: string;
+    defaultLayoutOptions: any;
     defaultFormOptions: any;
     constructor();
     setLanguage(language?: string): void;

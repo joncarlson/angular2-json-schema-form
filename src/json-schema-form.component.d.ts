@@ -67,6 +67,7 @@ export declare class JsonSchemaFormComponent implements ControlValueAccessor, On
     };
     schema: any;
     layout: any[];
+    defaultLayoutOptions: any;
     data: any;
     options: any;
     framework: any | string;
@@ -189,6 +190,7 @@ export declare class JsonSchemaFormComponent implements ControlValueAccessor, On
      * 3. (none) no input - don't import
      */
     private initializeLayout();
+    private initializeLayoutDefaults();
     /**
      * 'activateForm' function
      *
